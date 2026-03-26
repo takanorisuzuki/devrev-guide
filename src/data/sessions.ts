@@ -1,0 +1,203 @@
+export const SESSION_ORDER = [
+  "s01", "s02", "s03", "s04", "s05", "s06",
+  "s07", "s08", "s09", "s10", "s11", "s12", "s13"
+] as const;
+
+export type SessionId = typeof SESSION_ORDER[number];
+
+type SessionBase = {
+  id: SessionId;
+  level: "beginner" | "intermediate" | "advanced";
+  layer: "foundations" | "platform" | "developer";
+  duration: number;
+};
+
+type SessionLocalized = SessionBase & {
+  title: string;
+  subtitle: string;
+  keyInsight: string;
+};
+
+const SESSION_BASE: Record<SessionId, SessionBase> = {
+  s01: { id: "s01", level: "beginner", layer: "foundations", duration: 30 },
+  s02: { id: "s02", level: "beginner", layer: "foundations", duration: 40 },
+  s03: { id: "s03", level: "beginner", layer: "foundations", duration: 45 },
+  s04: { id: "s04", level: "beginner", layer: "platform", duration: 60 },
+  s05: { id: "s05", level: "intermediate", layer: "platform", duration: 60 },
+  s06: { id: "s06", level: "intermediate", layer: "platform", duration: 60 },
+  s07: { id: "s07", level: "intermediate", layer: "platform", duration: 45 },
+  s08: { id: "s08", level: "intermediate", layer: "platform", duration: 45 },
+  s09: { id: "s09", level: "intermediate", layer: "developer", duration: 60 },
+  s10: { id: "s10", level: "intermediate", layer: "developer", duration: 60 },
+  s11: { id: "s11", level: "intermediate", layer: "developer", duration: 60 },
+  s12: { id: "s12", level: "advanced", layer: "developer", duration: 60 },
+  s13: { id: "s13", level: "advanced", layer: "developer", duration: 60 },
+};
+
+const SESSION_TEXT_JA: Record<SessionId, { title: string; subtitle: string; keyInsight: string }> = {
+  s01: {
+    title: "DevRevとは何か：AIネイティブな作業基盤",
+    subtitle: "One Platform for Dev, Rev, and AI",
+    keyInsight: "DevRevはサポート・開発・AIを1つに統合したプラットフォーム。従来のJira+Zendesk+ChatGPTを置き換える視点で全体像をつかむ",
+  },
+  s02: {
+    title: "はじめてのDevRev：セットアップと基本操作",
+    subtitle: "Navigate DevRev from Day One",
+    keyInsight: "ワークスペース作成から基本ナビゲーションまで。最初の30分で全体像をつかむことが学習加速の鍵",
+  },
+  s03: {
+    title: "DevRevのデータモデルを理解する",
+    subtitle: "Parts, Rev Users, and Dev Users",
+    keyInsight: "Parts・Rev Users・Dev Usersの3軸データモデルを理解することがDevRevを使いこなす最初の関門",
+  },
+  s04: {
+    title: "カスタマーサポートを設計する",
+    subtitle: "Ticket Management & SLA",
+    keyInsight: "チケット管理・SLAポリシー・自動トリアージの3点セットがサポート運用の基盤。ここを設計するとチームの動き方が変わる",
+  },
+  s05: {
+    title: "PLuGとObserve Appで顧客を理解する",
+    subtitle: "Live Chat, Session Replay, and Funnels",
+    keyInsight: "PLuGは顧客接点のライブチャット、Observe Appはその行動を録画・分析するセット機能。2つを組み合わせて顧客理解を深める",
+  },
+  s06: {
+    title: "開発サイクルを管理する",
+    subtitle: "From Issue to Release",
+    keyInsight: "課題からリリースまでをDevRevで完結できる。サポートチームとエンジニアリングを同一ツールでつなぐ利点がここに現れる",
+  },
+  s07: {
+    title: "管理者設定とアクセス制御",
+    subtitle: "Admin, Roles, and Permissions",
+    keyInsight: "組織全体のロール設計と権限制御が管理者の最初の仕事。ここを正しく設定すると運用が大きく楽になる",
+  },
+  s08: {
+    title: "分析ダッシュボードを活用する",
+    subtitle: "Metrics and Dashboards",
+    keyInsight: "DevRevの分析機能はサポート・開発・運営の全チームに跨る。1つのダッシュボードで組織全体のKPIを可視化できる",
+  },
+  s09: {
+    title: "ワークフローと自動化を設計する",
+    subtitle: "Automations and Workflows",
+    keyInsight: "基本的なルール自動化から始められるが、AI条件ノードや並列パスを組み合わせると非常に複雑になる。Agent Builderの直接の前提知識",
+  },
+  s10: {
+    title: "Snap-inとマーケットプレイスを活用する",
+    subtitle: "Snap-ins, Marketplace, and AirSync",
+    keyInsight: "Snap-inはインストールして使う既製品と自作するカスタム品の2種類。マーケットプレイスの既製Snap-inが最速の拡張方法",
+  },
+  s11: {
+    title: "DevRev APIを使ってみる",
+    subtitle: "Authenticate and Call the DevRev API",
+    keyInsight: "Personal Access Tokenさえ取得すれば、curlで今日からAPIを叩ける。公開APIとベータAPIの違いを理解することが最初のステップ",
+  },
+  s12: {
+    title: "Snap-inを自作する",
+    subtitle: "Build Your First Snap-in",
+    keyInsight: "Snap-in開発はnpmパッケージのように公開・配布できる。ローカルテストから本番デプロイまでを一気通貫で学ぶ",
+  },
+  s13: {
+    title: "Agent Builderで自律エージェントを設計する",
+    subtitle: "Design Autonomous Agents with Agent Builder",
+    keyInsight: "Agent BuilderはWorkflowより高度なAI自律エージェントを設計できる。Workflowの知識を前提に、エージェントのゴール設計とツール選択を学ぶ",
+  },
+};
+
+const SESSION_TEXT_EN: Record<SessionId, { title: string; subtitle: string; keyInsight: string }> = {
+  s01: {
+    title: "What Is DevRev: The AI-Native Work Platform",
+    subtitle: "One Platform for Dev, Rev, and AI",
+    keyInsight: "DevRev unifies support, engineering, and AI in one platform. A replacement lens for Jira + Zendesk + ChatGPT",
+  },
+  s02: {
+    title: "Getting Started with DevRev",
+    subtitle: "Navigate DevRev from Day One",
+    keyInsight: "From workspace creation to basic navigation. Mastering the big picture in your first 30 minutes accelerates everything that follows",
+  },
+  s03: {
+    title: "Understanding the DevRev Data Model",
+    subtitle: "Parts, Rev Users, and Dev Users",
+    keyInsight: "The three-axis data model of Parts, Rev Users, and Dev Users is the first conceptual hurdle to truly using DevRev",
+  },
+  s04: {
+    title: "Designing Customer Support",
+    subtitle: "Ticket Management & SLA",
+    keyInsight: "Ticket management, SLA policies, and auto-triage form the foundation of support operations. Getting this right changes how your team works",
+  },
+  s05: {
+    title: "Understanding Customers with PLuG and Observe App",
+    subtitle: "Live Chat, Session Replay, and Funnels",
+    keyInsight: "PLuG is the live chat touchpoint; Observe App records and analyzes behavior. Combine them to deeply understand your customers",
+  },
+  s06: {
+    title: "Managing the Development Cycle",
+    subtitle: "From Issue to Release",
+    keyInsight: "Complete the loop from issue to release inside DevRev. This is where the value of connecting support and engineering on one tool becomes clear",
+  },
+  s07: {
+    title: "Admin Settings and Access Control",
+    subtitle: "Admin, Roles, and Permissions",
+    keyInsight: "Role design and permission control across the organization is the admin's first job. Get this right and operations become much smoother",
+  },
+  s08: {
+    title: "Using Analytics Dashboards",
+    subtitle: "Metrics and Dashboards",
+    keyInsight: "DevRev analytics spans support, engineering, and operations. Visualize org-wide KPIs in a single dashboard",
+  },
+  s09: {
+    title: "Designing Workflows and Automation",
+    subtitle: "Automations and Workflows",
+    keyInsight: "Simple rule-based automation is easy to start; combining AI condition nodes and parallel paths gets complex fast. Direct prerequisite for Agent Builder",
+  },
+  s10: {
+    title: "Using Snap-ins and the Marketplace",
+    subtitle: "Snap-ins, Marketplace, and AirSync",
+    keyInsight: "Snap-ins come in two flavors: install-ready from the marketplace and custom-built. Marketplace Snap-ins are the fastest path to extending DevRev",
+  },
+  s11: {
+    title: "Getting Started with the DevRev API",
+    subtitle: "Authenticate and Call the DevRev API",
+    keyInsight: "A Personal Access Token is all you need to start calling the API with curl today. Understanding public vs beta APIs is your first step",
+  },
+  s12: {
+    title: "Building Your First Snap-in",
+    subtitle: "Build Your First Snap-in",
+    keyInsight: "Snap-ins are publishable and distributable like npm packages. Learn the full cycle from local testing to production deployment",
+  },
+  s13: {
+    title: "Designing Autonomous Agents with Agent Builder",
+    subtitle: "Design Autonomous Agents with Agent Builder",
+    keyInsight: "Agent Builder enables more advanced AI autonomy than Workflows. Build on your Workflow knowledge to learn goal design and tool selection for agents",
+  },
+};
+
+const LAYERS_JA = [
+  { id: "foundations" as const, label: "DevRev基礎", sessions: ["s01", "s02", "s03"] as SessionId[] },
+  { id: "platform" as const, label: "プラットフォーム活用", sessions: ["s04", "s05", "s06", "s07", "s08"] as SessionId[] },
+  { id: "developer" as const, label: "開発者・拡張", sessions: ["s09", "s10", "s11", "s12", "s13"] as SessionId[] },
+] as const;
+
+const LAYERS_EN = [
+  { id: "foundations" as const, label: "DevRev Foundations", sessions: ["s01", "s02", "s03"] as SessionId[] },
+  { id: "platform" as const, label: "Platform in Action", sessions: ["s04", "s05", "s06", "s07", "s08"] as SessionId[] },
+  { id: "developer" as const, label: "Extend & Automate", sessions: ["s09", "s10", "s11", "s12", "s13"] as SessionId[] },
+] as const;
+
+const _sessionMetaCache: Partial<Record<string, Record<SessionId, SessionLocalized>>> = {}
+
+export function getSessionMeta(locale: string): Record<SessionId, SessionLocalized> {
+  if (_sessionMetaCache[locale]) return _sessionMetaCache[locale]!
+  const text = locale === "ja" ? SESSION_TEXT_JA : SESSION_TEXT_EN;
+  const result = Object.fromEntries(
+    SESSION_ORDER.map((id) => [id, { ...SESSION_BASE[id], ...text[id] }])
+  ) as Record<SessionId, SessionLocalized>;
+  _sessionMetaCache[locale] = result
+  return result
+}
+
+export function getLayers(locale: string) {
+  return locale === "ja" ? LAYERS_JA : LAYERS_EN;
+}
+
+// Legacy exports for backward compatibility (defaults to Japanese)
+export const SESSION_META = getSessionMeta("ja");
+export const LAYERS = getLayers("ja");
