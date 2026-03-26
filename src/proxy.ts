@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 
 const VALID_LOCALES = new Set(['en', 'ja'])
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl
   const segments = pathname.split('/')
   const locale = segments[1]
