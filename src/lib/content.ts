@@ -5,6 +5,7 @@ import remarkHtml from 'remark-html'
 import { readFileSync } from 'fs'
 import { join } from 'path'
 import { notFound } from 'next/navigation'
+import { SESSION_ORDER } from '@/data/sessions'
 
 export async function getSessionContent(locale: string, sessionId: string) {
   const filePath = join(process.cwd(), 'docs', locale, `${sessionId}.md`)
@@ -20,5 +21,5 @@ export async function getSessionContent(locale: string, sessionId: string) {
 }
 
 export function getSessionIds(): string[] {
-  return ['s01', 's02', 's03', 's04', 's05', 's06', 's07', 's08', 's09', 's10', 's11', 's12', 's13']
+  return [...SESSION_ORDER]
 }
