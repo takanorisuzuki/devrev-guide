@@ -29,7 +29,7 @@ const SESSION_BASE: Record<SessionId, SessionBase> = {
   s08: { id: "s08", level: "intermediate", layer: "platform", duration: 45 },
   s09: { id: "s09", level: "intermediate", layer: "platform", duration: 45 },
   s10: { id: "s10", level: "intermediate", layer: "developer", duration: 60 },
-  s11: { id: "s11", level: "intermediate", layer: "developer", duration: 60 },
+  s11: { id: "s11", level: "intermediate", layer: "developer", duration: 75 },
   s12: { id: "s12", level: "intermediate", layer: "developer", duration: 60 },
   s13: { id: "s13", level: "advanced", layer: "developer", duration: 60 },
   s14: { id: "s14", level: "advanced", layer: "developer", duration: 60 },
@@ -89,7 +89,7 @@ const SESSION_TEXT_JA: Record<SessionId, { title: string; subtitle: string; keyI
   s11: {
     title: "Snap-inとマーケットプレイスを活用する",
     subtitle: "Snap-ins, Marketplace, and AirSync",
-    keyInsight: "Snap-inはインストールして使う既製品と自作するカスタム品の2種類。マーケットプレイスの既製Snap-inが最速の拡張方法",
+    keyInsight: "Snap-inはFeatured/All/Installedの3タブで管理する。Jira AirSyncはAPIトークン取得→Keyring Connection→フィールドマッピングの3ステップで接続できる",
   },
   s12: {
     title: "DevRev APIを使ってみる",
@@ -162,7 +162,7 @@ const SESSION_TEXT_EN: Record<SessionId, { title: string; subtitle: string; keyI
   s11: {
     title: "Using Snap-ins and the Marketplace",
     subtitle: "Snap-ins, Marketplace, and AirSync",
-    keyInsight: "Snap-ins come in two flavors: install-ready from the marketplace and custom-built. Marketplace Snap-ins are the fastest path to extending DevRev",
+    keyInsight: "Snap-ins are managed across Featured, All, and Installed tabs. Jira AirSync connects in three steps: generate API token, configure Keyring Connection, map fields",
   },
   s12: {
     title: "Getting Started with the DevRev API",
