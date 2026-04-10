@@ -1,25 +1,30 @@
 import Link from 'next/link'
+import { SESSION_ORDER, getSessionMeta } from '@/data/sessions'
+
+const SESSION_COUNT = SESSION_ORDER.length
+const TOTAL_MINUTES = SESSION_ORDER.reduce((sum, id) => sum + getSessionMeta('en')[id].duration, 0)
+const TOTAL_HOURS = Math.round(TOTAL_MINUTES / 60 * 2) / 2 // 0.5h単位で四捨五入
 
 const HERO_TEXT = {
   en: {
     badge: 'DevRev Learning Guide',
     heading: <>One platform for Dev, Rev, and AI.<br />Learn DevRev from the ground up.</>,
-    description: 'A 13-session practical course to master DevRev. From foundations and platform usage to developer extensions, learn systematically based on official sources.',
+    description: `A ${SESSION_COUNT}-session practical course to master DevRev. From foundations and platform usage to developer extensions, learn systematically based on official sources.`,
     cta: 'Start with Session 1',
     stats: [
-      { label: 'Sessions', value: '13' },
-      { label: 'Learning time', value: '~11h' },
+      { label: 'Sessions', value: String(SESSION_COUNT) },
+      { label: 'Learning time', value: `~${TOTAL_HOURS}h` },
       { label: 'Official sources', value: 'Based on' },
     ],
   },
   ja: {
     badge: 'DevRev学習ガイド',
-    heading: <>Dev、Rev、AIを1つに。<br />DevRevを基礎から学ぶ。</>,
-    description: 'DevRevの基礎からプラットフォーム活用、開発者向け拡張まで、13セッションで体系的に学ぶ実践コース。公式情報をもとに構成。',
+    heading: <>作り手と使い手を、AIでひとつに。<br />DevRevを基礎から学ぶ。</>,
+    description: `DevRevの基礎からプラットフォーム活用、開発者向け拡張まで、${SESSION_COUNT}セッションで体系的に学ぶ実践コース。公式情報をもとに構成。`,
     cta: 'セッション1から始める',
     stats: [
-      { label: 'セッション', value: '13' },
-      { label: '学習時間', value: '約11h' },
+      { label: 'セッション', value: String(SESSION_COUNT) },
+      { label: '学習時間', value: `約${TOTAL_HOURS}h` },
       { label: '公式情報ベース', value: 'DevRev' },
     ],
   },
