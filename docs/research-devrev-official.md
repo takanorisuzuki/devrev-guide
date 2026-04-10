@@ -315,6 +315,7 @@ devrev snap_in_package create-one --slug my-first-snap-in
 ### 8-5. Web Crawler（GUI方式）
 
 **操作パス**: 左サイドバー「Setup 0/8」→ Connect your Knowledge Base → Automatically load your knowledge base → Add URL Source
+**注意**: Setup画面のUIには「Turing」という名称が表示されているが、現在は公式ブランドとして使用しない方向。コンテンツ内ではAI名を使わず機能説明で記載する。
 
 | 項目 | 内容 |
 |------|------|
