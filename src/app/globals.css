@@ -476,15 +476,12 @@ body {
 
 .prose-custom td:last-child {
   font-weight: 600;
-  color: #0070C0;
+  color: var(--color-primary);
 }
 
 @media (prefers-color-scheme: dark) {
   .prose-custom td:first-child {
     color: #64748B;
-  }
-  .prose-custom td:last-child {
-    color: #3B9EFF;
   }
 }
 
