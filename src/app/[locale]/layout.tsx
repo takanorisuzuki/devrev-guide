@@ -35,10 +35,10 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
             </Link>
           </footer>
         </div>
-        {process.env.NODE_ENV === 'production' && (
-          <GoogleAnalytics gaId="G-54KX7BNQ" />
+        {process.env.NODE_ENV === 'production' && process.env.NEXT_PUBLIC_GA_ID && (
+          <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />
         )}
-        <Analytics />
+        {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
     </html>
   )
