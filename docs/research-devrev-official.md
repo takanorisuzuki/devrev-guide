@@ -312,14 +312,18 @@ devrev snap_in_package create-one --slug my-first-snap-in
 | 多言語実装方法 | 各言語用の親Collectionをフォルダとして設定。翻訳ArticleをそのCollectionに登録 |
 | プレビュー | 言語・デバイス別のライブプレビュー対応 |
 
-### 8-5. Web Crawler
+### 8-5. Web Crawler（GUI方式）
+
+**操作パス**: 左サイドバー「Setup 0/8」→ Connect your Knowledge Base → Automatically load your knowledge base → Add URL Source
 
 | 項目 | 内容 |
 |------|------|
-| エンドポイント | `Create Web Crawler Job` API |
-| 入力 | URL または XMLサイトマップ |
-| 設定項目 | ドメイン許可リスト、最大深度、URLフィルタ（正規表現） |
-| 出力 | Articleとして生成。必ずレビューしてから公開すること |
+| URL入力 | トップレベルドメイン推奨。サブドメイン以下全ページを読み込む |
+| Link type | URL または Sitemap |
+| Override Regex | 除外パターン（任意） |
+| Part紐付け | モーダル内で選択（「Which part should the articles be linked to?」） |
+| 制限 | robots.txtでAIブロック済みサイト、JS動的レンダリングページは読み込めない場合あり |
+| 注意 | 自動取り込みArticleは公開前に必ずレビューすること |
 
 ---
 
