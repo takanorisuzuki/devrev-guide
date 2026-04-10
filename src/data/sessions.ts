@@ -18,7 +18,7 @@ type SessionLocalized = SessionBase & {
   keyInsight: string;
 };
 
-const SESSION_BASE: Record<SessionId, SessionBase> = {
+export const SESSION_BASE: Record<SessionId, SessionBase> = {
   s01: { id: "s01", level: "beginner", layer: "foundations", duration: 30 },
   s02: { id: "s02", level: "beginner", layer: "foundations", duration: 40 },
   s03: { id: "s03", level: "beginner", layer: "foundations", duration: 45 },

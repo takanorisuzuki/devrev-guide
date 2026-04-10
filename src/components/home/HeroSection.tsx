@@ -1,8 +1,8 @@
 import Link from 'next/link'
-import { SESSION_ORDER, getSessionMeta } from '@/data/sessions'
+import { SESSION_ORDER, SESSION_BASE } from '@/data/sessions'
 
 const SESSION_COUNT = SESSION_ORDER.length
-const TOTAL_MINUTES = SESSION_ORDER.reduce((sum, id) => sum + getSessionMeta('en')[id].duration, 0)
+const TOTAL_MINUTES = SESSION_ORDER.reduce((sum, id) => sum + SESSION_BASE[id].duration, 0)
 const TOTAL_HOURS = Math.round(TOTAL_MINUTES / 60 * 2) / 2 // 0.5h単位で四捨五入
 
 const HERO_TEXT = {
