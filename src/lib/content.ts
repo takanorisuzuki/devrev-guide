@@ -1,5 +1,6 @@
 import matter from 'gray-matter'
 import { remark } from 'remark'
+import remarkGfm from 'remark-gfm'
 import remarkHtml from 'remark-html'
 import { readFileSync } from 'fs'
 import { join } from 'path'
@@ -14,7 +15,7 @@ export async function getSessionContent(locale: string, sessionId: string) {
     notFound()
   }
   const { data: frontmatter, content } = matter(raw)
-  const processedContent = await remark().use(remarkHtml, { sanitize: true }).process(content)
+  const processedContent = await remark().use(remarkGfm).use(remarkHtml, { sanitize: true }).process(content)
   return { frontmatter, content: processedContent.toString() }
 }
 

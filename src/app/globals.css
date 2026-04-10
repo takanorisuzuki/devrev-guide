@@ -468,6 +468,26 @@ body {
   }
 }
 
+/* ツール対応表: 左列（従来ツール）を薄く、右列（DevRev）を強調 */
+.prose-custom td:first-child {
+  color: #718096;
+  font-size: 0.75rem;
+}
+
+.prose-custom td:last-child {
+  font-weight: 600;
+  color: #0070C0;
+}
+
+@media (prefers-color-scheme: dark) {
+  .prose-custom td:first-child {
+    color: #64748B;
+  }
+  .prose-custom td:last-child {
+    color: #3B9EFF;
+  }
+}
+
 /* Horizontal rules */
 .prose-custom hr {
   margin-top: 2rem;
