@@ -2,6 +2,7 @@ import Link from 'next/link'
 import Header from '@/components/layout/Header'
 import Sidebar from '@/components/layout/Sidebar'
 import { GoogleAnalytics } from '@next/third-parties/google'
+import { Analytics } from '@vercel/analytics/next'
 import { Noto_Sans_JP } from 'next/font/google'
 
 const notoSansJP = Noto_Sans_JP({ subsets: ['latin'], weight: ['400', '500', '700', '900'], display: 'swap', variable: '--font-noto-sans-jp' })
@@ -37,6 +38,7 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
         {process.env.NODE_ENV === 'production' && (
           <GoogleAnalytics gaId="G-TSTTB1J1Y9" />
         )}
+        <Analytics />
       </body>
     </html>
   )
