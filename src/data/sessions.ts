@@ -38,8 +38,8 @@ export const SESSION_BASE: Record<SessionId, SessionBase> = {
 const SESSION_TEXT_JA: Record<SessionId, { title: string; subtitle: string; keyInsight: string }> = {
   s01: {
     title: "DevRevとは何か：AIネイティブな作業基盤",
-    subtitle: "One Platform for Dev, Rev, and AI",
-    keyInsight: "DevRevはサポート・開発・AIを1つに統合したプラットフォーム。従来のJira+Zendesk+ChatGPTを置き換える視点で全体像をつかむ",
+    subtitle: "データモデル、Memory、Computer の土台",
+    keyInsight: "既存のSoRと運用を保ちながら、文脈・権限・根拠を同一データモデルで束ねる。汎用AIとのレイヤー差と、Memory中心の4基盤でComputerの立ち位置をつかむ",
   },
   s02: {
     title: "はじめてのDevRev：セットアップと基本操作",
@@ -111,8 +111,8 @@ const SESSION_TEXT_JA: Record<SessionId, { title: string; subtitle: string; keyI
 const SESSION_TEXT_EN: Record<SessionId, { title: string; subtitle: string; keyInsight: string }> = {
   s01: {
     title: "What Is DevRev: The AI-Native Work Platform",
-    subtitle: "One Platform for Dev, Rev, and AI",
-    keyInsight: "DevRev unifies support, engineering, and AI in one platform. A replacement lens for Jira + Zendesk + ChatGPT",
+    subtitle: "Data model, Memory, and Computer foundations",
+    keyInsight: "Bind SoR-aligned context, permissions, and evidence on one data model—not a support-only stack. Layering vs. general AI plus four foundations centered on Memory",
   },
   s02: {
     title: "Getting Started with DevRev",
@@ -193,16 +193,25 @@ const LAYERS_EN = [
   { id: "developer" as const, label: "Extend & Automate", sessions: ["s10", "s11", "s12", "s13", "s14"] as SessionId[] },
 ] as const;
 
-const _sessionMetaCache: Partial<Record<string, Record<SessionId, SessionLocalized>>> = {}
-
-export function getSessionMeta(locale: string): Record<SessionId, SessionLocalized> {
-  if (_sessionMetaCache[locale]) return _sessionMetaCache[locale]!
-  const text = locale === "ja" ? SESSION_TEXT_JA : SESSION_TEXT_EN;
-  const result = Object.fromEntries(
+function buildSessionMeta(text: Record<SessionId, { title: string; subtitle: string; keyInsight: string }>): Record<SessionId, SessionLocalized> {
+  return Object.fromEntries(
     SESSION_ORDER.map((id) => [id, { ...SESSION_BASE[id], ...text[id] }])
   ) as Record<SessionId, SessionLocalized>;
-  _sessionMetaCache[locale] = result
-  return result
+}
+
+const SESSION_METAS = {
+  ja: buildSessionMeta(SESSION_TEXT_JA),
+  en: buildSessionMeta(SESSION_TEXT_EN),
+} as const;
+
+export function getSessionMeta(locale: string): Record<SessionId, SessionLocalized> {
+  // Dev: keep edits reflected without relying on module cache.
+  if (process.env.NODE_ENV !== "production") {
+    const text = locale === "ja" ? SESSION_TEXT_JA : SESSION_TEXT_EN;
+    return buildSessionMeta(text);
+  }
+
+  return (SESSION_METAS as Record<string, Record<SessionId, SessionLocalized>>)[locale] ?? SESSION_METAS.en;
 }
 
 export function getLayers(locale: string) {
