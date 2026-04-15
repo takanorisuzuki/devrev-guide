@@ -21,7 +21,7 @@ type SessionLocalized = SessionBase & {
 export const SESSION_BASE: Record<SessionId, SessionBase> = {
   s01: { id: "s01", level: "beginner", layer: "foundations", duration: 30 },
   s02: { id: "s02", level: "beginner", layer: "foundations", duration: 40 },
-  s03: { id: "s03", level: "beginner", layer: "foundations", duration: 45 },
+  s03: { id: "s03", level: "beginner", layer: "foundations", duration: 60 },
   s04: { id: "s04", level: "beginner", layer: "platform", duration: 60 },
   s05: { id: "s05", level: "intermediate", layer: "platform", duration: 50 },
   s06: { id: "s06", level: "intermediate", layer: "platform", duration: 60 },
