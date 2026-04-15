@@ -9,7 +9,7 @@ Learn the ideas in [session s03](/en/s03). See [Core concepts](https://support.d
 
 ## Relationship overview
 
-The pillars are **Identity → Parts → Work**. Inside Parts, **customer parts** vs **builder parts** (the product UI often shows RevPart / DevPart). **Enhancement** is a **Part** (customer RevPart) in the **Product → Capability → Feature → Enhancement** chain — it is **not** the same kind of object as **Issue / Ticket** work items. It often behaves as a hybrid: epic-style grouping of Issues, lifecycle, and links to Tickets or opportunities (see [s03](/en/s03)). **Incident → Ticket** matches the link table below. Details may vary by configuration.
+The pillars are **Identity → Parts → Work**. Inside Parts, **customer parts** vs **builder parts** (the product UI often shows RevPart / DevPart). **Enhancement** is a **Part** (customer RevPart) in the **Product → Capability → Feature → Enhancement** chain — it is **not** the same kind of object as **Issue / Ticket** work items. It often behaves as a hybrid: epic-style grouping of Issues, lifecycle, and links to Tickets or opportunities (see [s03](/en/s03)). Issues and Tickets attach to **Parts** with **is_work_of** — not only **Feature** but **Enhancement** can be that Part. **Enhancement** can also be the **is_parent_of** parent of multiple **Issues**. The diagram shows both ideas. **Incident → Ticket** matches the link table below. Details may vary by configuration.
 
 ```mermaid
 graph TB
@@ -35,6 +35,8 @@ graph TB
         Issue --> Task
         Incident -->|is_dependent_on| Ticket
     end
+
+    Enhancement -->|is_parent_of| Issue
 
     CustomerParts ---|is_work_of| Work
     BuilderParts ---|is_work_of| Work
@@ -80,7 +82,8 @@ Major objects by category. DevUser / RevUser visibility is indicative.
 | Incident | Issue | is_dependent_on | Incident depends on resolving Issue |
 | Incident | Ticket | is_dependent_on | Link incident to related tickets |
 | Issue | Ticket | is_dependent_on | Dependency between Issue and Ticket |
-| Issue / Ticket | Part | is_work_of | Attribute work to a Part |
+| Issue / Ticket | Part | is_work_of | Attribute work to a Part (**Feature** and **Enhancement** are common targets) |
+| Enhancement | Issue | is_parent_of | Enhancement (Part) as epic-style parent of Issues |
 | Task | Issue / Ticket | is_parent_of / is_child_of | Nest tasks under Issue or Ticket |
 | Article | Part | (required) | KB articles attach to a customer part (often shown as RevPart) |
 | Account | Issue | not linkable | Route through Ticket |
@@ -102,11 +105,11 @@ Major objects by category. DevUser / RevUser visibility is indicative.
 
 | Link type | Meaning | Typical use |
 |-----------|---------|-------------|
-| is_parent_of / is_child_of | Parent/child | Ticket, Issue, Part |
+| is_parent_of / is_child_of | Parent/child | Ticket, Issue, Part, **Enhancement (Part) → Issue** |
 | is_dependent_on | Must complete first | Issue, Ticket, Incident |
 | is_duplicate_of | Duplicate | Ticket, Issue, Task |
 | is_related_to | Loose relation | Conversation ↔ Ticket |
-| is_work_of | Work belongs to | Issue/Ticket → Part |
+| is_work_of | Work belongs to | Issue/Ticket → Part (e.g. Feature / **Enhancement**) |
 | is_source_of | Origin / derivation | Issue → Issue |
 | is_part_of | Composition | Part → Part |
 
