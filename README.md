@@ -1,14 +1,14 @@
 # DevRev Guide
 
-DevRev公式情報をもとにした学習サイト。13セッションでDevRevの基礎から開発者向け拡張まで体系的に学ぶ。
+DevRev公式情報をもとにした学習サイト。14セッションでDevRevの基礎から開発者向け拡張まで体系的に学ぶ。
 
 ## セッション構成
 
 | Layer | Sessions | Level |
 |-------|----------|-------|
 | DevRev Foundations | s01-s03 | Beginner |
-| Platform in Action | s04-s08 | Beginner / Intermediate |
-| Extend & Automate | s09-s13 | Intermediate / Advanced |
+| Platform in Action | s04-s09 | Beginner / Intermediate |
+| Extend & Automate | s10-s14 | Intermediate / Advanced |
 
 ## Development
 
