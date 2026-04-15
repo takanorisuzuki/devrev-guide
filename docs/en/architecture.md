@@ -1,15 +1,15 @@
 ---
 title: "Object Model Reference"
-description: "Identity / Parts / Work (Core concepts) — tables and link rules"
+description: "Object model reference — tables and link rules"
 ---
 
 # Object Model Reference
 
-Learn the ideas in [session s03](/en/s03). On [Core concepts](https://support.devrev.ai/devrev/article/ART-21847), the opening line uses lowercase *identity, parts, and work*; the **diagram uses Identity, Parts, and Work** as labels. This page is a **reference** for diagrams, tables, and link rules.
+Learn the ideas in [session s03](/en/s03). See [Core concepts](https://support.devrev.ai/devrev/article/ART-21847) for DevRev's overview. This page is a **reference** for diagrams, tables, and link rules.
 
 ## Relationship overview
 
-The pillars are **Identity → Parts → Work** (the help center lists them as *identity, parts, and work*). Inside Parts, official docs distinguish **customer parts** from **builder parts** (the product UI often shows RevPart / DevPart). Details may vary by configuration.
+The pillars are **Identity → Parts → Work**. Inside Parts, **customer parts** vs **builder parts** (the product UI often shows RevPart / DevPart). Details may vary by configuration.
 
 ```mermaid
 graph TB

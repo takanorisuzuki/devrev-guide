@@ -49,7 +49,7 @@ const SESSION_TEXT_JA: Record<SessionId, { title: string; subtitle: string; keyI
   s03: {
     title: "DevRevのデータモデルを理解する",
     subtitle: "Identity, Parts, Work — 公式の3本柱",
-    keyInsight: "Core concepts は冒頭が identity/parts/work（小文字）、図は Identity/Parts/Work。ワーク→パーツ→identity のつながりが土台",
+    keyInsight: "Identity（誰が）・Parts（何を届けるか）・Work（何が動くか）の3本柱。ワークをパーツに、パーツを顧客・開発者の identity に結びつけると公式でも説明されている",
   },
   s04: {
     title: "カスタマーサポートを設計する",
@@ -122,7 +122,7 @@ const SESSION_TEXT_EN: Record<SessionId, { title: string; subtitle: string; keyI
   s03: {
     title: "Understanding the DevRev Data Model",
     subtitle: "Identity, Parts, and Work",
-    keyInsight: "Core concepts: opening line uses lowercase identity/parts/work; the diagram labels Identity, Parts, Work. How work ties to parts and parts to identity is the foundation",
+    keyInsight: "Three pillars: Identity (who), Parts (what you deliver), Work (what is in motion). Official docs describe connecting work to parts and parts to customer and developer identity",
   },
   s04: {
     title: "Designing Customer Support",

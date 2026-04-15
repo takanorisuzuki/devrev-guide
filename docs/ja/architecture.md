@@ -5,11 +5,11 @@ description: "DevRev の Identity / Parts / Work とリンクルールの一覧"
 
 # オブジェクト構造リファレンス
 
-チュートリアルでは [s03](/ja/s03) で概念を学ぶ。公式の [Core concepts](https://support.devrev.ai/devrev/article/ART-21847) は冒頭で *identity, parts, and work*（小文字）と列挙し、**図では Identity / Parts / Work** のラベルが使われている。このページは **一覧・図・リンクルール** をいつでも引けるリファレンスである。
+チュートリアルでは [s03](/ja/s03) で概念を学ぶ。公式の全体説明は [Core concepts](https://support.devrev.ai/devrev/article/ART-21847)。このページは **一覧・図・リンクルール** をいつでも引けるリファレンスである。
 
 ## 全体リレーション図
 
-3本柱は **Identity → Parts → Work**（公式の列挙順は *identity, parts, and work*）。Parts の内側は公式どおり **customer parts** と **builder parts** に分かれる（UI では RevPart / DevPart と表示されることが多い）。詳細は製品の設定により異なる場合がある。
+3本柱は **Identity → Parts → Work**。Parts の内側は **customer parts** と **builder parts**（UI では RevPart / DevPart と表示されることが多い）。詳細は製品の設定により異なる場合がある。
 
 ```mermaid
 graph TB
