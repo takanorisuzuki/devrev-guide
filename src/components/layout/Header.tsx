@@ -53,14 +53,23 @@ export default function Header({ locale }: HeaderProps) {
         </Link>
 
         <div className="flex items-center gap-3">
-          {/* Mobile: sessions list link (sidebar is hidden on mobile) */}
-          <Link
-            href={`/${locale}`}
-            className="md:hidden text-xs px-2 py-1 rounded-md transition-colors"
-            style={{ color: 'var(--color-text-secondary)', border: '1px solid var(--color-border)' }}
-          >
-            {locale === 'ja' ? 'セッション一覧' : 'All sessions'}
-          </Link>
+          {/* Mobile: sessions list + reference (sidebar is hidden on mobile) */}
+          <div className="md:hidden flex items-center gap-2">
+            <Link
+              href={`/${locale}`}
+              className="text-xs px-2 py-1 rounded-md transition-colors"
+              style={{ color: 'var(--color-text-secondary)', border: '1px solid var(--color-border)' }}
+            >
+              {locale === 'ja' ? 'セッション一覧' : 'All sessions'}
+            </Link>
+            <Link
+              href={`/${locale}/architecture`}
+              className="text-xs px-2 py-1 rounded-md transition-colors"
+              style={{ color: 'var(--color-text-secondary)', border: '1px solid var(--color-border)' }}
+            >
+              {locale === 'ja' ? 'オブジェクト構造' : 'Object model'}
+            </Link>
+          </div>
 
           {/* Language switcher */}
           <div

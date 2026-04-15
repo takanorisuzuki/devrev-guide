@@ -21,7 +21,7 @@ type SessionLocalized = SessionBase & {
 export const SESSION_BASE: Record<SessionId, SessionBase> = {
   s01: { id: "s01", level: "beginner", layer: "foundations", duration: 30 },
   s02: { id: "s02", level: "beginner", layer: "foundations", duration: 40 },
-  s03: { id: "s03", level: "beginner", layer: "foundations", duration: 45 },
+  s03: { id: "s03", level: "beginner", layer: "foundations", duration: 60 },
   s04: { id: "s04", level: "beginner", layer: "platform", duration: 60 },
   s05: { id: "s05", level: "intermediate", layer: "platform", duration: 50 },
   s06: { id: "s06", level: "intermediate", layer: "platform", duration: 60 },
@@ -48,8 +48,8 @@ const SESSION_TEXT_JA: Record<SessionId, { title: string; subtitle: string; keyI
   },
   s03: {
     title: "DevRevのデータモデルを理解する",
-    subtitle: "Parts, Rev Users, and Dev Users",
-    keyInsight: "Parts・Rev Users・Dev Usersの3軸データモデルを理解することがDevRevを使いこなす最初の関門",
+    subtitle: "Identity, Parts, Work — 公式の3本柱",
+    keyInsight: "Identity（誰が）・Parts（何を届けるか）・Work（何が動くか）の3本柱。ワークをパーツに、パーツを顧客・開発者の identity に結びつけると公式でも説明されている",
   },
   s04: {
     title: "カスタマーサポートを設計する",
@@ -121,8 +121,8 @@ const SESSION_TEXT_EN: Record<SessionId, { title: string; subtitle: string; keyI
   },
   s03: {
     title: "Understanding the DevRev Data Model",
-    subtitle: "Parts, Rev Users, and Dev Users",
-    keyInsight: "The three-axis data model of Parts, Rev Users, and Dev Users is the first conceptual hurdle to truly using DevRev",
+    subtitle: "Identity, Parts, and Work",
+    keyInsight: "Three pillars: Identity (who), Parts (what you deliver), Work (what is in motion). Official docs describe connecting work to parts and parts to customer and developer identity",
   },
   s04: {
     title: "Designing Customer Support",
