@@ -9,7 +9,7 @@ description: "DevRev の Identity / Parts / Work とリンクルールの一覧"
 
 ## 全体リレーション図
 
-3本柱は **Identity → Parts → Work**。Parts の内側は **customer parts** と **builder parts**（UI では RevPart / DevPart と表示されることが多い）。詳細は製品の設定により異なる場合がある。
+3本柱は **Identity → Parts → Work**。Parts の内側は **customer parts** と **builder parts**（UI では RevPart / DevPart と表示されることが多い）。**Enhancement** は **Part（customer RevPart）** として **Product → Capability → Feature → Enhancement** の階層に属する（**Issue / Ticket そのものではない**）。複数 Issue を束ねる Epic 的な役割やライフサイクル、Ticket・Opportunity との接続など **Work に近い振る舞い**を併せ持つハイブリッドでもある（[s03](/ja/s03) 参照）。Issue / Ticket は **is_work_of** で **Part** に帰属させる（**Feature** に限らず **Enhancement** も対象になりうる）。**Enhancement** は **is_parent_of** で複数 **Issue** の親にもなりうる。図ではその関係を示している。**Incident → Ticket** の向きは下記リンクルール表と一致させている。詳細は製品の設定により異なる場合がある。
 
 ```mermaid
 graph TB
@@ -33,8 +33,10 @@ graph TB
         Conversation -->|エスカレーション| Ticket
         Ticket -->|開発連携| Issue
         Issue --> Task
-        Ticket --> Incident
+        Incident -->|is_dependent_on| Ticket
     end
+
+    Enhancement -->|is_parent_of| Issue
 
     CustomerParts ---|is_work_of| Work
     BuilderParts ---|is_work_of| Work
@@ -57,7 +59,7 @@ graph TB
 | Parts（customer） | Product | 製品最上位 | ○ | ○（参照） |
 | Parts（customer） | Capability | 機能領域 | ○ | ○（参照） |
 | Parts（customer） | Feature | 個別機能 | ○ | ○（参照） |
-| Parts（customer） | Enhancement | 改善・大きなテーマ | ○ | × |
+| Parts（customer） | Enhancement | 改善テーマ（階層末端の RevPart。Issue を束ねる Epic 的役割も） | ○ | × |
 | Parts（builder） | Code / Service | 内部サービス | ○ | × |
 | Parts（builder） | Runnable | 実行可能サービス | ○ | × |
 | Parts（builder） | Linkable | ライブラリ等 | ○ | × |
@@ -80,7 +82,8 @@ graph TB
 | Incident | Issue | is_dependent_on | インシデントが解決すべき Issue に依存 |
 | Incident | Ticket | is_dependent_on | インシデントと関連チケットを紐づける |
 | Issue | Ticket | is_dependent_on | Issue と Ticket の依存関係（双方向の使い方あり） |
-| Issue / Ticket | Part | is_work_of | 作業を Part に紐づける |
+| Issue / Ticket | Part | is_work_of | 作業を Part に紐づける（**Part** には Feature などに加え **Enhancement** も含む） |
+| Enhancement | Issue | is_parent_of | Enhancement（Part）が複数 Issue の親になる Epic 的まとまり |
 | Task | Issue / Ticket | is_parent_of / is_child_of | タスクを Issue・Ticket の子として紐づける |
 | Article | Part | （必須紐づけ） | KB は customer part（多くは RevPart）に紐づける |
 | Account | Issue | リンク不可 | 必ず Ticket を経由すること |
@@ -102,11 +105,11 @@ graph TB
 
 | リンクタイプ | 意味 | 主な用途 |
 |-------------|------|---------|
-| is_parent_of / is_child_of | 親子関係 | Ticket, Issue, Part |
+| is_parent_of / is_child_of | 親子関係 | Ticket, Issue, Part、**Enhancement（Part）→ Issue** |
 | is_dependent_on | 依存関係（先に完了が必要） | Issue, Ticket, Incident |
 | is_duplicate_of | 重複（重複側は自動クローズ） | Ticket, Issue, Task |
 | is_related_to | 関連（緩やかなつながり） | Conversation↔Ticket |
-| is_work_of | 作業の帰属先 | Issue/Ticket → Part |
+| is_work_of | 作業の帰属先 | Issue/Ticket → Part（Feature / **Enhancement** など） |
 | is_source_of | 起源・派生元 | Issue → Issue |
 | is_part_of | 構成要素 | Part → Part |
 
