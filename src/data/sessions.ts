@@ -193,11 +193,25 @@ const LAYERS_EN = [
   { id: "developer" as const, label: "Extend & Automate", sessions: ["s10", "s11", "s12", "s13", "s14"] as SessionId[] },
 ] as const;
 
-export function getSessionMeta(locale: string): Record<SessionId, SessionLocalized> {
-  const text = locale === "ja" ? SESSION_TEXT_JA : SESSION_TEXT_EN;
+function buildSessionMeta(text: Record<SessionId, { title: string; subtitle: string; keyInsight: string }>): Record<SessionId, SessionLocalized> {
   return Object.fromEntries(
     SESSION_ORDER.map((id) => [id, { ...SESSION_BASE[id], ...text[id] }])
   ) as Record<SessionId, SessionLocalized>;
+}
+
+const SESSION_METAS = {
+  ja: buildSessionMeta(SESSION_TEXT_JA),
+  en: buildSessionMeta(SESSION_TEXT_EN),
+} as const;
+
+export function getSessionMeta(locale: string): Record<SessionId, SessionLocalized> {
+  // Dev: keep edits reflected without relying on module cache.
+  if (process.env.NODE_ENV !== "production") {
+    const text = locale === "ja" ? SESSION_TEXT_JA : SESSION_TEXT_EN;
+    return buildSessionMeta(text);
+  }
+
+  return (SESSION_METAS as Record<string, Record<SessionId, SessionLocalized>>)[locale] ?? SESSION_METAS.en;
 }
 
 export function getLayers(locale: string) {
