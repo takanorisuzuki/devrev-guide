@@ -9,7 +9,7 @@ Learn the ideas in [session s03](/en/s03). See [Core concepts](https://support.d
 
 ## Relationship overview
 
-The pillars are **Identity → Parts → Work**. Inside Parts, **customer parts** vs **builder parts** (the product UI often shows RevPart / DevPart). **Enhancement** is a **Work** type and attaches to Parts such as **Feature** via `is_work_of` (aligned with [s03](/en/s03)). **Incident → Ticket** matches the link table below. Details may vary by configuration.
+The pillars are **Identity → Parts → Work**. Inside Parts, **customer parts** vs **builder parts** (the product UI often shows RevPart / DevPart). **Enhancement** is a **Part** (customer RevPart) in the **Product → Capability → Feature → Enhancement** chain — it is **not** the same kind of object as **Issue / Ticket** work items. It often behaves as a hybrid: epic-style grouping of Issues, lifecycle, and links to Tickets or opportunities (see [s03](/en/s03)). **Incident → Ticket** matches the link table below. Details may vary by configuration.
 
 ```mermaid
 graph TB
@@ -21,6 +21,7 @@ graph TB
     subgraph Parts["Parts (customer parts / builder parts)"]
         subgraph CustomerParts["Customer parts (e.g. RevPart)"]
             Product --> Capability --> Feature
+            Feature --> Enhancement
         end
         subgraph BuilderParts["Builder parts (e.g. DevPart)"]
             CodeService["Code / Service"] --> Runnable
@@ -32,11 +33,9 @@ graph TB
         Conversation -->|escalation| Ticket
         Ticket -->|engineering| Issue
         Issue --> Task
-        Enhancement
         Incident -->|is_dependent_on| Ticket
     end
 
-    Enhancement -.->|is_work_of| Feature
     CustomerParts ---|is_work_of| Work
     BuilderParts ---|is_work_of| Work
     CustomerParts --> Article["Article (knowledge base)"]
@@ -58,13 +57,13 @@ Major objects by category. DevUser / RevUser visibility is indicative.
 | Parts (customer) | Product | Top of product tree | Yes | Yes (ref) |
 | Parts (customer) | Capability | Capability area | Yes | Yes (ref) |
 | Parts (customer) | Feature | Feature unit | Yes | Yes (ref) |
+| Parts (customer) | Enhancement | Improvement theme (RevPart at end of hierarchy; epic-style parent of Issues) | Yes | No |
 | Parts (builder) | Code / Service | Internal service | Yes | No |
 | Parts (builder) | Runnable | Runnable unit | Yes | No |
 | Parts (builder) | Linkable | Library / shared | Yes | No |
 | Work | Conversation | Chat / discussion | Yes | Yes (own) |
 | Work | Ticket | Customer ticket | Yes | Yes (own) |
 | Work | Issue | Engineering work item | Yes | No |
-| Work | Enhancement | Theme grouping multiple Issues (epic-like) | Yes | No |
 | Work | Task | Task | Yes | No |
 | Work | Incident | Incident record | Yes | No |
 | Other | Article | Knowledge article | Yes | Yes (published) |

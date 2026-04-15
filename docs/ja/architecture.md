@@ -9,7 +9,7 @@ description: "DevRev の Identity / Parts / Work とリンクルールの一覧"
 
 ## 全体リレーション図
 
-3本柱は **Identity → Parts → Work**。Parts の内側は **customer parts** と **builder parts**（UI では RevPart / DevPart と表示されることが多い）。**Enhancement** は Work の一種であり、Feature などの Part に `is_work_of` で紐づく（[s03](/ja/s03) の Work と整合）。**Incident → Ticket** の向きは下記リンクルール表と一致させている。詳細は製品の設定により異なる場合がある。
+3本柱は **Identity → Parts → Work**。Parts の内側は **customer parts** と **builder parts**（UI では RevPart / DevPart と表示されることが多い）。**Enhancement** は **Part（customer RevPart）** として **Product → Capability → Feature → Enhancement** の階層に属する（**Issue / Ticket そのものではない**）。複数 Issue を束ねる Epic 的な役割やライフサイクル、Ticket・Opportunity との接続など **Work に近い振る舞い**を併せ持つハイブリッドでもある（[s03](/ja/s03) 参照）。**Incident → Ticket** の向きは下記リンクルール表と一致させている。詳細は製品の設定により異なる場合がある。
 
 ```mermaid
 graph TB
@@ -21,6 +21,7 @@ graph TB
     subgraph Parts["Parts（customer parts / builder parts）"]
         subgraph CustomerParts["Customer parts（例: RevPart）"]
             Product --> Capability --> Feature
+            Feature --> Enhancement
         end
         subgraph BuilderParts["Builder parts（例: DevPart）"]
             CodeService["Code / Service"] --> Runnable
@@ -32,11 +33,9 @@ graph TB
         Conversation -->|エスカレーション| Ticket
         Ticket -->|開発連携| Issue
         Issue --> Task
-        Enhancement
         Incident -->|is_dependent_on| Ticket
     end
 
-    Enhancement -.->|is_work_of| Feature
     CustomerParts ---|is_work_of| Work
     BuilderParts ---|is_work_of| Work
     CustomerParts --> Article["Article（ナレッジベース）"]
@@ -58,13 +57,13 @@ graph TB
 | Parts（customer） | Product | 製品最上位 | ○ | ○（参照） |
 | Parts（customer） | Capability | 機能領域 | ○ | ○（参照） |
 | Parts（customer） | Feature | 個別機能 | ○ | ○（参照） |
+| Parts（customer） | Enhancement | 改善テーマ（階層末端の RevPart。Issue を束ねる Epic 的役割も） | ○ | × |
 | Parts（builder） | Code / Service | 内部サービス | ○ | × |
 | Parts（builder） | Runnable | 実行可能サービス | ○ | × |
 | Parts（builder） | Linkable | ライブラリ等 | ○ | × |
 | Work | Conversation | チャット・議論 | ○ | ○（自分） |
 | Work | Ticket | 顧客チケット | ○ | ○（自分） |
 | Work | Issue | 開発課題 | ○ | × |
-| Work | Enhancement | 複数 Issue を束ねる改善テーマ（Epic 相当） | ○ | × |
 | Work | Task | タスク | ○ | × |
 | Work | Incident | インシデント | ○ | × |
 | その他 | Article | ナレッジ | ○ | ○（公開分） |
