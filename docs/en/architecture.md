@@ -1,15 +1,15 @@
 ---
 title: "Object Model Reference"
-description: "Identity, Parts, Work, and link rules in DevRev"
+description: "Official identity, parts, and work model — tables and link rules"
 ---
 
 # Object Model Reference
 
-Learn the concepts in [session s03](/en/s03); use this page as a **reference** for diagrams, tables, and link rules.
+Learn the ideas in [session s03](/en/s03). DevRev's [Core concepts](https://support.devrev.ai/devrev/article/ART-21847) article describes **three core objects: identity, parts, and work**. This page is a **reference** for diagrams, tables, and link rules.
 
 ## Relationship overview
 
-A high-level view of how major object families connect (details may vary by configuration).
+The pillars are **Identity → Parts → Work** (the help center lists them as *identity, parts, and work*). Inside Parts, official docs distinguish **customer parts** from **builder parts** (the product UI often shows RevPart / DevPart). Details may vary by configuration.
 
 ```mermaid
 graph TB
@@ -18,9 +18,15 @@ graph TB
         Account --> RevOrg --> RevUser
     end
 
-    subgraph RevParts["RevParts (customer-facing product)"]
-        Product --> Capability --> Feature
-        Feature --> Enhancement
+    subgraph Parts["Parts (customer parts / builder parts)"]
+        subgraph CustomerParts["Customer parts (e.g. RevPart)"]
+            Product --> Capability --> Feature
+            Feature --> Enhancement
+        end
+        subgraph BuilderParts["Builder parts (e.g. DevPart)"]
+            CodeService["Code / Service"] --> Runnable
+            CodeService --> Linkable
+        end
     end
 
     subgraph Work["Work objects"]
@@ -30,17 +36,11 @@ graph TB
         Ticket --> Incident
     end
 
-    subgraph DevParts["DevParts (internal technical stack)"]
-        CodeService["Code / Service"] --> Runnable
-        CodeService --> Linkable
-    end
-
-    RevParts ---|is_work_of| Work
-    DevParts ---|is_work_of| Work
-    RevParts --> Article["Article (knowledge base)"]
-    Identity --> RevParts
+    CustomerParts ---|is_work_of| Work
+    BuilderParts ---|is_work_of| Work
+    CustomerParts --> Article["Article (knowledge base)"]
+    Identity --> Parts
     Identity --> Work
-    Identity --> DevParts
 ```
 
 ## Object list (summary)
@@ -54,13 +54,13 @@ Major objects by category. DevUser / RevUser visibility is indicative.
 | Identity | Account | Customer record | Yes | No |
 | Identity | RevOrg | Customer org unit | Yes | Conditional |
 | Identity | RevUser | Customer-side user | Yes | Yes (self) |
-| RevParts | Product | Top of product tree | Yes | Yes (ref) |
-| RevParts | Capability | Capability area | Yes | Yes (ref) |
-| RevParts | Feature | Feature unit | Yes | Yes (ref) |
-| RevParts | Enhancement | Improvement theme | Yes | No |
-| DevParts | Code / Service | Internal service | Yes | No |
-| DevParts | Runnable | Runnable unit | Yes | No |
-| DevParts | Linkable | Library / shared | Yes | No |
+| Parts (customer) | Product | Top of product tree | Yes | Yes (ref) |
+| Parts (customer) | Capability | Capability area | Yes | Yes (ref) |
+| Parts (customer) | Feature | Feature unit | Yes | Yes (ref) |
+| Parts (customer) | Enhancement | Improvement theme | Yes | No |
+| Parts (builder) | Code / Service | Internal service | Yes | No |
+| Parts (builder) | Runnable | Runnable unit | Yes | No |
+| Parts (builder) | Linkable | Library / shared | Yes | No |
 | Work | Conversation | Chat / discussion | Yes | Yes (own) |
 | Work | Ticket | Customer ticket | Yes | Yes (own) |
 | Work | Issue | Engineering work item | Yes | No |
@@ -82,7 +82,7 @@ Major objects by category. DevUser / RevUser visibility is indicative.
 | Issue | Ticket | is_dependent_on | Dependency between Issue and Ticket |
 | Issue / Ticket | Part | is_work_of | Attribute work to a Part |
 | Task | Issue / Ticket | is_parent_of / is_child_of | Nest tasks under Issue or Ticket |
-| Article | Part | (required) | KB articles attach to a RevPart |
+| Article | Part | (required) | KB articles attach to a customer part (often shown as RevPart) |
 | Account | Issue | not linkable | Route through Ticket |
 
 ### Same-type (self) links
@@ -96,7 +96,7 @@ Major objects by category. DevUser / RevUser visibility is indicative.
 | Issue ↔ Issue | is_duplicate_of | Duplicate Issues |
 | Task ↔ Task | is_dependent_on | Task dependency |
 | Task ↔ Task | is_duplicate_of | Duplicate tasks |
-| Part ↔ Part | is_parent_of / is_child_of | RevPart hierarchy |
+| Part ↔ Part | is_parent_of / is_child_of | Customer-part hierarchy, etc. |
 
 ### Stock link types
 
@@ -122,5 +122,5 @@ A learner-oriented summary of why the platform splits work across these objects.
 | Issue is internal | Engineering work items; not a customer UI concept | Experiments stay off the customer-visible surface |
 | Account is the ledger | DevUsers manage customer companies; not wired directly to Issues | Customer profile data stays separate from dev backlog mechanics |
 | Conversation is the entry | First touch for feedback; can escalate to Ticket | Light questions vs formal cases |
-| RevParts vs DevParts | Customer product structure vs internal stack | Show product value without exposing internals |
+| Customer vs builder parts | Official names for customer-facing vs internal stack | Show product value without exposing internals |
 | Article access levels | Public, internal, restricted, etc. | One KB for both internal docs and customer help |

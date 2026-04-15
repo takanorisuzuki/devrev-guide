@@ -48,8 +48,8 @@ const SESSION_TEXT_JA: Record<SessionId, { title: string; subtitle: string; keyI
   },
   s03: {
     title: "DevRevのデータモデルを理解する",
-    subtitle: "Parts, Rev Users, and Dev Users",
-    keyInsight: "Parts・Rev Users・Dev Usersの3軸データモデルを理解することがDevRevを使いこなす最初の関門",
+    subtitle: "Identity, Parts, Work — 公式の3本柱",
+    keyInsight: "公式は identity / parts / work の3つ。ワークをパーツに、パーツを顧客・開発者の identity に結びつける理解が、DevRevを使いこなす土台になる",
   },
   s04: {
     title: "カスタマーサポートを設計する",
@@ -121,8 +121,8 @@ const SESSION_TEXT_EN: Record<SessionId, { title: string; subtitle: string; keyI
   },
   s03: {
     title: "Understanding the DevRev Data Model",
-    subtitle: "Parts, Rev Users, and Dev Users",
-    keyInsight: "The three-axis data model of Parts, Rev Users, and Dev Users is the first conceptual hurdle to truly using DevRev",
+    subtitle: "Identity, Parts, and Work",
+    keyInsight: "Official docs center on three core objects: identity, parts, and work. Seeing how work ties to parts and parts to identity is the foundation for using DevRev",
   },
   s04: {
     title: "Designing Customer Support",
