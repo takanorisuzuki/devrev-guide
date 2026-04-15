@@ -39,7 +39,7 @@ const SESSION_TEXT_JA: Record<SessionId, { title: string; subtitle: string; keyI
   s01: {
     title: "DevRevとは何か：AIネイティブな作業基盤",
     subtitle: "One Platform for Dev, Rev, and AI",
-    keyInsight: "DevRevはサポート・開発・AIを1つに統合したプラットフォーム。従来のJira+Zendesk+ChatGPTを置き換える視点で全体像をつかむ",
+    keyInsight: "記録に沿った答えと権限・根拠を、同一データモデル上に載せる視点。汎用アシスタントとのレイヤー差と4基盤で全体像をつかむ",
   },
   s02: {
     title: "はじめてのDevRev：セットアップと基本操作",
@@ -112,7 +112,7 @@ const SESSION_TEXT_EN: Record<SessionId, { title: string; subtitle: string; keyI
   s01: {
     title: "What Is DevRev: The AI-Native Work Platform",
     subtitle: "One Platform for Dev, Rev, and AI",
-    keyInsight: "DevRev unifies support, engineering, and AI in one platform. A replacement lens for Jira + Zendesk + ChatGPT",
+    keyInsight: "Record-grounded answers with permissions and evidence on one data model. Layering vs. general assistants and the four foundations",
   },
   s02: {
     title: "Getting Started with DevRev",

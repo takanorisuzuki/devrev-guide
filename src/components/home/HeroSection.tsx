@@ -9,7 +9,7 @@ const HERO_TEXT = {
   en: {
     badge: 'DevRev Learning Guide',
     heading: <>One platform for Dev, Rev, and AI.<br />Learn DevRev from the ground up.</>,
-    description: `A ${SESSION_COUNT}-session practical course to master DevRev. From foundations and platform usage to developer extensions, learn systematically based on official sources.`,
+    description: `A ${SESSION_COUNT}-session practical course to master DevRev — from foundations and platform usage to developer extensions. Based on official sources; starts with how Memory, search, and controls fit together.`,
     cta: 'Start with Session 1',
     stats: [
       { label: 'Sessions', value: String(SESSION_COUNT) },
@@ -20,7 +20,7 @@ const HERO_TEXT = {
   ja: {
     badge: 'DevRev学習ガイド',
     heading: <>作り手と使い手を、AIでひとつに。<br />DevRevを基礎から学ぶ。</>,
-    description: `DevRevの基礎からプラットフォーム活用、開発者向け拡張まで、${SESSION_COUNT}セッションで体系的に学ぶ実践コース。公式情報をもとに構成。`,
+    description: `DevRevの基礎からプラットフォーム活用、開発者向け拡張まで、${SESSION_COUNT}セッションで体系的に学ぶ実践コース。公式情報をもとに、Memory・検索・統制がどう組み合わさるかから入る。`,
     cta: 'セッション1から始める',
     stats: [
       { label: 'セッション', value: String(SESSION_COUNT) },
