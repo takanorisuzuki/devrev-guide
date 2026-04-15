@@ -1,4 +1,4 @@
-日本語 | [English](./README.md)
+[English](./README.md) | 日本語
 
 # DevRev Guide
 

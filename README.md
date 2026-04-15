@@ -1,8 +1,10 @@
+English | [日本語](./README.ja.md)
+
 # DevRev Guide
 
-DevRev公式情報をもとにした学習サイト。14セッションでDevRevの基礎から開発者向け拡張まで体系的に学ぶ。
+A learning site based on official DevRev sources. Fourteen sessions cover DevRev from foundations through developer extensions.
 
-## セッション構成
+## Session outline
 
 | Layer | Sessions | Level |
 |-------|----------|-------|
@@ -21,9 +23,9 @@ Open [http://localhost:3000](http://localhost:3000).
 
 Content lives in `docs/en/` and `docs/ja/`. Each session is a Markdown file with frontmatter (`title`, `level`, `duration`).
 
-## Tech Stack
+## Tech stack
 
 | Layer | Tool |
 |-------|------|
-| Course Site | Next.js 16 + Tailwind CSS |
+| Course site | Next.js 16 + Tailwind CSS |
 | Hosting | Vercel |
