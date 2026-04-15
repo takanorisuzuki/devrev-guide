@@ -112,9 +112,11 @@ Major objects by category. DevUser / RevUser visibility is indicative.
 
 You can also define **custom link types** for your organization.
 
-## Notes for partners and customers
+## What this design is for
 
-| Point | What it means | Why it helps |
+A learner-oriented summary of why the platform splits work across these objects.
+
+| Aspect | What it means | What you gain |
 |-------|---------------|--------------|
 | Ticket is the bridge | The customer-facing link between RevUsers and DevUsers | Customers do not have to think about internal dev objects |
 | Issue is internal | Engineering work items; not a customer UI concept | Experiments stay off the customer-visible surface |
