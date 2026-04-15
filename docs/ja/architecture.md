@@ -5,7 +5,7 @@ description: "DevRev の Identity / Parts / Work とリンクルールの一覧"
 
 # オブジェクト構造リファレンス
 
-チュートリアルでは [s03](/ja/s03) で概念を学ぶ。公式ヘルプの [Core concepts](https://support.devrev.ai/devrev/article/ART-21847) では **identity、parts、work** の3つがコアとして説明されている。このページは **一覧・図・リンクルール** をいつでも引けるリファレンスである。
+チュートリアルでは [s03](/ja/s03) で概念を学ぶ。公式の [Core concepts](https://support.devrev.ai/devrev/article/ART-21847) は冒頭で *identity, parts, and work*（小文字）と列挙し、**図では Identity / Parts / Work** のラベルが使われている。このページは **一覧・図・リンクルール** をいつでも引けるリファレンスである。
 
 ## 全体リレーション図
 

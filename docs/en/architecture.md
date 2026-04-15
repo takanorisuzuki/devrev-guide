@@ -1,11 +1,11 @@
 ---
 title: "Object Model Reference"
-description: "Official identity, parts, and work model — tables and link rules"
+description: "Identity / Parts / Work (Core concepts) — tables and link rules"
 ---
 
 # Object Model Reference
 
-Learn the ideas in [session s03](/en/s03). DevRev's [Core concepts](https://support.devrev.ai/devrev/article/ART-21847) article describes **three core objects: identity, parts, and work**. This page is a **reference** for diagrams, tables, and link rules.
+Learn the ideas in [session s03](/en/s03). On [Core concepts](https://support.devrev.ai/devrev/article/ART-21847), the opening line uses lowercase *identity, parts, and work*; the **diagram uses Identity, Parts, and Work** as labels. This page is a **reference** for diagrams, tables, and link rules.
 
 ## Relationship overview
 
