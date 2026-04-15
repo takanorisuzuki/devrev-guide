@@ -41,38 +41,6 @@ export default function Sidebar({ locale }: SidebarProps) {
       }}
     >
       <nav className="p-3 space-y-5">
-        <div>
-          <div className="flex items-center gap-1.5 px-2 mb-1.5">
-            <span
-              className="text-xs font-semibold uppercase tracking-wider"
-              style={{ color: 'var(--color-text-secondary)' }}
-            >
-              {locale === 'ja' ? 'リファレンス' : 'Reference'}
-            </span>
-          </div>
-          <ul className="space-y-0.5">
-            <li>
-              <Link
-                href={`/${locale}/architecture`}
-                className="flex items-start gap-2 px-2 py-1.5 rounded-md text-sm transition-colors"
-                style={
-                  currentSession === 'architecture'
-                    ? {
-                        backgroundColor: 'rgba(0,112,192,0.08)',
-                        color: '#0070C0',
-                        fontWeight: 600,
-                      }
-                    : { color: 'var(--color-text-secondary)' }
-                }
-              >
-                <span className="font-mono text-xs shrink-0 mt-0.5 w-7 opacity-60">ref</span>
-                <span className="flex-1 leading-snug">
-                  {locale === 'ja' ? 'オブジェクト構造' : 'Object model'}
-                </span>
-              </Link>
-            </li>
-          </ul>
-        </div>
         {layers.map((layer) => {
           const color = LAYER_COLOR[layer.id]
           const bg = LAYER_BG[layer.id]
@@ -134,6 +102,41 @@ export default function Sidebar({ locale }: SidebarProps) {
             </div>
           )
         })}
+        <div
+          className="pt-4 mt-1 border-t"
+          style={{ borderColor: 'var(--color-border)' }}
+        >
+          <div className="flex items-center gap-1.5 px-2 mb-1.5">
+            <span
+              className="text-xs font-semibold uppercase tracking-wider"
+              style={{ color: 'var(--color-text-secondary)' }}
+            >
+              {locale === 'ja' ? 'リファレンス' : 'Reference'}
+            </span>
+          </div>
+          <ul className="space-y-0.5">
+            <li>
+              <Link
+                href={`/${locale}/architecture`}
+                className="flex items-start gap-2 px-2 py-1.5 rounded-md text-sm transition-colors"
+                style={
+                  currentSession === 'architecture'
+                    ? {
+                        backgroundColor: 'rgba(0,112,192,0.08)',
+                        color: '#0070C0',
+                        fontWeight: 600,
+                      }
+                    : { color: 'var(--color-text-secondary)' }
+                }
+              >
+                <span className="font-mono text-xs shrink-0 mt-0.5 w-7 opacity-60">ref</span>
+                <span className="flex-1 leading-snug">
+                  {locale === 'ja' ? 'オブジェクト構造' : 'Object model'}
+                </span>
+              </Link>
+            </li>
+          </ul>
+        </div>
       </nav>
     </aside>
   )
