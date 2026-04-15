@@ -38,8 +38,8 @@ export const SESSION_BASE: Record<SessionId, SessionBase> = {
 const SESSION_TEXT_JA: Record<SessionId, { title: string; subtitle: string; keyInsight: string }> = {
   s01: {
     title: "DevRevとは何か：AIネイティブな作業基盤",
-    subtitle: "One Platform for Dev, Rev, and AI",
-    keyInsight: "記録に沿った答えと権限・根拠を、同一データモデル上に載せる視点。汎用アシスタントとのレイヤー差と4基盤で全体像をつかむ",
+    subtitle: "データモデル、Memory、Computer の土台",
+    keyInsight: "SoRに沿った文脈・権限・根拠を同一データモデルで束ねる。汎用AIとのレイヤー差と、Memoryを中心とした4基盤でComputerの立ち位置をつかむ",
   },
   s02: {
     title: "はじめてのDevRev：セットアップと基本操作",
@@ -111,8 +111,8 @@ const SESSION_TEXT_JA: Record<SessionId, { title: string; subtitle: string; keyI
 const SESSION_TEXT_EN: Record<SessionId, { title: string; subtitle: string; keyInsight: string }> = {
   s01: {
     title: "What Is DevRev: The AI-Native Work Platform",
-    subtitle: "One Platform for Dev, Rev, and AI",
-    keyInsight: "Record-grounded answers with permissions and evidence on one data model. Layering vs. general assistants and the four foundations",
+    subtitle: "Data model, Memory, and Computer foundations",
+    keyInsight: "Bind SoR-aligned context, permissions, and evidence on one data model—not a support-only stack. Layering vs. general AI plus four foundations centered on Memory",
   },
   s02: {
     title: "Getting Started with DevRev",
@@ -193,16 +193,11 @@ const LAYERS_EN = [
   { id: "developer" as const, label: "Extend & Automate", sessions: ["s10", "s11", "s12", "s13", "s14"] as SessionId[] },
 ] as const;
 
-const _sessionMetaCache: Partial<Record<string, Record<SessionId, SessionLocalized>>> = {}
-
 export function getSessionMeta(locale: string): Record<SessionId, SessionLocalized> {
-  if (_sessionMetaCache[locale]) return _sessionMetaCache[locale]!
   const text = locale === "ja" ? SESSION_TEXT_JA : SESSION_TEXT_EN;
-  const result = Object.fromEntries(
+  return Object.fromEntries(
     SESSION_ORDER.map((id) => [id, { ...SESSION_BASE[id], ...text[id] }])
   ) as Record<SessionId, SessionLocalized>;
-  _sessionMetaCache[locale] = result
-  return result
 }
 
 export function getLayers(locale: string) {
