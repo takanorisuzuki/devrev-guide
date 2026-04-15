@@ -115,6 +115,64 @@ Major objects by category. DevUser / RevUser visibility is indicative.
 
 You can also define **custom link types** for your organization.
 
+## Extensibility (custom fields, subtypes, custom objects)
+
+Come back to this section when standard objects are not enough for your process or integration. You do not need to configure everything up front.
+
+When standard objects cannot express a requirement, DevRev offers three extension paths.
+
+### Custom fields
+
+Add fields to existing objects (Ticket, Issue, Account, and others). Configure them in the Settings UI.
+
+```
+Example: add "impacted user count" to Ticket
+Field name: tnt__impacted_user_count
+Type: int
+```
+
+- Field names use the `tnt__` prefix (tenant-specific).
+- Supported types include text, int, double, bool, enum, timestamp, id (reference to another object), and more.
+- For enum, define the allowed values first.
+
+### Subtypes
+
+Define subtypes for an object type (for example Ticket or Issue) to reflect different workflows.
+
+```
+Example: Ticket subtypes
+- Bug
+- Feature request
+- Question
+```
+
+Each subtype can carry its own custom fields — for example, only the Bug subtype might require "steps to reproduce."
+
+### Custom objects
+
+Model concepts that do not fit standard categories.
+
+```
+Example: custom_object.vendor
+  - Vendor name (text)
+  - Contract period (timestamp)
+  - SLA tier (enum)
+```
+
+- Custom objects live under the `custom_object.*` namespace.
+- They participate in links, search, and dashboards like standard objects.
+- You typically create them via API using the same patterns as standard objects.
+
+### Which tool to use
+
+| Goal | Mechanism |
+|------|-----------|
+| Add a field to Ticket | Custom field |
+| Classify Tickets by use case | Subtype |
+| Represent a concept that is not a standard object | Custom object |
+
+Configure custom fields under Settings > Object Customization. Creating custom objects is usually done through the API (see [s12](/en/s12)).
+
 ## What this design is for
 
 A learner-oriented summary of why the platform splits work across these objects.
