@@ -20,7 +20,7 @@ const HERO_TEXT = {
   ja: {
     badge: 'DevRev学習ガイド',
     heading: <>作り手と使い手を、AIでひとつに。<br />DevRevを基礎から学ぶ。</>,
-    description: `DevRevの基礎からプラットフォーム活用、開発者向け拡張まで、${SESSION_COUNT}セッションで体系的に学ぶ実践コース。公式情報をもとに、Memory・検索・統制がどう組み合わさるかから入る。`,
+    description: `DevRevの基礎からプラットフォーム活用、開発者向け拡張まで、${SESSION_COUNT}セッションで体系的に学ぶ実践コース。公式情報をもとに、既存のSoRと運用を保ちながらMemory・検索・統制をどう積み上げるかから入る。`,
     cta: 'セッション1から始める',
     stats: [
       { label: 'セッション', value: String(SESSION_COUNT) },

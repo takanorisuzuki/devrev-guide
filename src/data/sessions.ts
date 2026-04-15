@@ -39,7 +39,7 @@ const SESSION_TEXT_JA: Record<SessionId, { title: string; subtitle: string; keyI
   s01: {
     title: "DevRevとは何か：AIネイティブな作業基盤",
     subtitle: "データモデル、Memory、Computer の土台",
-    keyInsight: "SoRに沿った文脈・権限・根拠を同一データモデルで束ねる。汎用AIとのレイヤー差と、Memoryを中心とした4基盤でComputerの立ち位置をつかむ",
+    keyInsight: "既存のSoRと運用を保ちながら、文脈・権限・根拠を同一データモデルで束ねる。汎用AIとのレイヤー差と、Memory中心の4基盤でComputerの立ち位置をつかむ",
   },
   s02: {
     title: "はじめてのDevRev：セットアップと基本操作",
