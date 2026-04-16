@@ -1,16 +1,22 @@
 ---
 title: "Memory vs fetch-based AI: accuracy and cost"
-description: "CTO office perspective on why schema-aware memory beats session-by-session fetching (accuracy, tokens, and time)"
+description: "CTO office perspective: Claude alone (fetch) vs Claude with DevRev Computer and Memory—accuracy, tokens, and time"
 ---
 
 # Memory vs fetch-based AI: accuracy and cost
 
 This reference summarizes two public posts from DevRev’s CTO office on why “connected” general-purpose AI can still produce confident-but-wrong answers, and why token/time costs compound when an assistant has to rediscover schema every session.
 
-The key distinction is **retrieval architecture**, not just model quality:
+**How to read the comparison in the sources (important):** In the original posts, the front-end model is **Claude**. The comparison is not “DevRev vs Claude.” It is **Claude used in a fetch-style way** (API/MCP access, rediscovering schema each session) versus the **same Claude paired with DevRev Computer (including Memory)**. **DevRev is not a Claude competitor**—the posts are about what the **Computer + Memory layer** changes so Claude does not have to “start from zero” every time. See the linked articles under [References](#references) for the full framing.
 
-- A **fetch-based assistant** (even with API/MCP access) often has to **discover schema**, **load raw data**, and **reconstruct relationships** inside the model each session.
-- A system with **shared, persistent memory** can **read authoritative relationships** (typed edges) and answer from the data with deterministic queries, returning only what is needed.
+The key distinction is **retrieval architecture**, not just model quality. The table below matches how the sources contrast the two setups.
+
+| Dimension | **Claude alone (fetch-style)** | **Claude + DevRev Computer (Memory)** |
+|:---|:---|:---|
+| **Model** | Claude | Claude |
+| **How data is reached** | API/MCP access to business data on demand | Computer / Memory holds authoritative relationships; queries run deterministically |
+| **Typical load** | Per-session schema discovery, raw loads, relationship reconstruction in the model | Read typed edges; joins/filters on CPU/SQL; return only what is needed |
+| **Where DevRev sits** | — | Not a competitor to Claude—a layer that reduces **start-from-zero** work |
 
 ## 1) When the answer looks right but is wrong (inferred structure)
 
@@ -27,31 +33,43 @@ When an assistant has to explore schema and load raw data into context each time
 
 What drives the cost in practice:
 
-- **Schema exploration**: discovering projects, custom field IDs, join keys, link semantics
-- **Bulk payloads** returned from tools during exploration and sampling
-- **Repeated work** every session because the assistant does not retain a shared map of your data model
+| Driver | What it means |
+|:---|:---|
+| **Schema exploration** | Finding projects, custom field IDs, join keys, link semantics |
+| **Bulk payloads** | Large tool responses during exploration and sampling |
+| **Repeated work** | No shared map of the data model across sessions |
 
-Benchmarks reported in the posts (illustrative, same business query repeated):
+Benchmarks reported in the posts (illustrative, same business query repeated; framed as **Claude alone (fetch-style)** vs **Claude + DevRev Computer (Memory)**):
 
-- One comparison reported ~**3.2M tokens** and ~**8m50s** per run vs ~**157k tokens** and ~**1m36s** per run (≈95% fewer tokens, ≈5.5× faster).
-- Another example highlighted ~**616,843 tokens** vs ~**169,986 tokens** on corrected/authoritative runs (≈72% fewer tokens).
+| Example | Tokens (approx.) | Time (approx.) | Delta (approx.) |
+|:---|---:|:---|:---|
+| **A: fetch-style side** | ~3.2M | ~8m50s | — |
+| **B: +Computer/Memory side** | ~157k | ~1m36s | ~**95%** fewer tokens, ~**5.5×** faster |
+
+| Example (another cut) | Tokens (approx.) | Delta (approx.) |
+|:---|---:|:---|
+| One run | 616,843 | — |
+| Authoritative run (the other side) | 169,986 | ~**72%** fewer tokens |
 
 Practical takeaways:
 
 - Treat schema knowledge and relationship mapping as a first-class layer (CPU/deterministic) rather than “reasoning inside the model.”
 - Optimize retrieval to return only the rows needed for the question, with evidence attached.
 
-## Differentiation: what “Computer + Memory” changes
+## Differentiation: what “Claude + DevRev Computer + Memory” changes
 
-From these posts, the differentiators are consistently about **authoritative traversal and evidence**:
+From these posts, the differentiators are consistently about **authoritative traversal and evidence**—i.e., what changes on the **Computer / Memory side** even when the **same Claude** is the assistant:
 
-- **Authoritative relationships**: part hierarchies, issue↔part mapping, ticket↔account mapping are read from explicit edges—not inferred.
-- **Deterministic querying for structured data**: compute joins/filters outside the model (CPU), and send back only the result set.
-- **Semantic retrieval without loading content**: rank knowledge results without stuffing full articles into the model context.
-- **Evidence-first answers**: the system can show how each row was derived (which links/edges were followed).
+| Theme | What changes (Memory / Computer side) |
+|:---|:---|
+| **Authoritative relationships** | Part hierarchies, issue↔part, ticket↔account are read from explicit edges—not inferred. |
+| **Deterministic querying** | Joins/filters outside the model (CPU); return only the result set. |
+| **Semantic retrieval** | Rank knowledge without stuffing full articles into the model context. |
+| **Evidence-first answers** | Show how each row was derived (which edges were followed). |
 
 ## References
 
+The posts above spell out the setup (Claude and DevRev Computer / Memory) in the body text.
+
 - [Right or wrong - flip a coin?](https://www.linkedin.com/pulse/right-wrong-flip-coin-jeff-smith-0frke/)
 - [Your AI starts from zero every morning — the costs compound](https://www.linkedin.com/pulse/your-ai-starts-from-zero-every-morning-costs-compound-jeff-smith-wnele/)
-
