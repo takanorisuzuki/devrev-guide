@@ -86,7 +86,7 @@ export default async function SessionPage({ params }: SessionPageProps) {
   const lang = locale === 'en' ? 'en' : 'ja'
 
   return (
-    <article className="w-full max-w-full">
+    <article className="w-full max-w-4xl">
       <div className="mb-8">
         <div className="flex flex-wrap items-center gap-2 mb-3">
           <span
