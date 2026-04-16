@@ -9,7 +9,26 @@ description: "DevRev の Identity / Parts / Work とリンクルールの一覧"
 
 ## 全体リレーション図
 
-3本柱は **Identity → Parts → Work**。Parts の内側は **customer parts** と **builder parts**（UI では RevPart / DevPart と表示されることが多い）。**Enhancement** は **Part（customer RevPart）** として **Product → Capability → Feature → Enhancement** の階層に属する（**Issue / Ticket そのものではない**）。複数 Issue を束ねる Epic 的な役割やライフサイクル、Ticket・Opportunity との接続など **Work に近い振る舞い**を併せ持つハイブリッドでもある（[s03](/ja/s03) 参照）。Issue / Ticket は **is_work_of** で **Part** に帰属させる（**Feature** に限らず **Enhancement** も対象になりうる）。**Enhancement** は **is_parent_of** で複数 **Issue** の親にもなりうる。図ではその関係を示している。**Incident → Ticket** の向きは下記リンクルール表と一致させている。詳細は製品の設定により異なる場合がある。
+3本柱は **Identity → Parts → Work** である。
+
+### Identity / Parts / Work（図の読み方）
+
+- **Identity**: 誰が関わるか（DevOrg / DevUser / Account / RevOrg / RevUser）
+- **Parts**: 何についての作業か  
+  - customer parts は UI で RevPart と表示されることが多い
+  - builder parts は UI で DevPart と表示されることが多い
+- **Work**: 作業オブジェクト（Conversation / Ticket / Issue / Task / Incident）
+
+### Enhancement（重要な注意点）
+
+**Enhancement** は **Part（customer part / RevPart）** として **Product → Capability → Feature → Enhancement** の階層に属する（**Issue / Ticket そのものではない**）。
+
+一方で Enhancement は、次のように **Work に近い振る舞い**も併せ持つ（[s03](/ja/s03) 参照）。
+
+- **is_parent_of** により、複数 Issue を束ねる（Epic 的なまとまり）
+- Issue / Ticket は **is_work_of** で Part に帰属する（**Feature** だけでなく **Enhancement** が帰属先になることもある）
+
+図ではこの2つを示している。**Incident → Ticket** の向きは下記リンクルール表と一致させている。詳細は製品の設定により異なる場合がある。
 
 ```mermaid
 graph TB
