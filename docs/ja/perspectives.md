@@ -5,7 +5,12 @@ description: "AI Trifecta / Being AI-native / Essential Methodology を、この
 
 # The Book of DevRev（Perspectives）リファレンス
 
-このページは、The Book of DevRev の `Perspectives` にある考え方を **外部サイトに飛ばさず**に参照できるよう、要点だけをまとめたリファレンスである。s01 の本文は重くしたくないため、思想はここに寄せる。
+このページは、The Book of DevRev の `Perspectives`（視点）にある考え方を、**このガイド内で**参照できるように要点だけまとめたリファレンスである。
+
+初見の方は、まずここだけ押さえておけば十分。
+
+- **このページでわかること**: AIネイティブの捉え方／AI Trifecta（Search・Analytics・Workflows）／Essential Methodology の要点
+- **おすすめの読み方**: 先にこのページで「地図」を掴み、各セッション（s01/s09/s10/s14）で具体に落とす
 
 ## Being AI-native（AIネイティブであること）
 
@@ -46,9 +51,3 @@ The Book of DevRev では、AI時代の中核サービスを **Search / Analytic
 - **Being AI-native ↔ コース**
   - Discern/Deflect/Deduplicate の“行動”イメージは [s14](/ja/s14) のエージェント設計にも繋がる
   - 「組み込みで設計する」前提は [s01](/ja/s01) の “AIネイティブ” の説明を補強する
-## 原典（必要なら）
-
-- `https://thebook.devrev.ai/perspectives/`
-- `https://thebook.devrev.ai/perspectives/ai-native/`
-- `https://thebook.devrev.ai/ai-trifecta/`
-- `https://thebook.devrev.ai/essentialism/`

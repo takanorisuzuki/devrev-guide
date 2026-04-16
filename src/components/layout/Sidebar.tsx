@@ -151,7 +151,7 @@ export default function Sidebar({ locale }: SidebarProps) {
               >
                 <span className="font-mono text-xs shrink-0 mt-0.5 w-7 opacity-60">book</span>
                 <span className="flex-1 leading-snug">
-                  {locale === 'ja' ? 'Perspectives' : 'Perspectives'}
+                  {locale === 'ja' ? '視点（Perspectives）' : 'Perspectives'}
                 </span>
               </Link>
             </li>

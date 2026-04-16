@@ -74,7 +74,7 @@ export default function Header({ locale }: HeaderProps) {
               className="text-xs px-2 py-1 rounded-md transition-colors"
               style={{ color: 'var(--color-text-secondary)', border: '1px solid var(--color-border)' }}
             >
-              {locale === 'ja' ? 'Perspectives' : 'Perspectives'}
+              {locale === 'ja' ? '視点' : 'Perspectives'}
             </Link>
           </div>
 
