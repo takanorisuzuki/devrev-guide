@@ -51,3 +51,10 @@ The Book of DevRev では、AI時代の中核サービスを **Search / Analytic
 - **Being AI-native ↔ コース**
   - Discern/Deflect/Deduplicate の“行動”イメージは [s14](/ja/s14) のエージェント設計にも繋がる
   - 「組み込みで設計する」前提は [s01](/ja/s01) の “AIネイティブ” の説明を補強する
+
+## 出典
+
+- `https://thebook.devrev.ai/perspectives/`
+- `https://thebook.devrev.ai/perspectives/ai-native/`
+- `https://thebook.devrev.ai/ai-trifecta/`
+- `https://thebook.devrev.ai/essentialism/`
