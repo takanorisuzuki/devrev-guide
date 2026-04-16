@@ -34,6 +34,11 @@ export async function getPerspectivesContent(locale: string) {
   return processMarkdownFile(filePath)
 }
 
+export async function getMemoryVsFetchAiContent(locale: string) {
+  const filePath = join(process.cwd(), 'docs', locale, 'memory-vs-fetch-ai-accuracy-and-cost.md')
+  return processMarkdownFile(filePath)
+}
+
 export function getSessionIds(): string[] {
   return [...SESSION_ORDER]
 }

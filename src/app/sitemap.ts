@@ -4,7 +4,7 @@ import { SESSION_ORDER } from '@/data/sessions'
 const BASE_URL = 'https://devrev-guide.vercel.app'
 const LOCALES = ['en', 'ja']
 const SESSION_IDS = [...SESSION_ORDER]
-const REFERENCE_PAGES = ['architecture', 'perspectives']
+const REFERENCE_PAGES = ['architecture', 'perspectives', 'memory-vs-fetch-ai-accuracy-and-cost']
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date().toISOString()

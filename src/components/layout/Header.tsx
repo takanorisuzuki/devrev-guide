@@ -13,7 +13,8 @@ export default function Header({ locale }: HeaderProps) {
 
   // /en/... -> /ja/... or /ja/... -> /en/...
   const toggleLocale = locale === 'en' ? 'ja' : 'en'
-  const togglePath = pathname.replace(/^\/(en|ja)/, `/${toggleLocale}`)
+  const safePathname = typeof pathname === 'string' && pathname.length > 0 ? pathname : `/${locale}`
+  const togglePath = safePathname.replace(/^\/(en|ja)/, `/${toggleLocale}`)
 
   return (
     <header
@@ -76,6 +77,13 @@ export default function Header({ locale }: HeaderProps) {
             >
               {locale === 'ja' ? '視点' : 'Perspectives'}
             </Link>
+            <Link
+              href={`/${locale}/memory-vs-fetch-ai-accuracy-and-cost`}
+              className="text-xs px-2 py-1 rounded-md transition-colors"
+              style={{ color: 'var(--color-text-secondary)', border: '1px solid var(--color-border)' }}
+            >
+              {locale === 'ja' ? 'Memoryとコスト' : 'Memory & cost'}
+            </Link>
           </div>
 
           {/* Language switcher */}
@@ -84,7 +92,7 @@ export default function Header({ locale }: HeaderProps) {
             style={{ borderColor: 'var(--color-border)' }}
           >
             <Link
-              href={locale === 'en' ? pathname : togglePath}
+              href={locale === 'en' ? safePathname : togglePath}
               className="px-3 py-1 transition-colors"
               style={{
                 backgroundColor: locale === 'en' ? 'var(--color-text)' : 'var(--color-bg)',
@@ -95,7 +103,7 @@ export default function Header({ locale }: HeaderProps) {
               EN
             </Link>
             <Link
-              href={locale === 'ja' ? pathname : togglePath}
+              href={locale === 'ja' ? safePathname : togglePath}
               className="px-3 py-1 transition-colors"
               style={{
                 backgroundColor: locale === 'ja' ? 'var(--color-text)' : 'var(--color-bg)',
