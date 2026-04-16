@@ -39,7 +39,7 @@ What drives the cost in practice:
 | **Bulk payloads** | Large tool responses during exploration and sampling |
 | **Repeated work** | No shared map of the data model across sessions |
 
-Benchmarks reported in the posts (illustrative, same business query repeated; framed as **Claude-alone fetch** vs **Claude + Computer/Memory**):
+Benchmarks reported in the posts (illustrative, same business query repeated; framed as **Claude alone (fetch-style)** vs **Claude + DevRev Computer (Memory)**):
 
 | Example | Tokens (approx.) | Time (approx.) | Delta (approx.) |
 |:---|---:|:---|:---|

@@ -16,7 +16,7 @@ description: "CTO officeの視点：Claude単体のfetch型と、Claude+DevRev C
 | **前提モデル** | Claude | Claude |
 | **つなぎ方のイメージ** | API/MCP で業務データに都度アクセス | Computer / Memory が権威ある関係を保持し、クエリは決定的に処理 |
 | **典型的な負荷** | セッションごとに schema 探索、生データ読込、関係をモデル内で再構築しがち | typed edge を「読む」。join/filter は CPU/SQL 等で処理し、必要な結果だけ返す |
-| **DevRevの位置づけ** | — | Claude を潰す競合ではなく、**毎回ゼロから**を減らす層 |
+| **DevRevの位置づけ** | — | Claude の競合ではなく、**毎回ゼロから**を減らす層 |
 
 ## 1) それっぽく正しいが、実は間違う（推測で作られた構造）
 
@@ -39,7 +39,7 @@ description: "CTO officeの視点：Claude単体のfetch型と、Claude+DevRev C
 | **大きなペイロード** | 探索・サンプリングでツールが返すデータ量 |
 | **繰り返し** | セッションごとに「地図」を持ち直せず、同じ探索を繰り返す |
 
-記事内で示されている比較（目安・同一ビジネスクエリの反復。**Claude単体のfetch型** と **Claude + Computer/Memory** の対比として書かれている）:
+記事内で示されている比較（目安・同一ビジネスクエリの反復。**Claude 単体（fetch型）** と **Claude + DevRev Computer（Memory）** の対比として書かれている）:
 
 | 例 | トークン（目安） | 時間（目安） | 差分の目安 |
 |:---|---:|:---|:---|
