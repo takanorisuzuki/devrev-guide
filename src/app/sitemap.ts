@@ -1,8 +1,9 @@
 import type { MetadataRoute } from 'next'
+import { SESSION_ORDER } from '@/data/sessions'
 
 const BASE_URL = 'https://devrev-guide.vercel.app'
 const LOCALES = ['en', 'ja']
-const SESSION_IDS = ['s01', 's02', 's03', 's04', 's05', 's06', 's07', 's08', 's09', 's10', 's11', 's12', 's13']
+const SESSION_IDS = [...SESSION_ORDER]
 const REFERENCE_PAGES = ['architecture', 'perspectives']
 
 export default function sitemap(): MetadataRoute.Sitemap {
