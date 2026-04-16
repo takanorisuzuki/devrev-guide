@@ -9,7 +9,26 @@ Learn the ideas in [session s03](/en/s03). See [Core concepts](https://support.d
 
 ## Relationship overview
 
-The pillars are **Identity → Parts → Work**. Inside Parts, **customer parts** vs **builder parts** (the product UI often shows RevPart / DevPart). **Enhancement** is a **Part** (customer RevPart) in the **Product → Capability → Feature → Enhancement** chain — it is **not** the same kind of object as **Issue / Ticket** work items. It often behaves as a hybrid: epic-style grouping of Issues, lifecycle, and links to Tickets or opportunities (see [s03](/en/s03)). Issues and Tickets attach to **Parts** with **is_work_of** — not only **Feature** but **Enhancement** can be that Part. **Enhancement** can also be the **is_parent_of** parent of multiple **Issues**. The diagram shows both ideas. **Incident → Ticket** matches the link table below. Details may vary by configuration.
+The pillars are **Identity → Parts → Work**.
+
+### Identity / Parts / Work (how to read the diagram)
+
+- **Identity**: who is involved (DevOrg, DevUser, Account, RevOrg, RevUser)
+- **Parts**: what the work is about  
+  - **Customer parts** are often shown as RevPart in the UI
+  - **Builder parts** are often shown as DevPart in the UI
+- **Work**: the work objects themselves (Conversation, Ticket, Issue, Task, Incident)
+
+### Enhancement (important nuance)
+
+**Enhancement** is a **Part** (a customer part / RevPart) in the **Product → Capability → Feature → Enhancement** chain — it is **not** the same kind of object as **Issue / Ticket** work items.
+
+However, Enhancement often behaves like a hybrid:
+
+- It can group multiple Issues (epic-style) via **is_parent_of**
+- Issues and Tickets attach to Parts via **is_work_of** (both **Feature** and **Enhancement** can be the Part target)
+
+The diagram shows both relationships. The **Incident → Ticket** arrow direction matches the link rules table below. Details can vary by configuration.
 
 ```mermaid
 graph TB
