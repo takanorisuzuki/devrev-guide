@@ -22,7 +22,7 @@ export default function NotFound() {
       <Link
         href={`/${locale}`}
         className="text-sm px-4 py-2 rounded-lg transition-colors"
-        style={{ backgroundColor: '#3B82F618', color: '#3B82F6', border: '1px solid #3B82F630' }}
+        style={{ backgroundColor: 'var(--color-bg-secondary)', color: 'var(--color-primary)', border: '1px solid var(--color-border)' }}
       >
         {label.back}
       </Link>

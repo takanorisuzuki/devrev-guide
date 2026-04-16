@@ -33,7 +33,8 @@
     --color-bg: #0F172A;
     --color-bg-secondary: #1E293B;
     --color-text: #F1F5F9;
-    --color-text-secondary: #94A3B8;
+    /* Slightly brighter secondary text for readability */
+    --color-text-secondary: #CBD5E1;
     --color-border: #334155;
     --color-primary: #3B9EFF;
     --color-primary-hover: #60B0FF;
@@ -138,12 +139,12 @@ body {
   margin-bottom: 0.75rem;
   font-size: 0.9rem;
   line-height: 1.7;
-  color: #4A5568;
+  color: var(--color-text-secondary);
 }
 
 @media (prefers-color-scheme: dark) {
   .prose-custom p {
-    color: #A0AEC0;
+    color: var(--color-text-secondary);
   }
 }
 
@@ -326,12 +327,12 @@ body {
   padding-left: 1.5rem;
   font-size: 0.9rem;
   line-height: 1.7;
-  color: #4A5568;
+  color: var(--color-text-secondary);
 }
 
 @media (prefers-color-scheme: dark) {
   .prose-custom ul {
-    color: #A0AEC0;
+    color: var(--color-text-secondary);
   }
 }
 
@@ -353,12 +354,12 @@ body {
   counter-reset: step-counter;
   font-size: 0.9rem;
   line-height: 1.7;
-  color: #4A5568;
+  color: var(--color-text-secondary);
 }
 
 @media (prefers-color-scheme: dark) {
   .prose-custom ol {
-    color: #A0AEC0;
+    color: var(--color-text-secondary);
   }
 }
 
@@ -401,56 +402,69 @@ body {
   display: none;
 }
 
-/* Tables */
+/* Tables — readable contrast; avoid column-specific tint (breaks multi-column comparisons) */
 .prose-custom table {
   width: 100%;
   margin-top: 1.25rem;
   margin-bottom: 1.25rem;
   border-collapse: separate;
   border-spacing: 0;
-  font-size: 0.8125rem;
-  line-height: 1.5;
+  font-size: 0.875rem;
+  line-height: 1.55;
   border-radius: 0.75rem;
   overflow: hidden;
-  border: 1px solid #E2E8F0;
+  border: 1px solid #cbd5e1;
+  background-color: #ffffff;
 }
 
 @media (prefers-color-scheme: dark) {
   .prose-custom table {
-    border-color: #334155;
+    border-color: #475569;
+    background-color: #0f172a;
   }
 }
 
 .prose-custom th {
-  padding: 0.625rem 1rem;
+  padding: 0.65rem 1rem;
   text-align: left;
   font-weight: 600;
-  font-size: 0.6875rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: #718096;
-  background-color: #F8F9FA;
-  border-bottom: 1px solid #E2E8F0;
+  font-size: 0.8125rem;
+  text-transform: none;
+  letter-spacing: 0.01em;
+  color: #0f172a;
+  background-color: #e2e8f0;
+  border-bottom: 2px solid #cbd5e1;
 }
 
 @media (prefers-color-scheme: dark) {
   .prose-custom th {
-    color: #94A3B8;
-    background-color: #1E293B;
-    border-bottom-color: #334155;
+    color: #f8fafc;
+    background-color: #334155;
+    border-bottom-color: #64748b;
   }
 }
 
 .prose-custom td {
-  padding: 0.625rem 1rem;
-  border-bottom: 1px solid #F1F5F9;
-  color: #4A5568;
+  padding: 0.65rem 1rem;
+  border-bottom: 1px solid #e2e8f0;
+  color: #1e293b;
+  vertical-align: top;
 }
 
 @media (prefers-color-scheme: dark) {
   .prose-custom td {
-    border-bottom-color: #1E293B;
-    color: #A0AEC0;
+    border-bottom-color: #334155;
+    color: #e2e8f0;
+  }
+}
+
+.prose-custom tbody tr:nth-child(even) td {
+  background-color: #f8fafc;
+}
+
+@media (prefers-color-scheme: dark) {
+  .prose-custom tbody tr:nth-child(even) td {
+    background-color: rgba(30, 41, 59, 0.45);
   }
 }
 
@@ -458,30 +472,13 @@ body {
   border-bottom: none;
 }
 
-.prose-custom tbody tr:hover {
-  background-color: #F0F9FF;
+.prose-custom tbody tr:hover td {
+  background-color: #eff6ff;
 }
 
 @media (prefers-color-scheme: dark) {
-  .prose-custom tbody tr:hover {
-    background-color: #1E293B;
-  }
-}
-
-/* ツール対応表: 左列（従来ツール）を薄く、右列（DevRev）を強調 */
-.prose-custom td:first-child {
-  color: #718096;
-  font-size: 0.75rem;
-}
-
-.prose-custom td:last-child {
-  font-weight: 600;
-  color: var(--color-primary);
-}
-
-@media (prefers-color-scheme: dark) {
-  .prose-custom td:first-child {
-    color: #64748B;
+  .prose-custom tbody tr:hover td {
+    background-color: rgba(59, 130, 246, 0.12);
   }
 }
 

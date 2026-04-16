@@ -34,7 +34,7 @@ export default function Sidebar({ locale }: SidebarProps) {
 
   return (
     <aside
-      className="w-60 shrink-0 sticky top-14 self-start h-[calc(100vh-3.5rem)] overflow-y-auto border-r"
+      className="w-72 lg:w-80 shrink-0 sticky top-14 self-start h-[calc(100vh-3.5rem)] overflow-y-auto border-r"
       style={{
         borderColor: 'var(--color-border)',
         backgroundColor: 'var(--color-bg-secondary)',
@@ -81,19 +81,22 @@ export default function Sidebar({ locale }: SidebarProps) {
                         >
                           {sessionId}
                         </span>
-                        <span className="flex-1 leading-snug">{session.title}</span>
-                        <span
-                          className="shrink-0 text-xs px-1.5 py-0.5 rounded-full mt-0.5"
-                          style={
-                            session.level === 'beginner'
-                              ? { backgroundColor: 'var(--color-level-beginner-bg)', color: 'var(--color-level-beginner)' }
-                              : session.level === 'advanced'
-                              ? { backgroundColor: 'var(--color-level-advanced-bg)', color: 'var(--color-level-advanced)' }
-                              : { backgroundColor: 'var(--color-level-intermediate-bg)', color: 'var(--color-level-intermediate)' }
-                          }
-                        >
-                          {levelLabel[session.level]}
-                        </span>
+                        {/* タイトルと難易度を縦に分離（長い日本語タイトルでバッジと横方向に重ならない） */}
+                        <div className="min-w-0 flex-1 flex flex-col gap-1">
+                          <span className="leading-snug break-words">{session.title}</span>
+                          <span
+                            className="self-end shrink-0 text-xs px-1.5 py-0.5 rounded-full"
+                            style={
+                              session.level === 'beginner'
+                                ? { backgroundColor: 'var(--color-level-beginner-bg)', color: 'var(--color-level-beginner)' }
+                                : session.level === 'advanced'
+                                ? { backgroundColor: 'var(--color-level-advanced-bg)', color: 'var(--color-level-advanced)' }
+                                : { backgroundColor: 'var(--color-level-intermediate-bg)', color: 'var(--color-level-intermediate)' }
+                            }
+                          >
+                            {levelLabel[session.level]}
+                          </span>
+                        </div>
                       </Link>
                     </li>
                   )

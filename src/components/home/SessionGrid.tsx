@@ -25,19 +25,19 @@ const MIN_SUFFIX: Record<string, string> = {
 const LAYER_CONFIG: Record<string, { color: string; bg: string; border: string; hoverBorder: string }> = {
   foundations: {
     color: '#0070C0',
-    bg: '#FFFFFF',
+    bg: 'var(--color-bg-secondary)',
     border: 'rgba(0,112,192,0.30)',
     hoverBorder: 'rgba(0,112,192,0.65)',
   },
   platform: {
     color: '#0891B2',
-    bg: '#FFFFFF',
+    bg: 'var(--color-bg-secondary)',
     border: 'rgba(8,145,178,0.30)',
     hoverBorder: 'rgba(8,145,178,0.65)',
   },
   developer: {
     color: '#7C3AED',
-    bg: '#FFFFFF',
+    bg: 'var(--color-bg-secondary)',
     border: 'rgba(124,58,237,0.30)',
     hoverBorder: 'rgba(124,58,237,0.65)',
   },
@@ -137,7 +137,7 @@ export default function SessionGrid({ locale }: SessionGridProps) {
 
                     <div
                       className="flex items-start gap-1.5 p-2 rounded-lg"
-                      style={{ backgroundColor: 'rgba(0,0,0,0.04)' }}
+                      style={{ backgroundColor: 'var(--color-bg)', border: '1px solid var(--color-border)' }}
                     >
                       <svg
                         width="12"
@@ -153,7 +153,7 @@ export default function SessionGrid({ locale }: SessionGridProps) {
                       >
                         <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
                       </svg>
-                      <p className="text-xs leading-snug" style={{ color: 'var(--color-text-secondary)' }}>
+                      <p className="whitespace-pre-line text-xs leading-snug" style={{ color: 'var(--color-text-secondary)' }}>
                         {session.keyInsight}
                       </p>
                     </div>

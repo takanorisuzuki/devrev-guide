@@ -36,11 +36,11 @@ function PrivacyJa() {
         </p>
         <p className="leading-relaxed">
           Google Analyticsの利用規約については、
-          <a href="https://marketingplatform.google.com/about/analytics/terms/us/" target="_blank" rel="noopener noreferrer" className="underline" style={{ color: '#3B82F6' }}>
+          <a href="https://marketingplatform.google.com/about/analytics/terms/us/" target="_blank" rel="noopener noreferrer" className="underline" style={{ color: 'var(--color-primary)' }}>
             Google Analyticsサービス利用規約
           </a>
           をご確認ください。また、Googleのプライバシーポリシーについては、
-          <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="underline" style={{ color: '#3B82F6' }}>
+          <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="underline" style={{ color: 'var(--color-primary)' }}>
             Googleプライバシーポリシー
           </a>
           をご確認ください。
@@ -69,7 +69,7 @@ function PrivacyJa() {
         <h2 className="text-xl font-semibold mb-3">お問い合わせ</h2>
         <p className="leading-relaxed">
           本プライバシーポリシーに関するご質問は、
-          <a href={GITHUB_ISSUES_URL} target="_blank" rel="noopener noreferrer" className="underline" style={{ color: '#3B82F6' }}>
+          <a href={GITHUB_ISSUES_URL} target="_blank" rel="noopener noreferrer" className="underline" style={{ color: 'var(--color-primary)' }}>
             GitHubリポジトリのIssue
           </a>
           にてお受けしています。
@@ -105,11 +105,11 @@ function PrivacyEn() {
         </p>
         <p className="leading-relaxed">
           For more information, please see the{' '}
-          <a href="https://marketingplatform.google.com/about/analytics/terms/us/" target="_blank" rel="noopener noreferrer" className="underline" style={{ color: '#3B82F6' }}>
+          <a href="https://marketingplatform.google.com/about/analytics/terms/us/" target="_blank" rel="noopener noreferrer" className="underline" style={{ color: 'var(--color-primary)' }}>
             Google Analytics Terms of Service
           </a>
           {' '}and the{' '}
-          <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="underline" style={{ color: '#3B82F6' }}>
+          <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="underline" style={{ color: 'var(--color-primary)' }}>
             Google Privacy Policy
           </a>.
         </p>
@@ -137,7 +137,7 @@ function PrivacyEn() {
         <h2 className="text-xl font-semibold mb-3">Contact</h2>
         <p className="leading-relaxed">
           If you have questions about this Privacy Policy, please open an issue on our{' '}
-          <a href={GITHUB_ISSUES_URL} target="_blank" rel="noopener noreferrer" className="underline" style={{ color: '#3B82F6' }}>
+          <a href={GITHUB_ISSUES_URL} target="_blank" rel="noopener noreferrer" className="underline" style={{ color: 'var(--color-primary)' }}>
             GitHub repository
           </a>.
         </p>
@@ -163,14 +163,14 @@ export default async function PrivacyPage({ params }: PrivacyPageProps) {
   const isJa = locale === 'ja'
 
   return (
-    <div className="max-w-3xl" style={{ color: 'var(--color-text)' }}>
+    <div className="w-full max-w-full" style={{ color: 'var(--color-text)' }}>
       {isJa ? <PrivacyJa /> : <PrivacyEn />}
 
       <div className="mt-8 pt-6" style={{ borderTop: '1px solid var(--color-border)' }}>
         <Link
           href={`/${locale}`}
           className="text-sm underline"
-          style={{ color: '#3B82F6' }}
+          style={{ color: 'var(--color-primary)' }}
         >
           {isJa ? 'ホームに戻る' : 'Back to Home'}
         </Link>
