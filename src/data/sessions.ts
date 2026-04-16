@@ -39,7 +39,8 @@ const SESSION_TEXT_JA: Record<SessionId, { title: string; subtitle: string; keyI
   s01: {
     title: "DevRevとは何か：AIネイティブな作業基盤",
     subtitle: "データモデル、Memory、Computer の土台",
-    keyInsight: "既存のSoRと運用を保ちながら、文脈・権限・根拠を同一データモデルで束ねる。汎用AIとのレイヤー差と、Memory中心の4基盤でComputerの立ち位置をつかむ",
+    keyInsight:
+      "Claude単体で使うよりも、DevRevと組み合わせることで、業務回答をより速く正確に、低コストで得られる。既存のSoRと運用を保ちながら、文脈・権限・根拠を同一データモデルで束ねる4基盤の仕組みを理解する",
   },
   s02: {
     title: "はじめてのDevRev：セットアップと基本操作",
@@ -112,7 +113,7 @@ const SESSION_TEXT_EN: Record<SessionId, { title: string; subtitle: string; keyI
   s01: {
     title: "What Is DevRev: The AI-Native Work Platform",
     subtitle: "Data model, Memory, and Computer foundations",
-    keyInsight: "Bind SoR-aligned context, permissions, and evidence on one data model—not a support-only stack. Layering vs. general AI plus four foundations centered on Memory",
+    keyInsight: "Combining Claude with DevRev delivers business answers faster, more accurately, and at lower cost than using it alone. Understand the four foundations that bind context and permissions on a single data model.",
   },
   s02: {
     title: "Getting Started with DevRev",

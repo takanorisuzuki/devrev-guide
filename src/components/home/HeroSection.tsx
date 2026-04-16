@@ -9,7 +9,8 @@ const HERO_TEXT = {
   en: {
     badge: 'DevRev Learning Guide',
     heading: <>One platform for Dev, Rev, and AI.<br />Learn DevRev from the ground up.</>,
-    description: `A ${SESSION_COUNT}-session practical course to master DevRev — from foundations and platform usage to developer extensions. Based on official sources; starts with how Memory, search, and controls fit together.`,
+    description: `A ${SESSION_COUNT}-session course from foundations through platform use and developer extensions. Based on official sources, you learn how to layer memory, search, and controls while keeping existing systems of record — and how combining Claude with DevRev delivers faster, more accurate, and cost-efficient business results compared to using it alone.`,
+    memoryCostLink: 'Details: Memory & cost',
     cta: 'Start with Session 1',
     stats: [
       { label: 'Sessions', value: String(SESSION_COUNT) },
@@ -20,7 +21,8 @@ const HERO_TEXT = {
   ja: {
     badge: 'DevRev学習ガイド',
     heading: <>作り手と使い手を、AIでひとつに。<br />DevRevを基礎から学ぶ。</>,
-    description: `DevRevの基礎からプラットフォーム活用、開発者向け拡張まで、${SESSION_COUNT}セッションで体系的に学ぶ実践コース。公式情報をもとに、既存のSoRと運用を保ちながらMemory・検索・統制をどう積み上げるかから入る。`,
+    description: `DevRevの基礎からプラットフォーム活用、開発者向け拡張まで、${SESSION_COUNT}セッションで体系的に学ぶ実践コース。公式情報をもとに、既存のSoRと運用を保ちながらMemory・検索・統制の積み上げ方を押さえ、Claude単体で使うよりも、DevRevと組み合わせることで、より速く正確に、低コストで業務に活用する方法も学べる。`,
+    memoryCostLink: '詳しく: Memoryとコスト',
     cta: 'セッション1から始める',
     stats: [
       { label: 'セッション', value: String(SESSION_COUNT) },
@@ -80,16 +82,25 @@ export default function HeroSection({ locale }: { locale: string }) {
           ))}
         </div>
 
-        <Link
-          href={`/${locale}/s01`}
-          className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm transition-opacity hover:opacity-90"
-          style={{ background: 'linear-gradient(135deg, #005A9E, #0070C0)', color: '#ffffff', border: '1px solid rgba(255,255,255,0.2)' }}
-        >
-          {t.cta}
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-            <path d="M5 12h14M12 5l7 7-7 7" />
-          </svg>
-        </Link>
+        <div className="flex flex-wrap items-center gap-3">
+          <Link
+            href={`/${locale}/s01`}
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm transition-opacity hover:opacity-90"
+            style={{ background: 'linear-gradient(135deg, #005A9E, #0070C0)', color: '#ffffff', border: '1px solid rgba(255,255,255,0.2)' }}
+          >
+            {t.cta}
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+          </Link>
+          <Link
+            href={`/${locale}/memory-vs-fetch-ai-accuracy-and-cost`}
+            className="text-sm font-medium underline underline-offset-4 transition-opacity hover:opacity-90"
+            style={{ color: '#E0F2FE' }}
+          >
+            {t.memoryCostLink}
+          </Link>
+        </div>
       </div>
     </div>
   )
