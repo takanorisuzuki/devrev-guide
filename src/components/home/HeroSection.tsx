@@ -10,6 +10,7 @@ const HERO_TEXT = {
     badge: 'DevRev Learning Guide',
     heading: <>One platform for Dev, Rev, and AI.<br />Learn DevRev from the ground up.</>,
     description: `A ${SESSION_COUNT}-session course from foundations through platform use and developer extensions. Based on official sources, you learn how to layer memory, search, and controls while keeping existing systems of record — and how combining Claude with DevRev delivers faster, more accurate, and cost-efficient business results compared to using it alone.`,
+    memoryCostLink: 'Details: Memory & cost',
     cta: 'Start with Session 1',
     stats: [
       { label: 'Sessions', value: String(SESSION_COUNT) },
@@ -21,6 +22,7 @@ const HERO_TEXT = {
     badge: 'DevRev学習ガイド',
     heading: <>作り手と使い手を、AIでひとつに。<br />DevRevを基礎から学ぶ。</>,
     description: `DevRevの基礎からプラットフォーム活用、開発者向け拡張まで、${SESSION_COUNT}セッションで体系的に学ぶ実践コース。公式情報をもとに、既存のSoRと運用を保ちながらMemory・検索・統制の積み上げ方を押さえ、Claude単体で使うよりも、DevRevと組み合わせることで、より速く正確に、低コストで業務に活用する方法も学べる。`,
+    memoryCostLink: '詳しく: Memoryとコスト',
     cta: 'セッション1から始める',
     stats: [
       { label: 'セッション', value: String(SESSION_COUNT) },
@@ -96,7 +98,7 @@ export default function HeroSection({ locale }: { locale: string }) {
             className="text-sm font-medium underline underline-offset-4 transition-opacity hover:opacity-90"
             style={{ color: '#E0F2FE' }}
           >
-            {locale === 'ja' ? '詳しく: Memoryとコスト' : 'Details: Memory & cost'}
+            {t.memoryCostLink}
           </Link>
         </div>
       </div>
