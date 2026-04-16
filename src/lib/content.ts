@@ -29,6 +29,11 @@ export async function getArchitectureContent(locale: string) {
   return processMarkdownFile(filePath)
 }
 
+export async function getPerspectivesContent(locale: string) {
+  const filePath = join(process.cwd(), 'docs', locale, 'perspectives.md')
+  return processMarkdownFile(filePath)
+}
+
 export function getSessionIds(): string[] {
   return [...SESSION_ORDER]
 }
