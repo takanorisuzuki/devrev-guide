@@ -69,6 +69,13 @@ export default function Header({ locale }: HeaderProps) {
             >
               {locale === 'ja' ? 'オブジェクト構造' : 'Object model'}
             </Link>
+            <Link
+              href={`/${locale}/perspectives`}
+              className="text-xs px-2 py-1 rounded-md transition-colors"
+              style={{ color: 'var(--color-text-secondary)', border: '1px solid var(--color-border)' }}
+            >
+              {locale === 'ja' ? 'Perspectives' : 'Perspectives'}
+            </Link>
           </div>
 
           {/* Language switcher */}

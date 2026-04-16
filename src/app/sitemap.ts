@@ -3,6 +3,7 @@ import type { MetadataRoute } from 'next'
 const BASE_URL = 'https://devrev-guide.vercel.app'
 const LOCALES = ['en', 'ja']
 const SESSION_IDS = ['s01', 's02', 's03', 's04', 's05', 's06', 's07', 's08', 's09', 's10', 's11', 's12', 's13']
+const REFERENCE_PAGES = ['architecture', 'perspectives']
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date().toISOString()
@@ -30,5 +31,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.3,
   }))
 
-  return [...homePages, ...sessionPages, ...privacyPages]
+  const referencePages = LOCALES.flatMap((locale) =>
+    REFERENCE_PAGES.map((slug) => ({
+      url: `${BASE_URL}/${locale}/${slug}`,
+      lastModified: now,
+      changeFrequency: 'monthly' as const,
+      priority: 0.4,
+    }))
+  )
+
+  return [...homePages, ...sessionPages, ...referencePages, ...privacyPages]
 }
