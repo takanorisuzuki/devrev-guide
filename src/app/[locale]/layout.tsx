@@ -25,8 +25,9 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
             <div className="hidden md:block">
               <Sidebar locale={locale} />
             </div>
-            <main className="flex-1 min-w-0 px-6 py-8 max-w-4xl">
-              {children}
+            {/* 全幅のまま内側だけ max-width（中央寄せ）— ワイド画面で右側だけ真っ白にならない */}
+            <main className="flex flex-1 min-w-0 justify-center">
+              <div className="w-full max-w-7xl px-6 py-8">{children}</div>
             </main>
           </div>
           <footer className="text-center py-4 text-xs" style={{ color: 'var(--color-text-secondary)', borderTop: '1px solid var(--color-border)' }}>

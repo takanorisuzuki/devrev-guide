@@ -36,9 +36,9 @@ const LAYER_LABEL: Record<string, Record<string, string>> = {
 }
 
 const LAYER_COLOR: Record<string, string> = {
-  foundations: '#3B82F6',
-  platform: '#10B981',
-  developer: '#F59E0B',
+  foundations: '#0070C0',
+  platform: '#0891B2',
+  developer: '#7C3AED',
 }
 
 export async function generateMetadata({ params }: SessionPageProps) {
@@ -47,12 +47,13 @@ export async function generateMetadata({ params }: SessionPageProps) {
   const meta = sessionMeta[session as SessionId]
   if (!meta) return {}
   const siteName = 'DevRev Guide'
+  const descriptionPlain = meta.keyInsight.replace(/\s*\n\s*/g, ' ').trim()
   return {
     title: `${meta.title} — ${siteName}`,
-    description: meta.keyInsight,
+    description: descriptionPlain,
     openGraph: {
       title: meta.title,
-      description: meta.keyInsight,
+      description: descriptionPlain,
       siteName,
       locale: locale === 'en' ? 'en_US' : 'ja_JP',
     },
@@ -85,7 +86,7 @@ export default async function SessionPage({ params }: SessionPageProps) {
   const lang = locale === 'en' ? 'en' : 'ja'
 
   return (
-    <article className="max-w-3xl">
+    <article className="w-full max-w-full">
       <div className="mb-8">
         <div className="flex flex-wrap items-center gap-2 mb-3">
           <span
@@ -132,7 +133,7 @@ export default async function SessionPage({ params }: SessionPageProps) {
             <p className="text-xs font-semibold uppercase tracking-wider mb-1" style={{ color: layerColor }}>
               Key Insight
             </p>
-            <p className="text-sm leading-relaxed" style={{ color: 'var(--color-text)' }}>
+            <p className="whitespace-pre-line text-sm leading-relaxed" style={{ color: 'var(--color-text)' }}>
               {meta.keyInsight}
             </p>
           </div>

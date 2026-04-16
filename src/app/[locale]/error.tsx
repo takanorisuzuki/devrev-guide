@@ -15,8 +15,8 @@ export default function Error({ reset }: { reset: () => void }) {
       <div className="flex gap-3">
         <button
           onClick={reset}
-          className="px-4 py-2 rounded-lg text-sm font-medium"
-          style={{ backgroundColor: '#3B82F6', color: '#fff' }}
+          className="px-4 py-2 rounded-lg text-sm font-medium transition-opacity hover:opacity-90"
+          style={{ backgroundColor: 'var(--color-primary)', color: '#fff' }}
         >
           {isJa ? '再試行' : 'Try again'}
         </button>

@@ -28,7 +28,7 @@ export default async function ArchitecturePage({ params }: ArchitecturePageProps
   const { locale } = await params
   const { content } = await getArchitectureContent(locale)
   return (
-    <article className="max-w-3xl">
+    <article className="w-full max-w-full">
       <SessionContent content={content} />
     </article>
   )
