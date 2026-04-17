@@ -30,7 +30,10 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
               <div className="w-full max-w-7xl px-6 py-8">{children}</div>
             </main>
           </div>
-          <footer className="text-center py-4 text-xs" style={{ color: 'var(--color-text-secondary)', borderTop: '1px solid var(--color-border)' }}>
+          <footer
+            className="text-center py-4 text-xs"
+            style={{ color: 'var(--color-text-secondary)', borderTop: '1px solid var(--color-border)' }}
+          >
             <Link href={`/${locale}/privacy`} className="underline hover:opacity-80">
               {isJa ? 'プライバシーポリシー' : 'Privacy Policy'}
             </Link>
