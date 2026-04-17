@@ -40,7 +40,7 @@ const SESSION_TEXT_JA: Record<SessionId, { title: string; subtitle: string; keyI
     title: "DevRevとは何か：AIネイティブな作業基盤",
     subtitle: "データモデル、Memory、Computer の土台",
     keyInsight:
-      "Claude単体で使うよりも、DevRevと組み合わせることで、業務回答をより速く正確に、低コストで得られる。\n既存のSoRと運用を保ちながら、文脈・権限・根拠を同一データモデルで束ねる4基盤の仕組みを理解する",
+      "Claude等LLM単体で使うよりも、DevRevと組み合わせることで、業務回答をより速く正確に、低コストで得られる。\n既存のSoRと運用を保ちながら、文脈・権限・根拠を同一データモデルで束ねる4基盤の仕組みを理解する",
   },
   s02: {
     title: "はじめてのDevRev：セットアップと基本操作",
