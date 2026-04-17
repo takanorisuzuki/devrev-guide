@@ -20,7 +20,8 @@ export function generateStaticParams() {
   return [{ locale: 'en' }, { locale: 'ja' }]
 }
 
-const X_PROFILE_URL = 'https://x.com/takanorisuzuki'
+const X_HANDLE = 'takanorisuzuki'
+const X_PROFILE_URL = `https://x.com/${X_HANDLE}`
 
 function PrivacyJa() {
   return (
@@ -76,7 +77,7 @@ function PrivacyJa() {
             className="underline"
             style={{ color: 'var(--color-primary)' }}
           >
-            @takanorisuzuki
+            @{X_HANDLE}
           </a>
           {' '}までご連絡ください。
         </p>
@@ -150,7 +151,7 @@ function PrivacyEn() {
             className="underline"
             style={{ color: 'var(--color-primary)' }}
           >
-            @takanorisuzuki
+            @{X_HANDLE}
           </a>
           .
         </p>
