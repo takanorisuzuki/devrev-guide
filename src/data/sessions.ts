@@ -113,7 +113,7 @@ const SESSION_TEXT_EN: Record<SessionId, { title: string; subtitle: string; keyI
   s01: {
     title: "What Is DevRev: The AI-Native Work Platform",
     subtitle: "Data model, Memory, and Computer foundations",
-    keyInsight: "Combining Claude with DevRev delivers business answers faster, more accurately, and at lower cost than using it alone.\nUnderstand the four foundations that bind context and permissions on a single data model.",
+    keyInsight: "Combining LLMs (e.g. Claude) with DevRev delivers business answers faster, more accurately, and at lower cost than using an LLM alone.\nUnderstand the four foundations that bind context and permissions on a single data model.",
   },
   s02: {
     title: "Getting Started with DevRev",
