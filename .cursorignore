@@ -1,4 +1,0 @@
-# src/data: only session catalog is editable/indexed by Cursor agent
-src/data/*
-!src/data/sessions.ts
-

@@ -9,7 +9,7 @@ const HERO_TEXT = {
   en: {
     badge: 'DevRev Learning Guide',
     heading: <>One platform for Dev, Rev, and AI.<br />Learn DevRev from the ground up.</>,
-    description: `A ${SESSION_COUNT}-session course from foundations through platform use and developer extensions. Based on official sources, you learn how to layer memory, search, and controls while keeping existing systems of record — and how combining Claude with DevRev delivers faster, more accurate, and cost-efficient business results compared to using it alone.`,
+    description: `A ${SESSION_COUNT}-session course from foundations through platform use and developer extensions. Based on official sources, you learn how to layer memory, search, and controls while keeping existing systems of record — and how combining LLMs (e.g. Claude) with DevRev delivers faster, more accurate, and cost-efficient business results compared to using an LLM alone.`,
     memoryCostLink: 'Details: Memory & cost',
     cta: 'Start with Session 1',
     stats: [
@@ -21,7 +21,7 @@ const HERO_TEXT = {
   ja: {
     badge: 'DevRev学習ガイド',
     heading: <>作り手と使い手を、AIでひとつに。<br />DevRevを基礎から学ぶ。</>,
-    description: `DevRevの基礎からプラットフォーム活用、開発者向け拡張まで、${SESSION_COUNT}セッションで体系的に学ぶ実践コース。公式情報をもとに、既存のSoRと運用を保ちながらMemory・検索・統制の積み上げ方を押さえ、Claude単体で使うよりも、DevRevと組み合わせることで、より速く正確に、低コストで業務に活用する方法も学べる。`,
+    description: `DevRevの基礎からプラットフォーム活用、開発者向け拡張まで、${SESSION_COUNT}セッションで体系的に学ぶ実践コース。公式情報をもとに、既存のSoRと運用を保ちながらMemory・検索・統制の積み上げ方を押さえ、Claude等LLM単体で使うよりも、DevRevと組み合わせることで、より速く正確に、低コストで業務に活用する方法も学べる。`,
     memoryCostLink: '詳しく: Memoryとコスト',
     cta: 'セッション1から始める',
     stats: [

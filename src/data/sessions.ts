@@ -40,7 +40,7 @@ const SESSION_TEXT_JA: Record<SessionId, { title: string; subtitle: string; keyI
     title: "DevRevとは何か：AIネイティブな作業基盤",
     subtitle: "データモデル、Memory、Computer の土台",
     keyInsight:
-      "Claude単体で使うよりも、DevRevと組み合わせることで、業務回答をより速く正確に、低コストで得られる。\n既存のSoRと運用を保ちながら、文脈・権限・根拠を同一データモデルで束ねる4基盤の仕組みを理解する",
+      "Claude等LLM単体で使うよりも、DevRevと組み合わせることで、業務回答をより速く正確に、低コストで得られる。\n既存のSoRと運用を保ちながら、文脈・権限・根拠を同一データモデルで束ねる4基盤の仕組みを理解する",
   },
   s02: {
     title: "はじめてのDevRev：セットアップと基本操作",
@@ -113,7 +113,7 @@ const SESSION_TEXT_EN: Record<SessionId, { title: string; subtitle: string; keyI
   s01: {
     title: "What Is DevRev: The AI-Native Work Platform",
     subtitle: "Data model, Memory, and Computer foundations",
-    keyInsight: "Combining Claude with DevRev delivers business answers faster, more accurately, and at lower cost than using it alone.\nUnderstand the four foundations that bind context and permissions on a single data model.",
+    keyInsight: "Combining LLMs (e.g. Claude) with DevRev delivers business answers faster, more accurately, and at lower cost than using an LLM alone.\nUnderstand the four foundations that bind context and permissions on a single data model.",
   },
   s02: {
     title: "Getting Started with DevRev",
