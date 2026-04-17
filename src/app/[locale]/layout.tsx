@@ -34,11 +34,9 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
             className="text-center py-4 text-xs"
             style={{ color: 'var(--color-text-secondary)', borderTop: '1px solid var(--color-border)' }}
           >
-            <div className="flex items-center justify-center gap-4">
-              <Link href={`/${locale}/privacy`} className="underline hover:opacity-80">
-                {isJa ? 'プライバシーポリシー' : 'Privacy Policy'}
-              </Link>
-            </div>
+            <Link href={`/${locale}/privacy`} className="underline hover:opacity-80">
+              {isJa ? 'プライバシーポリシー' : 'Privacy Policy'}
+            </Link>
           </footer>
         </div>
         {process.env.NODE_ENV === 'production' && process.env.NEXT_PUBLIC_GA_ID && (

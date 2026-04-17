@@ -66,7 +66,17 @@ function PrivacyJa() {
       <section className="mb-6">
         <h2 className="text-xl font-semibold mb-3">お問い合わせ</h2>
         <p className="leading-relaxed">
-          本プライバシーポリシーに関するご質問は、サイト管理者までご連絡ください。
+          本プライバシーポリシーに関するご質問は、X（旧Twitter）の{' '}
+          <a
+            href="https://x.com/takanorisuzuki"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline"
+            style={{ color: 'var(--color-primary)' }}
+          >
+            @takanorisuzuki
+          </a>
+          {' '}までご連絡ください。
         </p>
       </section>
 
@@ -130,7 +140,17 @@ function PrivacyEn() {
       <section className="mb-6">
         <h2 className="text-xl font-semibold mb-3">Contact</h2>
         <p className="leading-relaxed">
-          If you have questions about this Privacy Policy, please contact the site administrator.
+          If you have questions about this Privacy Policy, please contact us on X (formerly Twitter) at{' '}
+          <a
+            href="https://x.com/takanorisuzuki"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline"
+            style={{ color: 'var(--color-primary)' }}
+          >
+            @takanorisuzuki
+          </a>
+          .
         </p>
       </section>
 
