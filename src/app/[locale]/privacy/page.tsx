@@ -20,6 +20,8 @@ export function generateStaticParams() {
   return [{ locale: 'en' }, { locale: 'ja' }]
 }
 
+const X_PROFILE_URL = 'https://x.com/takanorisuzuki'
+
 function PrivacyJa() {
   return (
     <>
@@ -68,7 +70,7 @@ function PrivacyJa() {
         <p className="leading-relaxed">
           本プライバシーポリシーに関するご質問は、X（旧Twitter）の{' '}
           <a
-            href="https://x.com/takanorisuzuki"
+            href={X_PROFILE_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="underline"
@@ -142,7 +144,7 @@ function PrivacyEn() {
         <p className="leading-relaxed">
           If you have questions about this Privacy Policy, please contact us on X (formerly Twitter) at{' '}
           <a
-            href="https://x.com/takanorisuzuki"
+            href={X_PROFILE_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="underline"
