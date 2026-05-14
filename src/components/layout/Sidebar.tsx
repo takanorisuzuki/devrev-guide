@@ -178,6 +178,26 @@ export default function Sidebar({ locale }: SidebarProps) {
                 </span>
               </Link>
             </li>
+            <li>
+              <Link
+                href={`/${locale}/article-access-control`}
+                className="flex items-start gap-2 px-2 py-1.5 rounded-md text-sm transition-colors min-w-0"
+                style={
+                  currentSession === 'article-access-control'
+                    ? {
+                        backgroundColor: 'rgba(0,112,192,0.08)',
+                        color: '#0070C0',
+                        fontWeight: 600,
+                      }
+                    : { color: 'var(--color-text-secondary)' }
+                }
+              >
+                <span className="font-mono text-xs shrink-0 mt-0.5 w-8 opacity-60 text-right">art</span>
+                <span className="flex-1 leading-snug min-w-0 truncate">
+                  {locale === 'ja' ? 'Articleアクセス制御' : 'Article access control'}
+                </span>
+              </Link>
+            </li>
           </ul>
         </div>
       </nav>
