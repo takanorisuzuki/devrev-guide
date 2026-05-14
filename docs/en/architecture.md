@@ -198,13 +198,13 @@ Configure custom fields under Settings > Object Customization. Creating custom o
 
 ### What Memory is
 
-Memory is DevRev's **AI-native knowledge graph substrate**. It is not a single database or search index — it is a composed stack of specialised stores that together form a unified data layer.
+Memory is DevRev's **AI-native knowledge graph substrate**. It is not a single database or search index — it is a composed stack of specialized stores that together form a unified data layer.
 
 > "The key architectural question is not which AI model you use — it is what that model is reasoning over."
 
 ### Components
 
-Memory comprises the following specialised components. The platform routes queries to the right store depending on the question.
+Memory comprises the following specialized components. The platform routes queries to the right store depending on the question.
 
 | Component | Purpose |
 |-----------|---------|
