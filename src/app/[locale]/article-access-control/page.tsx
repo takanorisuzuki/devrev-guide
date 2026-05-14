@@ -1,15 +1,15 @@
 import SessionContent from '@/components/session/SessionContent'
-import { getArchitectureContent } from '@/lib/content'
+import { getArticleAccessControlContent } from '@/lib/content'
 import { toOgLocale } from '@/lib/locale'
 
-interface ArchitecturePageProps {
+interface ArticleAccessControlPageProps {
   params: Promise<{ locale: string }>
 }
 
-export async function generateMetadata({ params }: ArchitecturePageProps) {
+export async function generateMetadata({ params }: ArticleAccessControlPageProps) {
   const { locale } = await params
-  const { frontmatter } = await getArchitectureContent(locale)
-  const title = typeof frontmatter.title === 'string' ? frontmatter.title : 'Architecture'
+  const { frontmatter } = await getArticleAccessControlContent(locale)
+  const title = typeof frontmatter.title === 'string' ? frontmatter.title : 'Article Access Control'
   const description =
     typeof frontmatter.description === 'string' ? frontmatter.description : undefined
   const siteName = 'DevRev Guide'
@@ -25,9 +25,9 @@ export async function generateMetadata({ params }: ArchitecturePageProps) {
   }
 }
 
-export default async function ArchitecturePage({ params }: ArchitecturePageProps) {
+export default async function ArticleAccessControlPage({ params }: ArticleAccessControlPageProps) {
   const { locale } = await params
-  const { content } = await getArchitectureContent(locale)
+  const { content } = await getArticleAccessControlContent(locale)
   return (
     <article className="w-full max-w-full">
       <SessionContent content={content} />

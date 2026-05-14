@@ -1,5 +1,6 @@
 import SessionContent from '@/components/session/SessionContent'
 import { getPerspectivesContent } from '@/lib/content'
+import { toOgLocale } from '@/lib/locale'
 
 interface PerspectivesPageProps {
   params: Promise<{ locale: string }>
@@ -19,7 +20,7 @@ export async function generateMetadata({ params }: PerspectivesPageProps) {
       title,
       description,
       siteName,
-      locale: locale === 'en' ? 'en_US' : 'ja_JP',
+      locale: toOgLocale(locale),
     },
   }
 }
