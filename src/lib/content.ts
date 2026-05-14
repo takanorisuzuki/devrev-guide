@@ -39,6 +39,11 @@ export async function getMemoryVsFetchAiContent(locale: string) {
   return processMarkdownFile(filePath)
 }
 
+export async function getArticleAccessControlContent(locale: string) {
+  const filePath = join(process.cwd(), 'docs', locale, 'article-access-control.md')
+  return processMarkdownFile(filePath)
+}
+
 export function getSessionIds(): string[] {
   return [...SESSION_ORDER]
 }
