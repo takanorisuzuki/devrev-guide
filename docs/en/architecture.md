@@ -192,6 +192,107 @@ Example: custom_object.vendor
 
 Configure custom fields under Settings > Object Customization. Creating custom objects is usually done through the API (see [s12](/en/s12)).
 
+## Computer Memory architecture
+
+[s01](/en/s01) and [s14](/en/s14) introduced **Computer Memory** as one of the four foundations. This section explains the technical internals. Memory is built on top of the object model documented above.
+
+### What Memory is
+
+Memory is DevRev's **AI-native knowledge graph substrate**. It is not a single database or search index — it is a composed stack of specialized stores that together form a unified data layer.
+
+> "The key architectural question is not which AI model you use — it is what that model is reasoning over."
+
+### Components
+
+Memory comprises the following specialized components. The platform routes queries to the right store depending on the question.
+
+| Component | Purpose |
+|-----------|---------|
+| Context Registry | Annotations describing the semantics of structured data elements — the "map legend" for AI |
+| Data Warehouse | Columnar storage for large-scale analytics (Apache Parquet + Arrow) |
+| Relational Database | Transactional, highly structured data |
+| Inverted Keyword Index | Powers keyword/syntactic search |
+| Vector Database | Stores embeddings for semantic search |
+| Graph Database | Stores relationships and connections between entities |
+| Permissions Store | Maintains permission mapping for every entity, field, and user |
+| Time Series Database | Time-indexed data for temporal analysis and "time travel" |
+
+### "Searching" vs "remembering"
+
+Typical AI systems (RAG) search for documents and have an LLM synthesise an answer. Computer Memory takes a fundamentally different approach.
+
+| Dimension | Typical RAG | Computer Memory |
+|-----------|-------------|-----------------|
+| Query path | Document retrieval → LLM synthesis | NL → SQL → deterministic result |
+| Reproducibility | Probabilistic (same question may yield different answers) | Deterministic (same question, same answer) |
+| Token cost | Scales with retrieval volume | Scales with result set size (not source data size) |
+| Freshness | Depends on crawl cycle (minutes to hours) | Continuous CDC, immediate |
+
+The query execution path:
+
+```
+User question
+  → GetKGSchema (identify relevant node types)
+  → GetNodeSchema (get field definitions)
+  → NLToSQL (convert natural language to SQL)
+  → ExecuteSQL (return structured result)
+  → Answer generation
+```
+
+The LLM does not guess from retrieved documents — it executes a deterministic query and reads the result. This is the core difference between "searching" and "remembering."
+
+### The ontology: pre-built, not inferred
+
+Memory ships with a **pre-built ontology** for the customer-product-engineering domain. When integrations (AirSync) bring data in, the platform already knows what a customer account, support ticket, product part, and engineering issue are and how they relate.
+
+This is the same object model documented at the top of this page:
+
+- **Product hierarchy:** Product → Capability → Feature → Enhancement
+- **Work objects:** Issue, Ticket, Incident, Conversation
+- **Customer objects:** Account, RevOrg, RevUser
+- **Relationships:** depends, duplicates, owns, creates, belongs, fixes, implements, improves
+
+These relationships are first-class entities in the graph — not inferred at query time.
+
+### AirSync: how data enters Memory
+
+AirSync (formerly Airdrop) is the bidirectional sync engine. It connects 50+ tools (Salesforce, Jira, Zendesk, Slack, GitHub, Google Workspace, and more) to Memory.
+
+| Property | Description |
+|----------|-------------|
+| Schema fidelity | Composable schema fragments mirror source systems including conditional logic, stage constraints, and field dependencies |
+| Identity model | Source system ACLs enforced at the platform level with zero performance penalty |
+| Sync model | Stateless incremental sync maintaining referential integrity |
+| Write safety | Full-fidelity structure + permissions intact → safe and auditable write-back to systems of record |
+
+### Decoupled from any specific LLM
+
+Memory does not depend on a particular LLM.
+
+- Structured queries (SQL) execute without an LLM
+- The LLM is used to convert natural language to SQL and to format results for humans
+- Switching LLM providers has no impact on the Memory layer
+- Customer data is never used for LLM training
+
+### Context Registry: the "map legend" for AI
+
+The Context Registry is one of Memory's most important components.
+
+Raw database schemas alone do not tell AI the difference between a "ticket ID" and a "user ID." The Context Registry annotates schemas with field descriptions, allowed values, and semantic context — enabling agents to understand data and make autonomous decisions.
+
+This is what powers NL-to-SQL accuracy.
+
+### Where this section fits
+
+| Where | What |
+|-------|------|
+| [s01](/en/s01) | Overview of Computer's four foundations (AirSync, Memory, Foundational Services, Agent Studio) |
+| [s03](/en/s03) | The Identity / Parts / Work data model |
+| This section | Memory technical architecture |
+| [s14](/en/s14) | How Agent Studio uses Memory |
+
+---
+
 ## What this design is for
 
 A learner-oriented summary of why the platform splits work across these objects.
