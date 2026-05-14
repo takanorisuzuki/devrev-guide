@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation'
 import { getSessionContent, getSessionIds } from '@/lib/content'
+import { toOgLocale } from '@/lib/locale'
 import { getSessionMeta, SessionId } from '@/data/sessions'
 import SessionContent from '@/components/session/SessionContent'
 import PrevNextNav from '@/components/session/PrevNextNav'
@@ -55,7 +56,7 @@ export async function generateMetadata({ params }: SessionPageProps) {
       title: meta.title,
       description: descriptionPlain,
       siteName,
-      locale: locale === 'en' ? 'en_US' : 'ja_JP',
+      locale: toOgLocale(locale),
     },
   }
 }

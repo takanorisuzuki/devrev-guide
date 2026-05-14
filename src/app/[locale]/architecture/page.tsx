@@ -1,5 +1,6 @@
 import SessionContent from '@/components/session/SessionContent'
 import { getArchitectureContent } from '@/lib/content'
+import { toOgLocale } from '@/lib/locale'
 
 interface ArchitecturePageProps {
   params: Promise<{ locale: string }>
@@ -19,7 +20,7 @@ export async function generateMetadata({ params }: ArchitecturePageProps) {
       title,
       description,
       siteName,
-      locale: locale === 'en' ? 'en_US' : 'ja_JP',
+      locale: toOgLocale(locale),
     },
   }
 }

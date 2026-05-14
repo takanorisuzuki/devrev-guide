@@ -1,5 +1,6 @@
 import HeroSection from '@/components/home/HeroSection'
 import SessionGrid from '@/components/home/SessionGrid'
+import { toOgLocale } from '@/lib/locale'
 
 interface HomePageProps {
   params: Promise<{ locale: string }>
@@ -19,7 +20,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
         ? '公式情報をもとにDevRevを14セッションで学ぶ。Memory・権限・根拠の基盤に加え、Claude等LLM単体で使うよりも、DevRevと組み合わせることで、より速く正確で低コストな業務活用方法も扱う。'
         : 'Learn DevRev foundations and extensions from official sources. Compared to using LLMs (e.g. Claude) alone, combining them with DevRev delivers faster, more accurate, lower-cost results.',
       siteName: 'DevRev Guide',
-      locale: locale === 'en' ? 'en_US' : 'ja_JP',
+      locale: toOgLocale(locale),
     },
   }
 }
