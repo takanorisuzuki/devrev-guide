@@ -1,6 +1,6 @@
 import { SessionId } from './sessions';
 
-export type PersonaId = 'support' | 'sales' | 'developer' | 'leader';
+export type PersonaId = 'support' | 'sales' | 'developer' | 'executive';
 
 export type PersonaImportance = 'core' | 'recommended' | 'optional';
 
@@ -31,23 +31,23 @@ export const SESSION_PERSONAS: Record<SessionId, PersonaRelevance[]> = {
     { persona: 'support', importance: 'core', order: 1 },
     { persona: 'sales', importance: 'core', order: 1 },
     { persona: 'developer', importance: 'core', order: 1 },
-    { persona: 'leader', importance: 'core', order: 1 },
+    { persona: 'executive', importance: 'core', order: 1 },
   ],
   s02: [
     { persona: 'support', importance: 'core', order: 2 },
     { persona: 'sales', importance: 'core', order: 2 },
     { persona: 'developer', importance: 'core', order: 2 },
-    { persona: 'leader', importance: 'core', order: 2 },
+    { persona: 'executive', importance: 'core', order: 2 },
   ],
   s03: [
     { persona: 'sales', importance: 'core', order: 3 },
     { persona: 'developer', importance: 'core', order: 3 },
-    { persona: 'leader', importance: 'core', order: 3 },
+    { persona: 'executive', importance: 'core', order: 3 },
   ],
   s04: [
     { persona: 'support', importance: 'core', order: 3 },
     { persona: 'sales', importance: 'recommended', order: 6 },
-    { persona: 'leader', importance: 'recommended', order: 6 },
+    { persona: 'executive', importance: 'recommended', order: 6 },
   ],
   s05: [
     { persona: 'support', importance: 'core', order: 4 },
@@ -58,18 +58,18 @@ export const SESSION_PERSONAS: Record<SessionId, PersonaRelevance[]> = {
   s07: [
     { persona: 'sales', importance: 'core', order: 4 },
     { persona: 'developer', importance: 'core', order: 4 },
-    { persona: 'leader', importance: 'recommended', order: 7 },
+    { persona: 'executive', importance: 'recommended', order: 7 },
   ],
   s08: [
-    { persona: 'leader', importance: 'core', order: 4 },
+    { persona: 'executive', importance: 'core', order: 4 },
   ],
   s09: [
     { persona: 'sales', importance: 'core', order: 5 },
-    { persona: 'leader', importance: 'core', order: 5 },
+    { persona: 'executive', importance: 'core', order: 5 },
   ],
   s10: [
     { persona: 'support', importance: 'core', order: 5 },
-    { persona: 'leader', importance: 'recommended', order: 8 },
+    { persona: 'executive', importance: 'recommended', order: 8 },
   ],
   s11: [
     { persona: 'developer', importance: 'core', order: 5 },
@@ -107,9 +107,9 @@ const PERSONA_BASE: Record<PersonaId, Omit<PersonaMeta, 'totalCoreMinutes'>> = {
     coreSessions: ['s01', 's02', 's03', 's07', 's11', 's12'],
     recommendedSessions: ['s10', 's13', 's14'],
   },
-  leader: {
-    id: 'leader',
-    icon: '👥',
+  executive: {
+    id: 'executive',
+    icon: '📊',
     coreSessions: ['s01', 's02', 's03', 's08', 's09'],
     recommendedSessions: ['s04', 's07', 's10'],
   },
@@ -131,10 +131,10 @@ const PERSONA_TEXT_JA: Record<PersonaId, { label: string; shortLabel: string; de
     shortLabel: '開発者',
     description: '顧客文脈付きのIssueで、根拠ある優先度判断ができる世界へ',
   },
-  leader: {
-    label: 'チームリーダー',
-    shortLabel: 'リーダー',
-    description: 'ツール横断のKPIを1つのダッシュボードで可視化する世界へ',
+  executive: {
+    label: '経営層',
+    shortLabel: '経営層',
+    description: '各部門に聞かずとも全社のKPIと現場の実態を即座に把握する世界へ',
   },
 };
 
@@ -154,10 +154,10 @@ const PERSONA_TEXT_EN: Record<PersonaId, { label: string; shortLabel: string; de
     shortLabel: 'Developer',
     description: 'Issues with customer context - prioritize with evidence, not guesses',
   },
-  leader: {
-    label: 'Team Leader',
-    shortLabel: 'Leader',
-    description: 'Cross-tool KPIs in a single dashboard - no more spreadsheet gymnastics',
+  executive: {
+    label: 'Executive',
+    shortLabel: 'Executive',
+    description: 'Company-wide KPIs and ground truth without asking each department head',
   },
 };
 
@@ -177,7 +177,7 @@ function buildPersonaMeta(base: typeof PERSONA_BASE): Record<PersonaId, PersonaM
 
 const PERSONA_METAS = buildPersonaMeta(PERSONA_BASE);
 
-export const PERSONA_ORDER: PersonaId[] = ['support', 'sales', 'developer', 'leader'];
+export const PERSONA_ORDER: PersonaId[] = ['support', 'sales', 'developer', 'executive'];
 
 export function getPersonaMeta(locale: string): Record<PersonaId, PersonaLocalized> {
   const text = locale === 'ja' ? PERSONA_TEXT_JA : PERSONA_TEXT_EN;

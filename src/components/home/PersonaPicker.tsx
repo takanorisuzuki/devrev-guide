@@ -23,7 +23,7 @@ const PERSONA_COLORS: Record<PersonaId, { border: string; hoverBorder: string; b
     hoverBorder: 'rgba(0,112,192,0.50)',
     bg: 'rgba(0,112,192,0.04)',
   },
-  leader: {
+  executive: {
     border: 'rgba(124,58,237,0.20)',
     hoverBorder: 'rgba(124,58,237,0.50)',
     bg: 'rgba(124,58,237,0.04)',
