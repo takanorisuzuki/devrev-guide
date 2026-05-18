@@ -38,22 +38,29 @@ const STORIES_JA: Record<PersonaId, PersonaStory> = {
   sales: {
     persona: 'sales',
     characterName: '田中',
-    before: `田中は明日のQBRに向けて資料を作っている。Salesforceで契約情報を確認。Zendeskで直近のチケット件数を集計。Jiraで「あの機能いつリリースですか？」への回答を探す。Slackの過去スレッドを掘り返し、PMに進捗を確認。3つのツールと2人への確認で2時間経過。
+    before: `田中は明日のQBRに向けて資料を作っている。Salesforceで契約情報は確認できる。しかしチケットの状況はサポート部のZendeskにある。アクセス権がない。Slackでサポートリーダーに「A社のチケット状況教えてもらえますか？」とメンション。返事が来るまで待つ。
 
-QBR本番。顧客から「先月報告したバグはどうなりました？」と聞かれる。Jiraのチケット番号がわからない。「確認して折り返します」。`,
+開発進捗も同じ。Jiraのアクセス権はエンジニアリング部門だけが持っている。PMにSlackで「あの機能いつリリースですか？」と聞く。PMが会議中で、返事は3時間後。
+
+結局、QBR資料に書けるのは「確認中」の文字だけ。当日の朝にようやく「たぶん来月には」という曖昧な返事が来る。
+
+QBR本番。顧客から「先月報告したバグはどうなりました？」と聞かれる。サポートに聞いたがJira番号までは教えてもらえなかった。「確認して折り返します」。また誰かに聞いて、待つ。`,
     turning: `DevRevでAccountページを開く。田中の画面には：
 
-• Account健康スコア：チケット頻度・SLA達成率・CSAT推移が1画面
-• 直近のチケット→Issue紐づけ：「決済エラー」のチケット3件 → Issue #412に集約 → ステージ: In Review（今週リリース予定）
+• Account健康スコア：チケット頻度・SLA達成率・CSAT推移が1画面（サポートに聞かなくていい）
+• 直近のチケット→Issue紐づけ：「決済エラー」のチケット3件 → Issue #412に集約 → ステージ: In Review（今週リリース予定）。開発チームに聞かなくても進捗が見える
 • Opportunity連携：来期のアップセル提案に関連するFeature Requestが2件、Enhancementとして登録済み。ロードマップ上の位置が見える
+
+権限の壁がない。サポートのチケットも、開発のIssueも、営業に必要な範囲で同じ画面に出る。誰かに聞いて待つ時間がゼロ。
 
 QBR前の準備：Computerに「このAccountの直近3ヶ月のサマリーを作って」と依頼。2分で要約が出る。根拠はすべてチケット・Issue・リリースノートへのリンク付き。`,
     after: `田中のQBR当日：
 
-• 準備時間：2時間 → 15分
+• 準備時間：丸1日（人に聞いて待つ時間）→ 15分（自分で見るだけ）
 • 「バグいつ直る？」→ 即答（Issue→Releaseのリンクをそのまま共有）
 • 「こんな機能ほしい」→ その場でTicket起票 → 自動でEnhancementに紐づくのを顧客に見せる
-• 「この会社は我々の声を聞いてくれる」→ CSAT向上 → 更新率向上`,
+• 「確認して折り返します」→ もう言わなくていい
+• 部署の壁を越えた情報が、権限設計のもとで1画面に集まっている`,
   },
 
   developer: {
@@ -136,22 +143,29 @@ Edit the draft slightly and send. 2 minutes.`,
   sales: {
     persona: 'sales',
     characterName: 'Tanaka',
-    before: `Tanaka is preparing for tomorrow's QBR. Check contract info in Salesforce. Tally recent ticket counts in Zendesk. Search Jira for "when is that feature releasing?" Dig through old Slack threads and ping the PM for progress. 3 tools and 2 people later - 2 hours gone.
+    before: `Tanaka is preparing for tomorrow's QBR. Contract info is in Salesforce - accessible. But ticket status lives in the support team's Zendesk. No access. Slack the support lead: "Can you share Account A's ticket status?" Wait for a reply.
 
-QBR time. The customer asks: "What happened to the bug we reported last month?" Can't find the Jira ticket number. "Let me get back to you on that."`,
+Dev progress is the same story. Jira access is restricted to engineering. Slack the PM: "When is that feature releasing?" PM is in meetings. Reply comes 3 hours later.
+
+The QBR deck ends up with "checking..." in half the fields. A vague "probably next month" arrives the morning of.
+
+QBR time. Customer asks: "What happened to the bug we reported last month?" Support shared some info but not the Jira number. "Let me get back to you." Ask someone. Wait again.`,
     turning: `Open the Account page in DevRev. Tanaka's screen shows:
 
-• Account health score: ticket frequency, SLA compliance, CSAT trend in one view
-• Recent Ticket→Issue links: "Payment error" tickets (3) → Issue #412 → Stage: In Review (releasing this week)
+• Account health score: ticket frequency, SLA compliance, CSAT trend - all in one view (no need to ask support)
+• Recent Ticket→Issue links: "Payment error" tickets (3) → Issue #412 → Stage: In Review (releasing this week). Dev progress visible without asking engineering
 • Opportunity linkage: 2 Feature Requests tied to next quarter's upsell, registered as Enhancements with roadmap positions visible
+
+No access walls. Support tickets, dev Issues, and sales-relevant data appear on the same screen within proper permission boundaries. Zero time spent waiting for someone to get back to you.
 
 QBR prep: Ask Computer "Summarize this Account's last 3 months." Summary appears in 2 minutes. Every fact linked to its source ticket, Issue, or release note.`,
     after: `Tanaka's QBR day:
 
-• Prep time: 2 hours → 15 minutes
+• Prep time: a full day (asking people, waiting) → 15 minutes (just look it up)
 • "When's the bug fix?" → instant answer (share the Issue→Release link directly)
 • "We'd love this feature" → file a Ticket on the spot → show the customer it auto-links to an Enhancement
-• "This company listens to us" → CSAT up → renewal rate up`,
+• "Let me get back to you" → never needs to say that again
+• Cross-department information, unified under proper access controls, all in one screen`,
   },
 
   developer: {
