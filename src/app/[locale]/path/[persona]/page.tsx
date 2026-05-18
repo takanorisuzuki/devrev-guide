@@ -114,6 +114,7 @@ export default async function PersonaPage({ params }: PersonaPageProps) {
 
         <PersonaSessionList
           locale={locale}
+          personaId={personaId}
           coreSessions={p.coreSessions}
           recommendedSessions={p.recommendedSessions}
           sessionMeta={sessionMeta}
@@ -123,7 +124,7 @@ export default async function PersonaPage({ params }: PersonaPageProps) {
       {/* CTA */}
       <div className="mt-10 pt-6" style={{ borderTop: '1px solid var(--color-border)' }}>
         <Link
-          href={`/${locale}/${p.coreSessions[0]}`}
+          href={`/${locale}/${p.coreSessions[0]}?path=${personaId}`}
           className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-semibold text-sm transition-opacity hover:opacity-90"
           style={{ background: 'linear-gradient(135deg, #005A9E, #0070C0)', color: '#ffffff', border: '1px solid rgba(255,255,255,0.2)' }}
         >

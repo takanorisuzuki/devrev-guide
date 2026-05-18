@@ -1,9 +1,11 @@
+import { Suspense } from 'react'
 import { notFound } from 'next/navigation'
 import { getSessionContent, getSessionIds } from '@/lib/content'
 import { toOgLocale } from '@/lib/locale'
 import { getSessionMeta, SessionId } from '@/data/sessions'
 import SessionContent from '@/components/session/SessionContent'
 import PrevNextNav from '@/components/session/PrevNextNav'
+import PersonaPathNav from '@/components/session/PersonaPathNav'
 import SessionCompleteTracker from '@/components/session/SessionCompleteTracker'
 
 interface SessionPageProps {
@@ -88,6 +90,9 @@ export default async function SessionPage({ params }: SessionPageProps) {
 
   return (
     <article className="w-full max-w-4xl">
+      <Suspense fallback={null}>
+        <PersonaPathNav locale={locale} currentSession={session} />
+      </Suspense>
       <div className="mb-8">
         <div className="flex flex-wrap items-center gap-2 mb-3">
           <span

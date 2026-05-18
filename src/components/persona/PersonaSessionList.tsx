@@ -13,6 +13,7 @@ interface SessionLocalized {
 
 interface PersonaSessionListProps {
   locale: string
+  personaId: string
   coreSessions: SessionId[]
   recommendedSessions: SessionId[]
   sessionMeta: Record<SessionId, SessionLocalized>
@@ -25,6 +26,7 @@ const LEVEL_LABEL: Record<string, Record<string, string>> = {
 
 export default function PersonaSessionList({
   locale,
+  personaId,
   coreSessions,
   recommendedSessions,
   sessionMeta,
@@ -53,7 +55,7 @@ export default function PersonaSessionList({
             return (
               <Link
                 key={sessionId}
-                href={`/${locale}/${sessionId}`}
+                href={`/${locale}/${sessionId}?path=${personaId}`}
                 className="group flex items-center gap-3 p-3 rounded-xl transition-all hover:shadow-sm"
                 style={{
                   backgroundColor: 'var(--color-bg-secondary)',
@@ -124,7 +126,7 @@ export default function PersonaSessionList({
             return (
               <Link
                 key={sessionId}
-                href={`/${locale}/${sessionId}`}
+                href={`/${locale}/${sessionId}?path=${personaId}`}
                 className="group flex items-center gap-3 p-3 rounded-xl transition-all hover:shadow-sm"
                 style={{
                   backgroundColor: 'var(--color-bg)',
