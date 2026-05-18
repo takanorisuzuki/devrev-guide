@@ -12,7 +12,7 @@ interface PersonaPathNavProps {
 
 // Get the ordered session list for a persona (core then recommended)
 function getPersonaSessionOrder(personaId: PersonaId): SessionId[] {
-  const meta = getPersonaMeta('ja') // just need the structure, locale doesn't matter
+  const meta = getPersonaMeta('en')
   const p = meta[personaId]
   return [...p.coreSessions, ...p.recommendedSessions]
 }
@@ -39,7 +39,6 @@ export default function PersonaPathNav({ locale, currentSession }: PersonaPathNa
   const isCore = p.coreSessions.includes(currentSession as SessionId)
   const progress = currentIndex + 1
   const total = personaSessions.length
-  const coreTotal = p.coreSessions.length
 
   return (
     <div

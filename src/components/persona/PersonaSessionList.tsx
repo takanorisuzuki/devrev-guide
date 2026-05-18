@@ -1,5 +1,6 @@
 import Link from 'next/link'
-import { SessionId, SESSION_BASE } from '@/data/sessions'
+import { SessionId, LEVEL_LABEL } from '@/data/sessions'
+
 
 interface SessionLocalized {
   id: SessionId
@@ -17,11 +18,6 @@ interface PersonaSessionListProps {
   coreSessions: SessionId[]
   recommendedSessions: SessionId[]
   sessionMeta: Record<SessionId, SessionLocalized>
-}
-
-const LEVEL_LABEL: Record<string, Record<string, string>> = {
-  en: { beginner: 'Beginner', intermediate: 'Intermediate', advanced: 'Advanced' },
-  ja: { beginner: '初級', intermediate: '中級', advanced: '上級' },
 }
 
 export default function PersonaSessionList({

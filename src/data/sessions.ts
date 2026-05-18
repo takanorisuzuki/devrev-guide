@@ -63,9 +63,9 @@ const SESSION_TEXT_JA: Record<SessionId, { title: string; subtitle: string; keyI
     keyInsight: "ナレッジベースはArticleの集積だが、Collectionの設計とポータルの公開設定まで揃えて初めて顧客に届く。3つの設定が連動している",
   },
   s06: {
-    title: "PLuGとObserve Appで顧客を理解する",
+    title: "Computer for Your CustomersとComputer for User Insightsで顧客を理解する",
     subtitle: "Live Chat, Session Replay, and Funnels",
-    keyInsight: "PLuGは顧客接点のライブチャット、Observe Appはその行動を録画・分析するセット機能。2つを組み合わせて顧客理解を深める",
+    keyInsight: "Computer for Your Customersは顧客接点のライブチャット、Computer for User Insightsはその行動を録画・分析するセット機能。2つを組み合わせて顧客理解を深める",
   },
   s07: {
     title: "開発サイクルを管理する",
@@ -89,8 +89,8 @@ const SESSION_TEXT_JA: Record<SessionId, { title: string; subtitle: string; keyI
   },
   s11: {
     title: "Snap-inとマーケットプレイスを活用する",
-    subtitle: "Snap-ins, Marketplace, and AirSync",
-    keyInsight: "Snap-inはFeatured/All/Installedの3タブで管理する。Jira AirSyncはAPIトークン取得→Keyring Connection→フィールドマッピングの3ステップで接続できる",
+    subtitle: "Snap-ins, Marketplace, and Computer AirSync",
+    keyInsight: "Snap-inはFeatured/All/Installedの3タブで管理する。Jira Computer AirSyncはAPIトークン取得→Keyring Connection→フィールドマッピングの3ステップで接続できる",
   },
   s12: {
     title: "DevRev APIを使ってみる",
@@ -136,9 +136,9 @@ const SESSION_TEXT_EN: Record<SessionId, { title: string; subtitle: string; keyI
     keyInsight: "A Knowledge Base is more than articles — Collections and portal visibility settings must align before customers can find anything. Three settings work together",
   },
   s06: {
-    title: "Understanding Customers with PLuG and Observe App",
+    title: "Understanding Customers with Computer for Your Customers and Computer for User Insights",
     subtitle: "Live Chat, Session Replay, and Funnels",
-    keyInsight: "PLuG is the live chat touchpoint; Observe App records and analyzes behavior. Combine them to deeply understand your customers",
+    keyInsight: "Computer for Your Customers is the live chat touchpoint; Computer for User Insights records and analyzes behavior. Combine them to deeply understand your customers",
   },
   s07: {
     title: "Managing the Development Cycle",
@@ -162,8 +162,8 @@ const SESSION_TEXT_EN: Record<SessionId, { title: string; subtitle: string; keyI
   },
   s11: {
     title: "Using Snap-ins and the Marketplace",
-    subtitle: "Snap-ins, Marketplace, and AirSync",
-    keyInsight: "Snap-ins are managed across Featured, All, and Installed tabs. Jira AirSync connects in three steps: generate API token, configure Keyring Connection, map fields",
+    subtitle: "Snap-ins, Marketplace, and Computer AirSync",
+    keyInsight: "Snap-ins are managed across Featured, All, and Installed tabs. Jira Computer AirSync connects in three steps: generate API token, configure Keyring Connection, map fields",
   },
   s12: {
     title: "Getting Started with the DevRev API",
@@ -219,6 +219,9 @@ export function getLayers(locale: string) {
   return locale === "ja" ? LAYERS_JA : LAYERS_EN;
 }
 
-// Legacy exports for backward compatibility (defaults to Japanese)
-export const SESSION_META = getSessionMeta("ja");
-export const LAYERS = getLayers("ja");
+// Shared constants
+export const LEVEL_LABEL: Record<string, Record<string, string>> = {
+  en: { beginner: 'Beginner', intermediate: 'Intermediate', advanced: 'Advanced' },
+  ja: { beginner: '初級', intermediate: '中級', advanced: '上級' },
+};
+

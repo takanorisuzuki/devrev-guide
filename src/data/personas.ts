@@ -16,9 +16,10 @@ export type PersonaMeta = {
   coreSessions: SessionId[];
   recommendedSessions: SessionId[];
   totalCoreMinutes: number;
+  coreHours: number;
 };
 
-type PersonaLocalized = PersonaMeta & {
+export type PersonaLocalized = PersonaMeta & {
   label: string;
   shortLabel: string;
   description: string;
@@ -62,6 +63,7 @@ export const SESSION_PERSONAS: Record<SessionId, PersonaRelevance[]> = {
   ],
   s08: [
     { persona: 'executive', importance: 'core', order: 4 },
+    { persona: 'sales', importance: 'recommended', order: 7 },
   ],
   s09: [
     { persona: 'sales', importance: 'core', order: 5 },
@@ -69,6 +71,7 @@ export const SESSION_PERSONAS: Record<SessionId, PersonaRelevance[]> = {
   ],
   s10: [
     { persona: 'support', importance: 'core', order: 5 },
+    { persona: 'developer', importance: 'recommended', order: 7 },
     { persona: 'executive', importance: 'recommended', order: 8 },
   ],
   s11: [
@@ -78,17 +81,17 @@ export const SESSION_PERSONAS: Record<SessionId, PersonaRelevance[]> = {
     { persona: 'developer', importance: 'core', order: 6 },
   ],
   s13: [
-    { persona: 'developer', importance: 'recommended', order: 7 },
+    { persona: 'developer', importance: 'recommended', order: 8 },
   ],
   s14: [
     { persona: 'support', importance: 'recommended', order: 7 },
-    { persona: 'developer', importance: 'recommended', order: 8 },
+    { persona: 'developer', importance: 'recommended', order: 9 },
   ],
 };
 
 // --- Persona metadata ---
 
-const PERSONA_BASE: Record<PersonaId, Omit<PersonaMeta, 'totalCoreMinutes'>> = {
+const PERSONA_BASE: Record<PersonaId, Omit<PersonaMeta, 'totalCoreMinutes' | 'coreHours'>> = {
   support: {
     id: 'support',
     icon: '🎧',
@@ -165,12 +168,13 @@ import { SESSION_BASE } from './sessions';
 
 function buildPersonaMeta(base: typeof PERSONA_BASE): Record<PersonaId, PersonaMeta> {
   const result = {} as Record<PersonaId, PersonaMeta>;
-  for (const [id, meta] of Object.entries(base) as [PersonaId, Omit<PersonaMeta, 'totalCoreMinutes'>][]) {
+  for (const [id, meta] of Object.entries(base) as [PersonaId, Omit<PersonaMeta, 'totalCoreMinutes' | 'coreHours'>][]) {
     const totalCoreMinutes = meta.coreSessions.reduce(
       (sum, sid) => sum + SESSION_BASE[sid].duration,
       0
     );
-    result[id] = { ...meta, totalCoreMinutes };
+    const coreHours = Math.round(totalCoreMinutes / 60 * 2) / 2;
+    result[id] = { ...meta, totalCoreMinutes, coreHours };
   }
   return result;
 }

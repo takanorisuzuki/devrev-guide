@@ -11,7 +11,7 @@ interface PersonaPathBottomProps {
 }
 
 function getPersonaSessionOrder(personaId: PersonaId): SessionId[] {
-  const meta = getPersonaMeta('ja')
+  const meta = getPersonaMeta('en')
   const p = meta[personaId]
   return [...p.coreSessions, ...p.recommendedSessions]
 }
