@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { getLayers, getSessionMeta, SessionId } from '@/data/sessions'
+import { PERSONA_ORDER, getPersonaMeta } from '@/data/personas'
 
 interface SidebarProps {
   locale: string
@@ -28,8 +29,10 @@ const LEVEL_LABEL: Record<string, Record<string, string>> = {
 export default function Sidebar({ locale }: SidebarProps) {
   const pathname = usePathname()
   const currentSession = pathname?.split('/')[2] ?? null
+  const currentPersona = pathname?.startsWith(`/${locale}/path/`) ? pathname.split('/')[3] : null
   const layers = getLayers(locale)
   const sessionMeta = getSessionMeta(locale)
+  const personaMeta = getPersonaMeta(locale)
   const levelLabel = LEVEL_LABEL[locale] ?? LEVEL_LABEL.en
 
   return (
@@ -41,6 +44,43 @@ export default function Sidebar({ locale }: SidebarProps) {
       }}
     >
       <nav className="p-3 space-y-5">
+        {/* Persona paths */}
+        <div>
+          <div className="flex items-center gap-1.5 px-2 mb-1.5">
+            <span
+              className="text-xs font-semibold uppercase tracking-wider"
+              style={{ color: 'var(--color-text-secondary)' }}
+            >
+              {locale === 'ja' ? '役割別パス' : 'Role paths'}
+            </span>
+          </div>
+          <ul className="space-y-0.5">
+            {PERSONA_ORDER.map((personaId) => {
+              const p = personaMeta[personaId]
+              const isActive = currentPersona === personaId
+              return (
+                <li key={personaId}>
+                  <Link
+                    href={`/${locale}/path/${personaId}`}
+                    className="flex items-center gap-2 px-2 py-1.5 rounded-md text-sm transition-colors"
+                    style={
+                      isActive
+                        ? { backgroundColor: 'rgba(0,112,192,0.08)', color: '#0070C0', fontWeight: 600 }
+                        : { color: 'var(--color-text-secondary)' }
+                    }
+                  >
+                    <span className="text-sm shrink-0">{p.icon}</span>
+                    <span className="leading-snug">{p.label}</span>
+                  </Link>
+                </li>
+              )
+            })}
+          </ul>
+        </div>
+
+        {/* Divider */}
+        <div style={{ borderTop: '1px solid var(--color-border)' }} />
+
         {layers.map((layer) => {
           const color = LAYER_COLOR[layer.id]
           const bg = LAYER_BG[layer.id]

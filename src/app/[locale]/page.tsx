@@ -1,4 +1,5 @@
 import HeroSection from '@/components/home/HeroSection'
+import PersonaPicker from '@/components/home/PersonaPicker'
 import SessionGrid from '@/components/home/SessionGrid'
 import { toOgLocale } from '@/lib/locale'
 
@@ -30,6 +31,7 @@ export default async function HomePage({ params }: HomePageProps) {
   return (
     <div>
       <HeroSection locale={locale} />
+      <PersonaPicker locale={locale} />
       <SessionGrid locale={locale} />
     </div>
   )
