@@ -13,7 +13,7 @@ Article access is governed by three parameters working together.
 
 | Parameter | Role | How it's set |
 |-----------|------|-------------|
-| **scope** | High-level classification (internal vs customer-facing) | Automatically determined by creation path (manual=external, AirSync import=internal) |
+| **scope** | High-level classification (internal vs customer-facing) | Automatically determined by creation path (manual=external, Computer AirSync import=internal) |
 | **access_level** | Visibility level (private / public, etc.) | Set via API. Not directly editable in the GUI |
 | **shared_with** | Explicit list of users/groups who can view | GUI "Visible to" field, or API |
 
@@ -28,10 +28,10 @@ These three are not independent — they are **internally synchronized**. API re
 | Meaning | Internal documents (similar to Google Docs/Notion sharing model) | Help center articles (customer-facing) |
 | Default access_level | **private** (creator only) | public or external (all Platform Users have default access) |
 | shared_with targets | DevUsers only | Both DevUsers and RevUsers |
-| Primary creation path | **AirSync** imports (Confluence, Notion, OneDrive, etc.) | Manual creation via GUI, or URL crawling |
-| PLuG exposure | Not exposed by default (prevents accidental publication) | Exposed based on settings |
+| Primary creation path | **Computer AirSync** imports (Confluence, Notion, OneDrive, etc.) | Manual creation via GUI, or URL crawling |
+| Computer for Your Customers exposure | Not exposed by default (prevents accidental publication) | Exposed based on settings |
 
-**Why AirSync imports default to Internal**: Documents synced from external tools often contain internal-only information. To prevent accidental exposure through PLuG or the Support Portal, Internal scope (=private) is applied by default.
+**Why Computer AirSync imports default to Internal**: Documents synced from external tools often contain internal-only information. To prevent accidental exposure through Computer for Your Customers or the Support Portal, Internal scope (=private) is applied by default.
 
 ---
 
@@ -56,7 +56,7 @@ These three are not independent — they are **internally synchronized**. API re
 ### How public works
 
 - If status=published AND access_level=public, the article is accessible **without an authentication token**
-- Becomes searchable in the Support Portal and PLuG
+- Becomes searchable in the Support Portal and Computer for Your Customers
 - Eligible for SEO indexing
 
 ---
@@ -121,16 +121,16 @@ When an access request is made for an Article, the system evaluates in this orde
 
 ---
 
-## AirSync Import vs Manual Creation
+## Computer AirSync Import vs Manual Creation
 
-| Aspect | AirSync import | Manual creation (GUI) |
+| Aspect | Computer AirSync import | Manual creation (GUI) |
 |--------|--------------|---------------------|
 | Default scope | **internal** | **external** |
 | Default access_level | **private** (creator only) | **public** (everyone can access) |
-| PLuG/Portal exposure | **Not exposed** by default | Exposed when Published |
+| Computer for Your Customers/Portal exposure | **Not exposed** by default | Exposed when Published |
 | How to change | Add `shared_with` via API/GUI | Add restrictions via "Visible to" |
 
-### Making AirSync-imported articles customer-visible
+### Making Computer AirSync-imported articles customer-visible
 
 To publish an article imported as Internal scope to customers:
 
@@ -141,7 +141,7 @@ To publish an article imported as Internal scope to customers:
 
 ## Permission Aware Sync (OneDrive / SharePoint)
 
-Some AirSync Extractors support **Permission Aware** sync, which preserves the original system's access settings.
+Some Computer AirSync Extractors support **Permission Aware** sync, which preserves the original system's access settings.
 
 ### OneDrive
 
@@ -173,7 +173,7 @@ Some AirSync Extractors support **Permission Aware** sync, which preserves the o
 - Since `shared_with` and `access_level` are internally synchronized, **changing one via API affects the other**
 - `scope` cannot be changed after creation (converting Internal→External requires recreating the article)
 - There is no GUI interface to directly view or modify the `access_level` value (use the API to inspect)
-- AirSync-imported articles are designed to not appear in PLuG/Portal by default — you must explicitly configure `shared_with` to make them visible
+- Computer AirSync-imported articles are designed to not appear in Computer for Your Customers/Portal by default — you must explicitly configure `shared_with` to make them visible
 
 ---
 

@@ -1,13 +1,17 @@
+import { Suspense } from 'react'
 import { notFound } from 'next/navigation'
 import { getSessionContent, getSessionIds } from '@/lib/content'
 import { toOgLocale } from '@/lib/locale'
 import { getSessionMeta, SessionId } from '@/data/sessions'
 import SessionContent from '@/components/session/SessionContent'
 import PrevNextNav from '@/components/session/PrevNextNav'
+import PersonaPathNav from '@/components/session/PersonaPathNav'
+import PersonaPathBottom from '@/components/session/PersonaPathBottom'
 import SessionCompleteTracker from '@/components/session/SessionCompleteTracker'
 
 interface SessionPageProps {
   params: Promise<{ locale: string; session: string }>
+  searchParams: Promise<{ path?: string }>
 }
 
 const LEVEL_LABEL: Record<string, Record<string, string>> = {
@@ -72,8 +76,9 @@ export async function generateStaticParams() {
   )
 }
 
-export default async function SessionPage({ params }: SessionPageProps) {
+export default async function SessionPage({ params, searchParams }: SessionPageProps) {
   const { locale, session } = await params
+  const { path: personaPath } = await searchParams
   const validIds = getSessionIds()
 
   if (!validIds.includes(session)) {
@@ -88,6 +93,9 @@ export default async function SessionPage({ params }: SessionPageProps) {
 
   return (
     <article className="w-full max-w-4xl">
+      <Suspense fallback={null}>
+        <PersonaPathNav locale={locale} currentSession={session} />
+      </Suspense>
       <div className="mb-8">
         <div className="flex flex-wrap items-center gap-2 mb-3">
           <span
@@ -142,7 +150,12 @@ export default async function SessionPage({ params }: SessionPageProps) {
       </div>
 
       <SessionContent content={content} />
-      <PrevNextNav locale={locale} currentSession={session} />
+      {!personaPath && (
+        <PrevNextNav locale={locale} currentSession={session} />
+      )}
+      <Suspense fallback={null}>
+        <PersonaPathBottom locale={locale} currentSession={session} />
+      </Suspense>
       <SessionCompleteTracker sessionId={session} locale={locale} />
     </article>
   )

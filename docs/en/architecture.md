@@ -243,7 +243,7 @@ The LLM does not guess from retrieved documents — it executes a deterministic 
 
 ### The ontology: pre-built, not inferred
 
-Memory ships with a **pre-built ontology** for the customer-product-engineering domain. When integrations (AirSync) bring data in, the platform already knows what a customer account, support ticket, product part, and engineering issue are and how they relate.
+Memory ships with a **pre-built ontology** for the customer-product-engineering domain. When integrations (Computer AirSync) bring data in, the platform already knows what a customer account, support ticket, product part, and engineering issue are and how they relate.
 
 This is the same object model documented at the top of this page:
 
@@ -254,9 +254,9 @@ This is the same object model documented at the top of this page:
 
 These relationships are first-class entities in the graph — not inferred at query time.
 
-### AirSync: how data enters Memory
+### Computer AirSync: how data enters Memory
 
-AirSync (formerly Airdrop) is the bidirectional sync engine. It connects 50+ tools (Salesforce, Jira, Zendesk, Slack, GitHub, Google Workspace, and more) to Memory.
+Computer AirSync (formerly Airdrop) is the bidirectional sync engine. It connects 50+ tools (Salesforce, Jira, Zendesk, Slack, GitHub, Google Workspace, and more) to Memory.
 
 | Property | Description |
 |----------|-------------|
@@ -286,7 +286,7 @@ This is what powers NL-to-SQL accuracy.
 
 | Where | What |
 |-------|------|
-| [s01](/en/s01) | Overview of Computer's four foundations (AirSync, Memory, Foundational Services, Agent Studio) |
+| [s01](/en/s01) | Overview of Computer's four foundations (Computer AirSync, Memory, Foundational Services, Agent Studio) |
 | [s03](/en/s03) | The Identity / Parts / Work data model |
 | This section | Memory technical architecture |
 | [s14](/en/s14) | How Agent Studio uses Memory |
