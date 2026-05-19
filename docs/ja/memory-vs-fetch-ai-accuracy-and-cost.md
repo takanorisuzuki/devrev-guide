@@ -5,11 +5,11 @@ description: "CTO officeの視点：Claude単体のfetch型と、Claude+DevRev C
 
 # Memory vs fetch型AI：正確性とコスト
 
-このページは DevRev CTO office の公開記事（LinkedIn）2本を、ガイド内で参照しやすいように要点だけまとめたリファレンスである。テーマは「“つながっているAI”でも、データモデルを読めないと推測してしまう」「セッションごとにschema探索が必要だとトークン/時間が複利で増える」。
+このページは DevRev CTO office の公開記事（LinkedIn）2本を、ガイド内で参照しやすいように要点だけまとめたリファレンスです。テーマは「"つながっているAI"でも、データモデルを読めないと推測してしまう」「セッションごとにschema探索が必要だとトークン/時間が複利で増える」です。
 
-**出典記事での比較の読み方（重要）**: 記事本文では、フロントの汎用モデルとして **Claude** が前提に書かれている。比較の軸は「**Claude を単体で** API/MCP 等で業務データに都度アクセスする（**fetch型**）」構成と、「同じ **Claude を DevRev Computer（Memory を含む）と組み合わせる**」構成の対比である。**DevRev は Claude の競合ではなく**、同じ Claude を「毎回ゼロから」探索させないための **Computer + Memory 層**が何を変えるか、という話になっている（詳細は下記 [出典](#出典) のリンク先本文）。
+**出典記事での比較の読み方（重要）**: 記事本文では、フロントの汎用モデルとして **Claude** が前提に書かれています。比較の軸は「**Claude を単体で** API/MCP 等で業務データに都度アクセスする（**fetch型**）」構成と、「同じ **Claude を DevRev Computer（Memory を含む）と組み合わせる**」構成の対比です。**DevRev は Claude の競合ではなく**、同じ Claude を「毎回ゼロから」探索させないための **Computer + Memory 層**が何を変えるか、という話です（詳細は下記 [出典](#出典) のリンク先本文）。
 
-ポイントは「モデルの賢さ」より **取得アーキテクチャ** にある。下表は、出典で対比されている整理である。
+ポイントは「モデルの賢さ」より **取得アーキテクチャ** にあります。下表は、出典で対比されている整理です。
 
 | 観点 | **Claude 単体（fetch型）** | **Claude + DevRev Computer（Memory）** |
 |:---|:---|:---|
@@ -20,7 +20,7 @@ description: "CTO officeの視点：Claude単体のfetch型と、Claude+DevRev C
 
 ## 1) それっぽく正しいが、実は間違う（推測で作られた構造）
 
-権威あるリレーション（親子・リンク）を読めない場合、AIはIDの規則性や名称などの“パターン”から構造を推測しがちである。見た目は整っていても間違う可能性があり、検証の負担が人間側に寄る。
+権威あるリレーション（親子・リンク）を読めない場合、AIはIDの規則性や名称などの"パターン"から構造を推測しがちです。見た目は整っていても間違う可能性があり、検証の負担が人間側に寄ります。
 
 実務上の示唆:
 
@@ -29,7 +29,7 @@ description: "CTO officeの視点：Claude単体のfetch型と、Claude+DevRev C
 
 ## 2) 毎朝ゼロから始める：トークン/時間が複利で増える理由
 
-セッションごとに schema を探索し、さらに生データをコンテキストに載せて結合・抽出する方式は、コストが**元データ量**や探索の繰り返しに引きずられやすい。一方、永続的で権限対応のMemory層（例：ナレッジグラフ + 決定的なクエリ）を持つ場合、コストはより**結果セット**に比例しやすい。
+セッションごとに schema を探索し、さらに生データをコンテキストに載せて結合・抽出する方式は、コストが**元データ量**や探索の繰り返しに引きずられやすいです。一方、永続的で権限対応のMemory層（例：ナレッジグラフ + 決定的なクエリ）を持つ場合、コストはより**結果セット**に比例しやすいです。
 
 現場でコストを押し上げる要因（典型）:
 
@@ -39,7 +39,7 @@ description: "CTO officeの視点：Claude単体のfetch型と、Claude+DevRev C
 | **大きなペイロード** | 探索・サンプリングでツールが返すデータ量 |
 | **繰り返し** | セッションごとに「地図」を持ち直せず、同じ探索を繰り返す |
 
-記事内で示されている比較（目安・同一ビジネスクエリの反復。**Claude 単体（fetch型）** と **Claude + DevRev Computer（Memory）** の対比として書かれている）:
+記事内で示されている比較（目安・同一ビジネスクエリの反復。**Claude 単体（fetch型）** と **Claude + DevRev Computer（Memory）** の対比として書かれています）:
 
 | 例 | トークン（目安） | 時間（目安） | 差分の目安 |
 |:---|---:|:---|:---|
@@ -58,7 +58,7 @@ description: "CTO officeの視点：Claude単体のfetch型と、Claude+DevRev C
 
 ## 差別化ポイント（Claude + DevRev Computer + Memoryで何が変わるか）
 
-この2本の記事が強調しているのは、**同じ Claude でも**「推測しないで“読む”」「根拠を残す」ための **Computer / Memory 側のレイヤー設計**である。
+この2本の記事が強調しているのは、**同じ Claude でも**「推測しないで"読む"」「根拠を残す」ための **Computer / Memory 側のレイヤー設計**です。
 
 | 観点 | 変わること（Memory / Computer 側） |
 |:---|:---|
@@ -69,7 +69,7 @@ description: "CTO officeの視点：Claude単体のfetch型と、Claude+DevRev C
 
 ## 出典
 
-比較の前提（Claude と DevRev Computer / Memory の関係）は、次の LinkedIn 本文に沿っている。
+比較の前提（Claude と DevRev Computer / Memory の関係）は、次の LinkedIn 本文に沿っています。
 
 - [Right or wrong - flip a coin?](https://www.linkedin.com/pulse/right-wrong-flip-coin-jeff-smith-0frke/)
 - [Your AI starts from zero every morning — the costs compound](https://www.linkedin.com/pulse/your-ai-starts-from-zero-every-morning-costs-compound-jeff-smith-wnele/)
