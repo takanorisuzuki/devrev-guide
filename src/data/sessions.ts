@@ -41,77 +41,77 @@ const SESSION_TEXT_JA: Record<SessionId, { title: string; subtitle: string; keyI
     title: "DevRevとは何か：AIネイティブな作業基盤",
     subtitle: "データモデル、Memory、Computer の土台",
     keyInsight:
-      "Claude等LLM単体で使うよりも、DevRevと組み合わせることで、業務回答をより速く正確に、低コストで得られる。\n既存のSoRと運用を保ちながら、文脈・権限・根拠を同一データモデルで束ねる4基盤の仕組みを理解する",
+      "LLM単体より速く・正確に・低コストで業務回答を得られる理由がわかります。\n文脈・権限・根拠を同一データモデルで束ねる4基盤の仕組みを説明できるようになります。",
   },
   s02: {
     title: "はじめてのDevRev：セットアップと基本操作",
     subtitle: "Navigate DevRev from Day One",
-    keyInsight: "ワークスペース作成から基本ナビゲーションまで。最初の30分で全体像をつかむことが学習加速の鍵",
+    keyInsight: "ワークスペースを作成し、基本ナビゲーションにアクセスできるようになります。\n最初の30分でDevRevの全体像を把握できます。",
   },
   s03: {
     title: "DevRevのデータモデルを理解する",
     subtitle: "Identity, Parts, Work — 公式の3本柱",
-    keyInsight: "Identity（誰が）・Parts（何を届けるか）・Work（何が動くか）の3本柱。ワークをパーツに、パーツを顧客・開発者の identity に結びつけると公式でも説明されている",
+    keyInsight: "Identity・Parts・Workの3本柱を使ってデータを整理できるようになります。\nチケット・Issue・顧客情報を1つのデータモデルで結びつける設計ができます。",
   },
   s04: {
     title: "カスタマーサポートを設計する",
     subtitle: "Ticket Management & SLA",
-    keyInsight: "チケット管理・SLAポリシー・自動トリアージの3点セットがサポート運用の基盤。ここを設計するとチームの動き方が変わる",
+    keyInsight: "チケット管理・SLAポリシー・自動振り分けを設定できるようになります。\nこの設定が完了するとチームの優先度判断が自動化されます。",
   },
   s05: {
     title: "ナレッジベースとサポートポータルを構築する",
     subtitle: "Knowledge Base, Collections, and Support Portal",
-    keyInsight: "ナレッジベースはArticleの集積だが、Collectionの設計とポータルの公開設定まで揃えて初めて顧客に届く。3つの設定が連動している",
+    keyInsight: "Articleを作成してCollectionに整理し、サポートポータルとして顧客に公開できるようになります。\n3つの設定を正しく連動させて初めて顧客に届きます。",
   },
   s06: {
-    title: "Computer for Your CustomersとComputer for User Insightsで顧客を理解する",
+    title: "PLuGチャットとセッションリプレイで顧客を理解する",
     subtitle: "Live Chat, Session Replay, and Funnels",
-    keyInsight: "Computer for Your Customersは顧客接点のライブチャット、Computer for User Insightsはその行動を録画・分析するセット機能。2つを組み合わせて顧客理解を深める",
+    keyInsight: "PLuGチャットをWebサイトに設置し、セッションリプレイで行動を録画・分析できるようになります。\n2つを組み合わせて顧客理解を深められます。",
   },
   s07: {
     title: "開発サイクルを管理する",
     subtitle: "From Issue to Release",
-    keyInsight: "課題からリリースまでをDevRevで完結できる。サポートチームとエンジニアリングを同一ツールでつなぐ利点がここに現れる",
+    keyInsight: "課題からリリースまでをDevRevで完結できるようになります。\nサポートチームとエンジニアリングを同一ツールでつないで管理できます。",
   },
   s08: {
     title: "管理者設定とアクセス制御",
     subtitle: "Admin, Roles, and Permissions",
-    keyInsight: "組織全体のロール設計と権限制御が管理者の最初の仕事。ここを正しく設定すると運用が大きく楽になる",
+    keyInsight: "組織全体のロール設計と権限制御を設定できるようになります。\n正しく設定することで、チームの運用負荷を大きく下げられます。",
   },
   s09: {
     title: "分析ダッシュボードを活用する",
     subtitle: "Metrics and Dashboards",
-    keyInsight: "DevRevの分析機能はサポート・開発・運営の全チームに跨る。1つのダッシュボードで組織全体のKPIを可視化できる",
+    keyInsight: "サポート・開発・運営の全チームのKPIを1つのダッシュボードで可視化できるようになります。\n部門横断のデータをリアルタイムで確認できます。",
   },
   s10: {
     title: "ワークフローと自動化を設計する",
     subtitle: "Automations and Workflows",
-    keyInsight: "基本的なルール自動化から始められるが、AI条件ノードや並列パスを組み合わせると非常に複雑になる。Agent Studioの直接の前提知識",
+    keyInsight: "ルール自動化・AI条件ノード・並列パスを組み合わせた業務フローを自動化できるようになります。\nAgent Studioに進むための前提知識が身につきます。",
   },
   s11: {
     title: "Snap-inとマーケットプレイスを活用する",
     subtitle: "Snap-ins, Marketplace, and Computer AirSync",
-    keyInsight: "Snap-inはFeatured/All/Installedの3タブで管理する。Jira Computer AirSyncはAPIトークン取得→Keyring Connection→フィールドマッピングの3ステップで接続できる",
+    keyInsight: "Snap-inをFeatured/All/Installedの3タブで管理できるようになります。\nJiraをComputer AirSyncでAPIトークン取得→Keyring Connection→フィールドマッピングの3ステップで接続できます。",
   },
   s12: {
     title: "DevRev APIを使ってみる",
     subtitle: "Authenticate and Call the DevRev API",
-    keyInsight: "Personal Access Tokenさえ取得すれば、curlで今日からAPIを叩ける。公開APIとベータAPIの違いを理解することが最初のステップ",
+    keyInsight: "Personal Access Tokenを取得してcurlでAPIを呼び出せるようになります。\n公開APIとベータAPIの違いを理解して使い分けられます。",
   },
   s13: {
     title: "Snap-inを自作する",
     subtitle: "Build Your First Snap-in",
-    keyInsight: "Snap-in開発はnpmパッケージのように公開・配布できる。ローカルテストから本番デプロイまでを一気通貫で学ぶ",
+    keyInsight: "Snap-inをnpmパッケージのように公開・配布できるようになります。\nローカルテストから本番デプロイまでを一気通貫で実践できます。",
   },
   s14: {
     title: "Agent Studioで自律エージェントを設計する",
     subtitle: "Design Autonomous Agents with Agent Studio",
-    keyInsight: "Agent StudioはWorkflowより高度なAI自律エージェントを設計できる。Workflowの知識を前提に、エージェントのゴール設計とツール選択を学ぶ",
+    keyInsight: "WorkflowよりAI自律度の高いエージェントをAgent Studioで設計できるようになります。\nゴール設計とツール選択の考え方を身につけられます。",
   },
   s15: {
     title: "AirSyncコネクタを自作する（ADaaS）",
     subtitle: "カスタムAirSyncコネクタとADaaS SDK",
-    keyInsight: "マーケットプレイスにない外部システムとの同期も、ADaaS SDKで自作できる。カスタムSnap-inとの使い分けと、Extraction 4フェーズ・制御プロトコル・IDMの仕組みを学ぶ",
+    keyInsight: "マーケットプレイスにない外部システムとの同期をADaaS SDKで自作できるようになります。\nカスタムSnap-inとの使い分けと、Extraction 4フェーズ・制御プロトコル・IDMの仕組みを説明できます。",
   },
 };
 
@@ -119,27 +119,27 @@ const SESSION_TEXT_EN: Record<SessionId, { title: string; subtitle: string; keyI
   s01: {
     title: "What Is DevRev: The AI-Native Work Platform",
     subtitle: "Data model, Memory, and Computer foundations",
-    keyInsight: "Combining LLMs (e.g. Claude) with DevRev delivers business answers faster, more accurately, and at lower cost than using an LLM alone.\nUnderstand the four foundations that bind context and permissions on a single data model.",
+    keyInsight: "You will be able to explain why DevRev delivers business answers faster and more accurately than LLMs alone.\nYou will understand the four foundations that bind context, permissions, and evidence on a single data model.",
   },
   s02: {
     title: "Getting Started with DevRev",
     subtitle: "Navigate DevRev from Day One",
-    keyInsight: "From workspace creation to basic navigation. Mastering the big picture in your first 30 minutes accelerates everything that follows",
+    keyInsight: "You will be able to create a workspace and navigate the core UI. You will have a clear mental model of DevRev's structure within your first 30 minutes.",
   },
   s03: {
     title: "Understanding the DevRev Data Model",
     subtitle: "Identity, Parts, and Work",
-    keyInsight: "Three pillars: Identity (who), Parts (what you deliver), Work (what is in motion). Official docs describe connecting work to parts and parts to customer and developer identity",
+    keyInsight: "You will be able to organize data using the three pillars: Identity, Parts, and Work. You will be able to connect tickets, issues, and customer records in a single data model.",
   },
   s04: {
     title: "Designing Customer Support",
     subtitle: "Ticket Management & SLA",
-    keyInsight: "Ticket management, SLA policies, and auto-triage form the foundation of support operations. Getting this right changes how your team works",
+    keyInsight: "You will be able to configure ticket management, SLA policies, and auto-triage. Once set up, your team's priority decisions become automated.",
   },
   s05: {
     title: "Building a Knowledge Base and Support Portal",
     subtitle: "Knowledge Base, Collections, and Support Portal",
-    keyInsight: "A Knowledge Base is more than articles — Collections and portal visibility settings must align before customers can find anything. Three settings work together",
+    keyInsight: "You will be able to create Articles, organize them into Collections, and publish a Support Portal for customers. All three settings must align before customers can find anything.",
   },
   s06: {
     title: "Understanding Customers with Computer for Your Customers and Computer for User Insights",
@@ -164,7 +164,7 @@ const SESSION_TEXT_EN: Record<SessionId, { title: string; subtitle: string; keyI
   s10: {
     title: "Designing Workflows and Automation",
     subtitle: "Automations and Workflows",
-    keyInsight: "Simple rule-based automation is easy to start; combining AI condition nodes and parallel paths gets complex fast. Direct prerequisite for Agent Studio",
+    keyInsight: "You will be able to automate business workflows using rule automation, AI condition nodes, and parallel paths. You will gain the prerequisite knowledge needed for Agent Studio.",
   },
   s11: {
     title: "Using Snap-ins and the Marketplace",

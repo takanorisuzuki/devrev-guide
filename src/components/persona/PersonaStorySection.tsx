@@ -41,9 +41,7 @@ export default function PersonaStorySection({ story, locale }: PersonaStorySecti
   return (
     <section>
       <h2 className="text-lg font-bold mb-4" style={{ color: 'var(--color-text)' }}>
-        {isJa
-          ? `${story.characterName}さんのストーリー`
-          : `${story.characterName}'s story`}
+        {isJa ? 'DevRevで変わる1日' : 'How your day changes with DevRev'}
       </h2>
 
       {/* Phase tabs */}
