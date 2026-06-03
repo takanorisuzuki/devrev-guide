@@ -56,7 +56,7 @@ const SESSION_TEXT_JA: Record<SessionId, { title: string; subtitle: string; keyI
   s04: {
     title: "カスタマーサポートを設計する",
     subtitle: "Ticket Management & SLA",
-    keyInsight: "チケット管理・SLAポリシー・自動トリアージを設定できるようになります。この設定が完了するとチームの優先度判断が自動化されます。",
+    keyInsight: "チケット管理・SLAポリシー・自動振り分けを設定できるようになります。この設定が完了するとチームの優先度判断が自動化されます。",
   },
   s05: {
     title: "ナレッジベースとサポートポータルを構築する",
