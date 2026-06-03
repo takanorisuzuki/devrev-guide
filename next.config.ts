@@ -25,7 +25,13 @@ const nextConfig: NextConfig = {
     ]
   },
   async redirects() {
-    return []
+    return [
+      {
+        source: '/:locale(ja|en)/:slug(architecture|perspectives|memory-vs-fetch-ai-accuracy-and-cost|article-access-control|adaas-reference)',
+        destination: '/:locale/reference/:slug',
+        permanent: true,
+      },
+    ]
   },
 };
 

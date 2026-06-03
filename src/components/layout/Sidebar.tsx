@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { getLayers, getSessionMeta, SessionId } from '@/data/sessions'
 import { PERSONA_ORDER, getPersonaMeta } from '@/data/personas'
+import { REFERENCES } from '@/data/references'
 
 interface SidebarProps {
   locale: string
@@ -158,106 +159,27 @@ export default function Sidebar({ locale }: SidebarProps) {
             </span>
           </div>
           <ul className="space-y-0.5">
-            <li>
-              <Link
-                href={`/${locale}/architecture`}
-                className="flex items-start gap-2 px-2 py-1.5 rounded-md text-sm transition-colors min-w-0"
-                style={
-                  currentSession === 'architecture'
-                    ? {
-                        backgroundColor: 'rgba(0,112,192,0.08)',
-                        color: '#0070C0',
-                        fontWeight: 600,
-                      }
-                    : { color: 'var(--color-text-secondary)' }
-                }
-              >
-                <span className="font-mono text-xs shrink-0 mt-0.5 w-8 opacity-60 text-right">ref</span>
-                <span className="flex-1 leading-snug min-w-0 truncate">
-                  {locale === 'ja' ? 'オブジェクト構造' : 'Object model'}
-                </span>
-              </Link>
-            </li>
-            <li>
-              <Link
-                href={`/${locale}/perspectives`}
-                className="flex items-start gap-2 px-2 py-1.5 rounded-md text-sm transition-colors min-w-0"
-                style={
-                  currentSession === 'perspectives'
-                    ? {
-                        backgroundColor: 'rgba(0,112,192,0.08)',
-                        color: '#0070C0',
-                        fontWeight: 600,
-                      }
-                    : { color: 'var(--color-text-secondary)' }
-                }
-              >
-                <span className="font-mono text-xs shrink-0 mt-0.5 w-8 opacity-60 text-right">book</span>
-                <span className="flex-1 leading-snug min-w-0 truncate">
-                  {locale === 'ja' ? '視点（Perspectives）' : 'Perspectives'}
-                </span>
-              </Link>
-            </li>
-            <li>
-              <Link
-                href={`/${locale}/memory-vs-fetch-ai-accuracy-and-cost`}
-                className="flex items-start gap-2 px-2 py-1.5 rounded-md text-sm transition-colors min-w-0"
-                style={
-                  currentSession === 'memory-vs-fetch-ai-accuracy-and-cost'
-                    ? {
-                        backgroundColor: 'rgba(0,112,192,0.08)',
-                        color: '#0070C0',
-                        fontWeight: 600,
-                      }
-                    : { color: 'var(--color-text-secondary)' }
-                }
-              >
-                <span className="font-mono text-xs shrink-0 mt-0.5 w-8 opacity-60 text-right">mem</span>
-                <span className="flex-1 leading-snug min-w-0 truncate">
-                  {locale === 'ja' ? 'Memoryとコスト' : 'Memory & cost'}
-                </span>
-              </Link>
-            </li>
-            <li>
-              <Link
-                href={`/${locale}/article-access-control`}
-                className="flex items-start gap-2 px-2 py-1.5 rounded-md text-sm transition-colors min-w-0"
-                style={
-                  currentSession === 'article-access-control'
-                    ? {
-                        backgroundColor: 'rgba(0,112,192,0.08)',
-                        color: '#0070C0',
-                        fontWeight: 600,
-                      }
-                    : { color: 'var(--color-text-secondary)' }
-                }
-              >
-                <span className="font-mono text-xs shrink-0 mt-0.5 w-8 opacity-60 text-right">art</span>
-                <span className="flex-1 leading-snug min-w-0 truncate">
-                  {locale === 'ja' ? 'Articleアクセス制御' : 'Article access control'}
-                </span>
-              </Link>
-            </li>
-            <li>
-              <Link
-                href={`/${locale}/adaas-reference`}
-                className="flex items-start gap-2 px-2 py-1.5 rounded-md text-sm transition-colors min-w-0"
-                style={
-                  currentSession === 'adaas-reference'
-                    ? {
-                        backgroundColor: 'rgba(124,58,237,0.08)',
-                        color: '#7C3AED',
-                        fontWeight: 600,
-                      }
-                    : { color: 'var(--color-text-secondary)' }
-                }
-              >
-                <span className="font-mono text-xs shrink-0 mt-0.5 w-8 opacity-60 text-right">ref</span>
-                <span className="flex-1 leading-snug min-w-0 truncate">
-                  {locale === 'ja' ? 'ADaaS リファレンス' : 'ADaaS Reference'}
-                </span>
-              </Link>
-            </li>
+            {REFERENCES.map((ref) => {
+              const isActive = pathname === `/${locale}/reference/${ref.slug}`
+              return (
+                <li key={ref.slug}>
+                  <Link
+                    href={`/${locale}/reference/${ref.slug}`}
+                    className="flex items-start gap-2 px-2 py-1.5 rounded-md text-sm transition-colors min-w-0"
+                    style={
+                      isActive
+                        ? { backgroundColor: 'rgba(0,112,192,0.08)', color: '#0070C0', fontWeight: 600 }
+                        : { color: 'var(--color-text-secondary)' }
+                    }
+                  >
+                    <span className="font-mono text-xs shrink-0 mt-0.5 w-8 opacity-60 text-right">{ref.icon}</span>
+                    <span className="flex-1 leading-snug min-w-0 truncate">
+                      {locale === 'ja' ? ref.label.ja : ref.label.en}
+                    </span>
+                  </Link>
+                </li>
+              )
+            })}
           </ul>
         </div>
       </nav>
