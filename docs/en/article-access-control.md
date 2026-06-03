@@ -181,6 +181,6 @@ Some Computer AirSync Extractors support **Permission Aware** sync, which preser
 
 - [s05: Building a Knowledge Base and Support Portal](/en/s05) — Basic KB setup steps
 - [s08: Admin Settings and Access Control](/en/s08) — Overall role and permission design
-- [Architecture Reference](/en/architecture) — Article and Part relationships
+- [Architecture Reference](/en/reference/architecture) — Article and Part relationships
 - [Official: Creating KB Articles](https://support.devrev.ai/devrev/article/ART-21914)
 - [Official: Collections](https://support.devrev.ai/devrev/article/ART-21915)

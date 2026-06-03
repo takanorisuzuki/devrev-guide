@@ -22,7 +22,7 @@ Core AI capabilities:
 
 ## Data Processing Architecture
 
-Computer uses a hybrid Text2SQL + RAG architecture (see also "Computer Memory Architecture" in [architecture.md](/en/architecture)).
+Computer uses a hybrid Text2SQL + RAG architecture (see also "Computer Memory Architecture" in [architecture.md](/en/reference/architecture)).
 
 ### Processing Flow
 
@@ -346,6 +346,6 @@ DevRev's proprietary guardrail framework provides multi-layer defense: prompt in
 | Reference | Related content |
 |-----------|----------------|
 | [s01](/en/s01) | Overview of Computer's four foundations |
-| [architecture.md](/en/architecture) | Computer Memory architecture, LLM loose coupling |
-| [memory-vs-fetch-ai-accuracy-and-cost.md](/en/memory-vs-fetch-ai-accuracy-and-cost) | Fetch-type AI vs Memory-type comparison |
+| [architecture.md](/en/reference/architecture) | Computer Memory architecture, LLM loose coupling |
+| [memory-vs-fetch-ai-accuracy-and-cost.md](/en/reference/memory-vs-fetch-ai-accuracy-and-cost) | Fetch-type AI vs Memory-type comparison |
 | This page | Data protection information for security reviews and AI adoption approvals |
