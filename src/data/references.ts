@@ -30,6 +30,11 @@ export const REFERENCES: ReferenceEntry[] = [
     icon: 'ref',
     label: { ja: 'ADaaS リファレンス', en: 'ADaaS Reference' },
   },
+  {
+    slug: 'ai-security-reference',
+    icon: 'sec',
+    label: { ja: 'AI/LLMセキュリティ', en: 'AI/LLM Security' },
+  },
 ]
 
 export const REFERENCE_SLUGS = REFERENCES.map((r) => r.slug)
