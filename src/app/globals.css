@@ -344,6 +344,7 @@ body {
   margin-top: 0.75rem;
   margin-bottom: 0.75rem;
   padding-left: 1.5rem;
+  list-style-type: disc;
   font-size: 0.9rem;
   line-height: 1.7;
   color: var(--color-text-secondary);
@@ -411,6 +412,15 @@ body {
 
 .prose-custom ol > li > ul {
   padding-left: 1.25rem;
+  list-style-type: disc;
+}
+
+.prose-custom ul > li > ul {
+  list-style-type: circle;
+}
+
+.prose-custom ul > li > ul > li > ul {
+  list-style-type: square;
 }
 
 .prose-custom ol > li > ul > li {
