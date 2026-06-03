@@ -238,6 +238,26 @@ export default function Sidebar({ locale }: SidebarProps) {
                 </span>
               </Link>
             </li>
+            <li>
+              <Link
+                href={`/${locale}/adaas-reference`}
+                className="flex items-start gap-2 px-2 py-1.5 rounded-md text-sm transition-colors min-w-0"
+                style={
+                  currentSession === 'adaas-reference'
+                    ? {
+                        backgroundColor: 'rgba(124,58,237,0.08)',
+                        color: '#7C3AED',
+                        fontWeight: 600,
+                      }
+                    : { color: 'var(--color-text-secondary)' }
+                }
+              >
+                <span className="font-mono text-xs shrink-0 mt-0.5 w-8 opacity-60 text-right">ref</span>
+                <span className="flex-1 leading-snug min-w-0 truncate">
+                  {locale === 'ja' ? 'ADaaS リファレンス' : 'ADaaS Reference'}
+                </span>
+              </Link>
+            </li>
           </ul>
         </div>
       </nav>

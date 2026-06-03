@@ -1,6 +1,6 @@
 export const SESSION_ORDER = [
   "s01", "s02", "s03", "s04", "s05", "s06",
-  "s07", "s08", "s09", "s10", "s11", "s12", "s13", "s14"
+  "s07", "s08", "s09", "s10", "s11", "s12", "s13", "s14", "s15"
 ] as const;
 
 export type SessionId = typeof SESSION_ORDER[number];
@@ -33,6 +33,7 @@ export const SESSION_BASE: Record<SessionId, SessionBase> = {
   s12: { id: "s12", level: "intermediate", layer: "developer", duration: 60 },
   s13: { id: "s13", level: "advanced", layer: "developer", duration: 60 },
   s14: { id: "s14", level: "advanced", layer: "developer", duration: 60 },
+  s15: { id: "s15", level: "advanced", layer: "developer", duration: 90 },
 };
 
 const SESSION_TEXT_JA: Record<SessionId, { title: string; subtitle: string; keyInsight: string }> = {
@@ -107,6 +108,11 @@ const SESSION_TEXT_JA: Record<SessionId, { title: string; subtitle: string; keyI
     subtitle: "Design Autonomous Agents with Agent Studio",
     keyInsight: "Agent StudioはWorkflowより高度なAI自律エージェントを設計できる。Workflowの知識を前提に、エージェントのゴール設計とツール選択を学ぶ",
   },
+  s15: {
+    title: "AirSyncコネクタを自作する（ADaaS）",
+    subtitle: "カスタムAirSyncコネクタとADaaS SDK",
+    keyInsight: "マーケットプレイスにない外部システムとの同期も、ADaaS SDKで自作できる。カスタムSnap-inとの使い分けと、Extraction 4フェーズ・制御プロトコル・IDMの仕組みを学ぶ",
+  },
 };
 
 const SESSION_TEXT_EN: Record<SessionId, { title: string; subtitle: string; keyInsight: string }> = {
@@ -180,18 +186,23 @@ const SESSION_TEXT_EN: Record<SessionId, { title: string; subtitle: string; keyI
     subtitle: "Design Autonomous Agents with Agent Studio",
     keyInsight: "Agent Studio enables more advanced AI autonomy than Workflows. Build on your Workflow knowledge to learn goal design and tool selection for agents",
   },
+  s15: {
+    title: "Building a Custom AirSync Connector (ADaaS)",
+    subtitle: "Custom AirSync Connectors and the ADaaS SDK",
+    keyInsight: "Even external systems not in the marketplace can be synced by building a custom AirSync connector with the ADaaS SDK. Learn when to use ADaaS vs custom Snap-ins, and how the 4-phase extraction, control protocol, and IDM work",
+  },
 };
 
 const LAYERS_JA = [
   { id: "foundations" as const, label: "DevRev基礎", sessions: ["s01", "s02", "s03"] as SessionId[] },
   { id: "platform" as const, label: "プラットフォーム活用", sessions: ["s04", "s05", "s06", "s07", "s08", "s09"] as SessionId[] },
-  { id: "developer" as const, label: "開発者・拡張", sessions: ["s10", "s11", "s12", "s13", "s14"] as SessionId[] },
+  { id: "developer" as const, label: "開発者・拡張", sessions: ["s10", "s11", "s12", "s13", "s14", "s15"] as SessionId[] },
 ] as const;
 
 const LAYERS_EN = [
   { id: "foundations" as const, label: "DevRev Foundations", sessions: ["s01", "s02", "s03"] as SessionId[] },
   { id: "platform" as const, label: "Platform in Action", sessions: ["s04", "s05", "s06", "s07", "s08", "s09"] as SessionId[] },
-  { id: "developer" as const, label: "Extend & Automate", sessions: ["s10", "s11", "s12", "s13", "s14"] as SessionId[] },
+  { id: "developer" as const, label: "Extend & Automate", sessions: ["s10", "s11", "s12", "s13", "s14", "s15"] as SessionId[] },
 ] as const;
 
 function buildSessionMeta(text: Record<SessionId, { title: string; subtitle: string; keyInsight: string }>): Record<SessionId, SessionLocalized> {

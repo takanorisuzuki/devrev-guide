@@ -45,6 +45,10 @@ export async function getArticleAccessControlContent(locale: string) {
   return getDocContent(locale, 'article-access-control')
 }
 
+export async function getAdaasReferenceContent(locale: string) {
+  return getDocContent(locale, 'adaas-reference')
+}
+
 export function getSessionIds(): string[] {
   return [...SESSION_ORDER]
 }
