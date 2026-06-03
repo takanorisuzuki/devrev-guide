@@ -419,6 +419,10 @@ body {
   list-style-type: circle;
 }
 
+.prose-custom ul > li > ul > li > ul {
+  list-style-type: square;
+}
+
 .prose-custom ol > li > ul > li {
   padding-left: 0;
 }
