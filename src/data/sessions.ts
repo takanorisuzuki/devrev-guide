@@ -46,72 +46,72 @@ const SESSION_TEXT_JA: Record<SessionId, { title: string; subtitle: string; keyI
   s02: {
     title: "はじめてのDevRev：セットアップと基本操作",
     subtitle: "Navigate DevRev from Day One",
-    keyInsight: "ワークスペースを作成し、基本ナビゲーションにアクセスできるようになります。最初の30分でDevRevの全体像を把握できます。",
+    keyInsight: "ワークスペースを作成し、基本ナビゲーションにアクセスできるようになります。\n最初の30分でDevRevの全体像を把握できます。",
   },
   s03: {
     title: "DevRevのデータモデルを理解する",
     subtitle: "Identity, Parts, Work — 公式の3本柱",
-    keyInsight: "Identity・Parts・Workの3本柱を使ってデータを整理できるようになります。チケット・Issue・顧客情報を1つのデータモデルで結びつける設計ができます。",
+    keyInsight: "Identity・Parts・Workの3本柱を使ってデータを整理できるようになります。\nチケット・Issue・顧客情報を1つのデータモデルで結びつける設計ができます。",
   },
   s04: {
     title: "カスタマーサポートを設計する",
     subtitle: "Ticket Management & SLA",
-    keyInsight: "チケット管理・SLAポリシー・自動振り分けを設定できるようになります。この設定が完了するとチームの優先度判断が自動化されます。",
+    keyInsight: "チケット管理・SLAポリシー・自動振り分けを設定できるようになります。\nこの設定が完了するとチームの優先度判断が自動化されます。",
   },
   s05: {
     title: "ナレッジベースとサポートポータルを構築する",
     subtitle: "Knowledge Base, Collections, and Support Portal",
-    keyInsight: "Articleを作成してCollectionに整理し、サポートポータルとして顧客に公開できるようになります。3つの設定を正しく連動させて初めて顧客に届きます。",
+    keyInsight: "Articleを作成してCollectionに整理し、サポートポータルとして顧客に公開できるようになります。\n3つの設定を正しく連動させて初めて顧客に届きます。",
   },
   s06: {
     title: "Computer for Your CustomersとComputer for User Insightsで顧客を理解する",
     subtitle: "Live Chat, Session Replay, and Funnels",
-    keyInsight: "Computer for Your Customersでライブチャットを設置し、Computer for User Insightsで行動を録画・分析できるようになります。2つを組み合わせて顧客理解を深められます。",
+    keyInsight: "Computer for Your Customersでライブチャットを設置し、Computer for User Insightsで行動を録画・分析できるようになります。\n2つを組み合わせて顧客理解を深められます。",
   },
   s07: {
     title: "開発サイクルを管理する",
     subtitle: "From Issue to Release",
-    keyInsight: "課題からリリースまでをDevRevで完結できるようになります。サポートチームとエンジニアリングを同一ツールでつないで管理できます。",
+    keyInsight: "課題からリリースまでをDevRevで完結できるようになります。\nサポートチームとエンジニアリングを同一ツールでつないで管理できます。",
   },
   s08: {
     title: "管理者設定とアクセス制御",
     subtitle: "Admin, Roles, and Permissions",
-    keyInsight: "組織全体のロール設計と権限制御を設定できるようになります。正しく設定することで、チームの運用負荷を大きく下げられます。",
+    keyInsight: "組織全体のロール設計と権限制御を設定できるようになります。\n正しく設定することで、チームの運用負荷を大きく下げられます。",
   },
   s09: {
     title: "分析ダッシュボードを活用する",
     subtitle: "Metrics and Dashboards",
-    keyInsight: "サポート・開発・運営の全チームのKPIを1つのダッシュボードで可視化できるようになります。部門横断のデータをリアルタイムで確認できます。",
+    keyInsight: "サポート・開発・運営の全チームのKPIを1つのダッシュボードで可視化できるようになります。\n部門横断のデータをリアルタイムで確認できます。",
   },
   s10: {
     title: "ワークフローと自動化を設計する",
     subtitle: "Automations and Workflows",
-    keyInsight: "ルール自動化・AI条件ノード・並列パスを組み合わせた業務フローを自動化できるようになります。Agent Studioに進むための前提知識が身につきます。",
+    keyInsight: "ルール自動化・AI条件ノード・並列パスを組み合わせた業務フローを自動化できるようになります。\nAgent Studioに進むための前提知識が身につきます。",
   },
   s11: {
     title: "Snap-inとマーケットプレイスを活用する",
     subtitle: "Snap-ins, Marketplace, and Computer AirSync",
-    keyInsight: "Snap-inをFeatured/All/Installedの3タブで管理できるようになります。JiraをComputer AirSyncでAPIトークン取得→Keyring Connection→フィールドマッピングの3ステップで接続できます。",
+    keyInsight: "Snap-inをFeatured/All/Installedの3タブで管理できるようになります。\nJiraをComputer AirSyncでAPIトークン取得→Keyring Connection→フィールドマッピングの3ステップで接続できます。",
   },
   s12: {
     title: "DevRev APIを使ってみる",
     subtitle: "Authenticate and Call the DevRev API",
-    keyInsight: "Personal Access Tokenを取得してcurlでAPIを呼び出せるようになります。公開APIとベータAPIの違いを理解して使い分けられます。",
+    keyInsight: "Personal Access Tokenを取得してcurlでAPIを呼び出せるようになります。\n公開APIとベータAPIの違いを理解して使い分けられます。",
   },
   s13: {
     title: "Snap-inを自作する",
     subtitle: "Build Your First Snap-in",
-    keyInsight: "Snap-inをnpmパッケージのように公開・配布できるようになります。ローカルテストから本番デプロイまでを一気通貫で実践できます。",
+    keyInsight: "Snap-inをnpmパッケージのように公開・配布できるようになります。\nローカルテストから本番デプロイまでを一気通貫で実践できます。",
   },
   s14: {
     title: "Agent Studioで自律エージェントを設計する",
     subtitle: "Design Autonomous Agents with Agent Studio",
-    keyInsight: "WorkflowよりAI自律度の高いエージェントをAgent Studioで設計できるようになります。ゴール設計とツール選択の考え方を身につけられます。",
+    keyInsight: "WorkflowよりAI自律度の高いエージェントをAgent Studioで設計できるようになります。\nゴール設計とツール選択の考え方を身につけられます。",
   },
   s15: {
     title: "AirSyncコネクタを自作する（ADaaS）",
     subtitle: "カスタムAirSyncコネクタとADaaS SDK",
-    keyInsight: "マーケットプレイスにない外部システムとの同期をADaaS SDKで自作できるようになります。カスタムSnap-inとの使い分けと、Extraction 4フェーズ・制御プロトコル・IDMの仕組みを説明できます。",
+    keyInsight: "マーケットプレイスにない外部システムとの同期をADaaS SDKで自作できるようになります。\nカスタムSnap-inとの使い分けと、Extraction 4フェーズ・制御プロトコル・IDMの仕組みを説明できます。",
   },
 };
 
