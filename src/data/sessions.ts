@@ -64,7 +64,7 @@ const SESSION_TEXT_JA: Record<SessionId, { title: string; subtitle: string; keyI
     keyInsight: "Articleを作成してCollectionに整理し、サポートポータルとして顧客に公開できるようになります。\n3つの設定を正しく連動させて初めて顧客に届きます。",
   },
   s06: {
-    title: "Computer for Your CustomersとComputer for User Insightsで顧客を理解する",
+    title: "PLuGチャットとセッションリプレイで顧客を理解する",
     subtitle: "Live Chat, Session Replay, and Funnels",
     keyInsight: "PLuGチャットをWebサイトに設置し、セッションリプレイで行動を録画・分析できるようになります。\n2つを組み合わせて顧客理解を深められます。",
   },
