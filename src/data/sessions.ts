@@ -66,22 +66,22 @@ const SESSION_TEXT_JA: Record<SessionId, { title: string; subtitle: string; keyI
   s06: {
     title: "Computer for Your CustomersとComputer for User Insightsで顧客を理解する",
     subtitle: "Live Chat, Session Replay, and Funnels",
-    keyInsight: "Computer for Your Customersは顧客接点のライブチャット、Computer for User Insightsはその行動を録画・分析するセット機能。2つを組み合わせて顧客理解を深める",
+    keyInsight: "Computer for Your Customersでライブチャットを設置し、Computer for User Insightsで行動を録画・分析できるようになります。2つを組み合わせて顧客理解を深められます。",
   },
   s07: {
     title: "開発サイクルを管理する",
     subtitle: "From Issue to Release",
-    keyInsight: "課題からリリースまでをDevRevで完結できる。サポートチームとエンジニアリングを同一ツールでつなぐ利点がここに現れる",
+    keyInsight: "課題からリリースまでをDevRevで完結できるようになります。サポートチームとエンジニアリングを同一ツールでつないで管理できます。",
   },
   s08: {
     title: "管理者設定とアクセス制御",
     subtitle: "Admin, Roles, and Permissions",
-    keyInsight: "組織全体のロール設計と権限制御が管理者の最初の仕事。ここを正しく設定すると運用が大きく楽になる",
+    keyInsight: "組織全体のロール設計と権限制御を設定できるようになります。正しく設定することで、チームの運用負荷を大きく下げられます。",
   },
   s09: {
     title: "分析ダッシュボードを活用する",
     subtitle: "Metrics and Dashboards",
-    keyInsight: "DevRevの分析機能はサポート・開発・運営の全チームに跨る。1つのダッシュボードで組織全体のKPIを可視化できる",
+    keyInsight: "サポート・開発・運営の全チームのKPIを1つのダッシュボードで可視化できるようになります。部門横断のデータをリアルタイムで確認できます。",
   },
   s10: {
     title: "ワークフローと自動化を設計する",
@@ -91,27 +91,27 @@ const SESSION_TEXT_JA: Record<SessionId, { title: string; subtitle: string; keyI
   s11: {
     title: "Snap-inとマーケットプレイスを活用する",
     subtitle: "Snap-ins, Marketplace, and Computer AirSync",
-    keyInsight: "Snap-inはFeatured/All/Installedの3タブで管理する。Jira Computer AirSyncはAPIトークン取得→Keyring Connection→フィールドマッピングの3ステップで接続できる",
+    keyInsight: "Snap-inをFeatured/All/Installedの3タブで管理できるようになります。JiraをComputer AirSyncでAPIトークン取得→Keyring Connection→フィールドマッピングの3ステップで接続できます。",
   },
   s12: {
     title: "DevRev APIを使ってみる",
     subtitle: "Authenticate and Call the DevRev API",
-    keyInsight: "Personal Access Tokenさえ取得すれば、curlで今日からAPIを叩ける。公開APIとベータAPIの違いを理解することが最初のステップ",
+    keyInsight: "Personal Access Tokenを取得してcurlでAPIを呼び出せるようになります。公開APIとベータAPIの違いを理解して使い分けられます。",
   },
   s13: {
     title: "Snap-inを自作する",
     subtitle: "Build Your First Snap-in",
-    keyInsight: "Snap-in開発はnpmパッケージのように公開・配布できる。ローカルテストから本番デプロイまでを一気通貫で学ぶ",
+    keyInsight: "Snap-inをnpmパッケージのように公開・配布できるようになります。ローカルテストから本番デプロイまでを一気通貫で実践できます。",
   },
   s14: {
     title: "Agent Studioで自律エージェントを設計する",
     subtitle: "Design Autonomous Agents with Agent Studio",
-    keyInsight: "Agent StudioはWorkflowより高度なAI自律エージェントを設計できる。Workflowの知識を前提に、エージェントのゴール設計とツール選択を学ぶ",
+    keyInsight: "WorkflowよりAI自律度の高いエージェントをAgent Studioで設計できるようになります。ゴール設計とツール選択の考え方を身につけられます。",
   },
   s15: {
     title: "AirSyncコネクタを自作する（ADaaS）",
     subtitle: "カスタムAirSyncコネクタとADaaS SDK",
-    keyInsight: "マーケットプレイスにない外部システムとの同期も、ADaaS SDKで自作できる。カスタムSnap-inとの使い分けと、Extraction 4フェーズ・制御プロトコル・IDMの仕組みを学ぶ",
+    keyInsight: "マーケットプレイスにない外部システムとの同期をADaaS SDKで自作できるようになります。カスタムSnap-inとの使い分けと、Extraction 4フェーズ・制御プロトコル・IDMの仕組みを説明できます。",
   },
 };
 
