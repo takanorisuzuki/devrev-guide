@@ -120,11 +120,10 @@ DevRev is hosted on AWS (primary) and GCP, with the following regions available 
 | AP Southeast | Sydney |
 | AP Northeast | Japan |
 
-Data is localized to the customer-selected region and **does not move outside that region**. Selecting the Japan region means data is held within Japan.
+Data is localized to the customer-selected region and **does not move outside that region**.
 
 ### Cross-Border Transfer Basis
 
-- Data is held in the customer-selected region and does not cross regional boundaries
 - DevRev's DPA includes EU Standard Contractual Clauses (SCCs), providing a contractual basis for cross-border data transfers under GDPR and equivalent frameworks
 - Data sent for LLM inference is permission-filtered minimal context only; Zero Data Retention means immediate deletion post-inference
 
@@ -174,7 +173,7 @@ DevRev notifies customers of security incidents through the following process:
 - Security incident notifications are made to affected customers without undue delay under DPA terms
 - **Status page**: https://status.devrev.ai/ for real-time service availability
 
-> DevRev notifies affected customers without undue delay after incident discovery, per DPA terms. Notifications include the nature of the incident, scope of impact, and measures taken.
+> **Incident Notification Details**: Notifications include the nature of the incident, scope of impact, and measures taken.
 
 ---
 
@@ -337,8 +336,6 @@ DevRev's proprietary guardrail framework provides multi-layer defense: prompt in
 
 | Requirement | Status |
 |-------------|--------|
-| GDPR (EU data protection) | Compliant — DPA with SCCs in place |
-| HIPAA (US healthcare) | Compliant — BAA available |
 | SOX / financial audit | Supported via 7-year audit log retention |
 | Sector-specific requirements | Consult your account team for details |
 
