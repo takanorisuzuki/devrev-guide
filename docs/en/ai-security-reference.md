@@ -120,13 +120,11 @@ DevRev is hosted on AWS (primary) and GCP, with the following regions available 
 | AP Southeast | Sydney |
 | AP Northeast | Japan |
 
-Data is localized to the customer-selected region and **does not move outside that region**. Selecting the Japan region means data is held within Japan.
+Data is localized to the customer-selected region and **does not move outside that region**.
 
 ### Cross-Border Transfer Basis
 
-- **Japan region available**: Data can be held within Japan
-- DevRev's DPA includes EU Standard Contractual Clauses (SCCs) providing a legal basis for cross-border transfers
-- For Japan's Act on Protection of Personal Information (APPI) regulations on third-party provision to foreign entities: Japan region selection enables domestic retention; DPA contractual terms provide additional legal basis
+- DevRev's DPA includes EU Standard Contractual Clauses (SCCs), providing a contractual basis for cross-border data transfers under GDPR and equivalent frameworks
 - Data sent for LLM inference is permission-filtered minimal context only; Zero Data Retention means immediate deletion post-inference
 
 ---
@@ -175,7 +173,7 @@ DevRev notifies customers of security incidents through the following process:
 - Security incident notifications are made to affected customers without undue delay under DPA terms
 - **Status page**: https://status.devrev.ai/ for real-time service availability
 
-> **APPI 72-hour reporting obligation**: DevRev notifies affected customers without undue delay after incident discovery, per DPA terms. Notifications include the nature of the incident, scope of impact, and measures taken.
+> **Incident Notification Details**: Notifications include the nature of the incident, scope of impact, and measures taken.
 
 ---
 
@@ -272,9 +270,9 @@ DevRev implements multi-layered defense with a proprietary guardrail framework:
 
 No. DevRev does not use customer data for model training or fine-tuning of any kind. Enterprise contracts with all LLM providers include a Zero Data Retention (ZDR) policy — data sent for inference is neither stored nor used for training on the provider side.
 
-**Q. Can data be stored within Japan?**
+**Q. Can data be stored in our region?**
 
-Yes. A Japan region is available and data can be held entirely within Japan. Data is localized to the customer-selected region and does not move outside it.
+Yes. DevRev offers multiple regions globally (US, EU, and Asia Pacific). Data is localized to your selected region and does not move outside it.
 
 **Q. Is data sent outside our environment?**
 
@@ -338,10 +336,8 @@ DevRev's proprietary guardrail framework provides multi-layer defense: prompt in
 
 | Requirement | Status |
 |-------------|--------|
-| ISMAP (Japanese government systems) | Not certified (consult your account team) |
-| FISC Security Guidelines (financial institutions) | Not certified (consult your account team) |
-| J-SOX audit | Supported via 7-year audit log retention |
-| APPI (cross-border transfer) | Addressed via DPA + Standard Contractual Clauses |
+| SOX / financial audit | Supported via 7-year audit log retention |
+| Sector-specific requirements | Consult your account team for details |
 
 ---
 
