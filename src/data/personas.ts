@@ -87,6 +87,9 @@ export const SESSION_PERSONAS: Record<SessionId, PersonaRelevance[]> = {
     { persona: 'support', importance: 'recommended', order: 7 },
     { persona: 'developer', importance: 'recommended', order: 9 },
   ],
+  s15: [
+    { persona: 'developer', importance: 'recommended', order: 10 },
+  ],
 };
 
 // --- Persona metadata ---
