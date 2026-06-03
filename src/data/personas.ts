@@ -111,7 +111,7 @@ const PERSONA_BASE: Record<PersonaId, Omit<PersonaMeta, 'totalCoreMinutes' | 'co
     id: 'developer',
     icon: '💻',
     coreSessions: ['s01', 's02', 's03', 's07', 's11', 's12'],
-    recommendedSessions: ['s10', 's13', 's14'],
+    recommendedSessions: ['s10', 's13', 's14', 's15'],
   },
   executive: {
     id: 'executive',
