@@ -88,8 +88,8 @@ export default function PersonaPicker({ locale }: PersonaPickerProps) {
 
       <p className="text-xs mt-3" style={{ color: 'var(--color-text-secondary)' }}>
         {isJa
-          ? '※ 役割を選ばず全14セッションを順番に学ぶこともできます（下記一覧）'
-          : '※ You can also follow all 14 sessions in order (listed below)'}
+          ? '※ 役割を選ばず全15セッションを順番に学ぶこともできます（下記一覧）'
+          : '※ You can also follow all 15 sessions in order (listed below)'}
       </p>
     </section>
   )
