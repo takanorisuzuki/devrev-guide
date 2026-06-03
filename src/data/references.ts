@@ -32,6 +32,4 @@ export const REFERENCES: ReferenceEntry[] = [
   },
 ]
 
-export function getReferenceSlug(): string[] {
-  return REFERENCES.map((r) => r.slug)
-}
+export const REFERENCE_SLUGS = REFERENCES.map((r) => r.slug)

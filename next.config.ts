@@ -25,20 +25,13 @@ const nextConfig: NextConfig = {
     ]
   },
   async redirects() {
-    const refSlugs = [
-      'architecture',
-      'perspectives',
-      'memory-vs-fetch-ai-accuracy-and-cost',
-      'article-access-control',
-      'adaas-reference',
-    ]
-    return refSlugs.flatMap((slug) =>
-      ['ja', 'en'].map((locale) => ({
-        source: `/${locale}/${slug}`,
-        destination: `/${locale}/reference/${slug}`,
+    return [
+      {
+        source: '/:locale(ja|en)/:slug(architecture|perspectives|memory-vs-fetch-ai-accuracy-and-cost|article-access-control|adaas-reference)',
+        destination: '/:locale/reference/:slug',
         permanent: true,
-      }))
-    )
+      },
+    ]
   },
 };
 
