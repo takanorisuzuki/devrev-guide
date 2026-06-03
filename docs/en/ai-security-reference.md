@@ -22,7 +22,7 @@ Core AI capabilities:
 
 ## Data Processing Architecture
 
-Computer uses a hybrid Text2SQL + RAG architecture (see also "Computer Memory Architecture" in [architecture.md](/en/reference/architecture)).
+Computer uses a hybrid Text2SQL + RAG architecture (see also "Computer Memory Architecture" in the [Object Model Reference](/en/reference/architecture)).
 
 ### Processing Flow
 
@@ -300,6 +300,10 @@ Per documented incident response procedures and DPA terms, affected customers ar
 
 No. Tenant isolation is enforced at both software and hardware levels — no cross-tenant data commingling is possible. All database queries include tenant identifiers to restrict access. AI responses are also limited to the requesting user's access scope.
 
+**Q. Where is data sent in the Computer App (Desktop)?**
+
+LLM inference requests are sent directly from the local Claude Code engine to the Anthropic API. Data retrieval from the DevRev platform occurs only via the MCP protocol. The Anthropic API is also under an enterprise contract, which prohibits the use of submitted data for training.
+
 **Q. What documentation is available to demonstrate no training use?**
 
 Three documents are available: (1) DevRev DPA (Data Processing Agreement), (2) Sub-processor list, and (3) SOC 2 Type II report. In addition, each LLM provider's published enterprise terms explicitly prohibit training use.
@@ -346,6 +350,6 @@ DevRev's proprietary guardrail framework provides multi-layer defense: prompt in
 | Reference | Related content |
 |-----------|----------------|
 | [s01](/en/s01) | Overview of Computer's four foundations |
-| [architecture.md](/en/reference/architecture) | Computer Memory architecture, LLM loose coupling |
-| [memory-vs-fetch-ai-accuracy-and-cost.md](/en/reference/memory-vs-fetch-ai-accuracy-and-cost) | Fetch-type AI vs Memory-type comparison |
+| [Object Model Reference](/en/reference/architecture) | Computer Memory architecture, LLM loose coupling |
+| [Memory & Cost Reference](/en/reference/memory-vs-fetch-ai-accuracy-and-cost) | Fetch-type AI vs Memory-type comparison |
 | This page | Data protection information for security reviews and AI adoption approvals |
