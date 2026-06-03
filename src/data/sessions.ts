@@ -66,7 +66,7 @@ const SESSION_TEXT_JA: Record<SessionId, { title: string; subtitle: string; keyI
   s06: {
     title: "Computer for Your CustomersとComputer for User Insightsで顧客を理解する",
     subtitle: "Live Chat, Session Replay, and Funnels",
-    keyInsight: "Computer for Your Customersでライブチャットを設置し、Computer for User Insightsで行動を録画・分析できるようになります。\n2つを組み合わせて顧客理解を深められます。",
+    keyInsight: "PLuGチャットをWebサイトに設置し、Computer for User Insightsで行動を録画・分析できるようになります。\n2つを組み合わせて顧客理解を深められます。",
   },
   s07: {
     title: "開発サイクルを管理する",
