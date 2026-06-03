@@ -41,27 +41,27 @@ const SESSION_TEXT_JA: Record<SessionId, { title: string; subtitle: string; keyI
     title: "DevRevとは何か：AIネイティブな作業基盤",
     subtitle: "データモデル、Memory、Computer の土台",
     keyInsight:
-      "Claude等LLM単体で使うよりも、DevRevと組み合わせることで、業務回答をより速く正確に、低コストで得られる。\n既存のSoRと運用を保ちながら、文脈・権限・根拠を同一データモデルで束ねる4基盤の仕組みを理解する",
+      "LLM単体より速く・正確に・低コストで業務回答を得られる理由がわかります。\n文脈・権限・根拠を同一データモデルで束ねる4基盤の仕組みを説明できるようになります。",
   },
   s02: {
     title: "はじめてのDevRev：セットアップと基本操作",
     subtitle: "Navigate DevRev from Day One",
-    keyInsight: "ワークスペース作成から基本ナビゲーションまで。最初の30分で全体像をつかむことが学習加速の鍵",
+    keyInsight: "ワークスペースを作成し、基本ナビゲーションにアクセスできるようになります。最初の30分でDevRevの全体像を把握できます。",
   },
   s03: {
     title: "DevRevのデータモデルを理解する",
     subtitle: "Identity, Parts, Work — 公式の3本柱",
-    keyInsight: "Identity（誰が）・Parts（何を届けるか）・Work（何が動くか）の3本柱。ワークをパーツに、パーツを顧客・開発者の identity に結びつけると公式でも説明されている",
+    keyInsight: "Identity・Parts・Workの3本柱を使ってデータを整理できるようになります。チケット・Issue・顧客情報を1つのデータモデルで結びつける設計ができます。",
   },
   s04: {
     title: "カスタマーサポートを設計する",
     subtitle: "Ticket Management & SLA",
-    keyInsight: "チケット管理・SLAポリシー・自動トリアージの3点セットがサポート運用の基盤。ここを設計するとチームの動き方が変わる",
+    keyInsight: "チケット管理・SLAポリシー・自動トリアージを設定できるようになります。この設定が完了するとチームの優先度判断が自動化されます。",
   },
   s05: {
     title: "ナレッジベースとサポートポータルを構築する",
     subtitle: "Knowledge Base, Collections, and Support Portal",
-    keyInsight: "ナレッジベースはArticleの集積だが、Collectionの設計とポータルの公開設定まで揃えて初めて顧客に届く。3つの設定が連動している",
+    keyInsight: "Articleを作成してCollectionに整理し、サポートポータルとして顧客に公開できるようになります。3つの設定を正しく連動させて初めて顧客に届きます。",
   },
   s06: {
     title: "Computer for Your CustomersとComputer for User Insightsで顧客を理解する",
@@ -86,7 +86,7 @@ const SESSION_TEXT_JA: Record<SessionId, { title: string; subtitle: string; keyI
   s10: {
     title: "ワークフローと自動化を設計する",
     subtitle: "Automations and Workflows",
-    keyInsight: "基本的なルール自動化から始められるが、AI条件ノードや並列パスを組み合わせると非常に複雑になる。Agent Studioの直接の前提知識",
+    keyInsight: "ルール自動化・AI条件ノード・並列パスを組み合わせた業務フローを自動化できるようになります。Agent Studioに進むための前提知識が身につきます。",
   },
   s11: {
     title: "Snap-inとマーケットプレイスを活用する",
@@ -119,27 +119,27 @@ const SESSION_TEXT_EN: Record<SessionId, { title: string; subtitle: string; keyI
   s01: {
     title: "What Is DevRev: The AI-Native Work Platform",
     subtitle: "Data model, Memory, and Computer foundations",
-    keyInsight: "Combining LLMs (e.g. Claude) with DevRev delivers business answers faster, more accurately, and at lower cost than using an LLM alone.\nUnderstand the four foundations that bind context and permissions on a single data model.",
+    keyInsight: "You will be able to explain why DevRev delivers business answers faster and more accurately than LLMs alone.\nYou will understand the four foundations that bind context, permissions, and evidence on a single data model.",
   },
   s02: {
     title: "Getting Started with DevRev",
     subtitle: "Navigate DevRev from Day One",
-    keyInsight: "From workspace creation to basic navigation. Mastering the big picture in your first 30 minutes accelerates everything that follows",
+    keyInsight: "You will be able to create a workspace and navigate the core UI. You will have a clear mental model of DevRev's structure within your first 30 minutes.",
   },
   s03: {
     title: "Understanding the DevRev Data Model",
     subtitle: "Identity, Parts, and Work",
-    keyInsight: "Three pillars: Identity (who), Parts (what you deliver), Work (what is in motion). Official docs describe connecting work to parts and parts to customer and developer identity",
+    keyInsight: "You will be able to organize data using the three pillars: Identity, Parts, and Work. You will be able to connect tickets, issues, and customer records in a single data model.",
   },
   s04: {
     title: "Designing Customer Support",
     subtitle: "Ticket Management & SLA",
-    keyInsight: "Ticket management, SLA policies, and auto-triage form the foundation of support operations. Getting this right changes how your team works",
+    keyInsight: "You will be able to configure ticket management, SLA policies, and auto-triage. Once set up, your team's priority decisions become automated.",
   },
   s05: {
     title: "Building a Knowledge Base and Support Portal",
     subtitle: "Knowledge Base, Collections, and Support Portal",
-    keyInsight: "A Knowledge Base is more than articles — Collections and portal visibility settings must align before customers can find anything. Three settings work together",
+    keyInsight: "You will be able to create Articles, organize them into Collections, and publish a Support Portal for customers. All three settings must align before customers can find anything.",
   },
   s06: {
     title: "Understanding Customers with Computer for Your Customers and Computer for User Insights",
@@ -164,7 +164,7 @@ const SESSION_TEXT_EN: Record<SessionId, { title: string; subtitle: string; keyI
   s10: {
     title: "Designing Workflows and Automation",
     subtitle: "Automations and Workflows",
-    keyInsight: "Simple rule-based automation is easy to start; combining AI condition nodes and parallel paths gets complex fast. Direct prerequisite for Agent Studio",
+    keyInsight: "You will be able to automate business workflows using rule automation, AI condition nodes, and parallel paths. You will gain the prerequisite knowledge needed for Agent Studio.",
   },
   s11: {
     title: "Using Snap-ins and the Marketplace",

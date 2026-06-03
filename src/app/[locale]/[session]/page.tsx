@@ -140,7 +140,7 @@ export default async function SessionPage({ params, searchParams }: SessionPageP
           />
           <div className="pl-3">
             <p className="text-xs font-semibold uppercase tracking-wider mb-1" style={{ color: layerColor }}>
-              Key Insight
+              {lang === 'ja' ? 'このセッションで実現できること' : 'What you will be able to do'}
             </p>
             <p className="whitespace-pre-line text-sm leading-relaxed" style={{ color: 'var(--color-text)' }}>
               {meta.keyInsight}
