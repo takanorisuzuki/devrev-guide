@@ -25,8 +25,8 @@ npm run lint   # ESLint
 - `src/components/` — 共有コンポーネント
 - `src/lib/` — ユーティリティ
 - `src/data/references.ts` — リファレンスページの登録（`REFERENCES` 配列に追加するとサイドバーとルーティングに自動反映）
-- `docs/ja/` — 日本語セッション資料（`s*.md`）＋その他記事
-- `docs/en/` — 英語ソース資料
+- `docs/ja/` — 日本語セッション資料（`s*.md`）＋リファレンス（`<slug>.md`）＋その他記事
+- `docs/en/` — 英語ソース資料＋リファレンス（`<slug>.md`）
 
 ## Notes
 
@@ -40,8 +40,8 @@ npm run lint   # ESLint
 
 ## ドキュメント内リンクのルール
 
-- リファレンスへのリンクパスは `/ja/reference/<slug>` 形式（`/ja/<slug>` は404になる）
-- セッションへのリンクは `/ja/s01` 形式（`/reference/` 不要）
+- リファレンスへのリンクパスは `/<locale>/reference/<slug>` 形式（例: `/ja/reference/architecture`。`/<locale>/<slug>` は404になる）
+- セッションへのリンクは `/<locale>/s01` 形式（`/reference/` 不要）
 
 ## 日英ドキュメントの使い分け
 
