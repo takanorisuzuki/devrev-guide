@@ -25,7 +25,20 @@ const nextConfig: NextConfig = {
     ]
   },
   async redirects() {
-    return []
+    const refSlugs = [
+      'architecture',
+      'perspectives',
+      'memory-vs-fetch-ai-accuracy-and-cost',
+      'article-access-control',
+      'adaas-reference',
+    ]
+    return refSlugs.flatMap((slug) =>
+      ['ja', 'en'].map((locale) => ({
+        source: `/${locale}/${slug}`,
+        destination: `/${locale}/reference/${slug}`,
+        permanent: true,
+      }))
+    )
   },
 };
 

@@ -29,24 +29,8 @@ export async function getSessionContent(locale: string, sessionId: string) {
   return getDocContent(locale, sessionId)
 }
 
-export async function getArchitectureContent(locale: string) {
-  return getDocContent(locale, 'architecture')
-}
-
-export async function getPerspectivesContent(locale: string) {
-  return getDocContent(locale, 'perspectives')
-}
-
-export async function getMemoryVsFetchAiContent(locale: string) {
-  return getDocContent(locale, 'memory-vs-fetch-ai-accuracy-and-cost')
-}
-
-export async function getArticleAccessControlContent(locale: string) {
-  return getDocContent(locale, 'article-access-control')
-}
-
-export async function getAdaasReferenceContent(locale: string) {
-  return getDocContent(locale, 'adaas-reference')
+export async function getReferenceContent(locale: string, slug: string) {
+  return getDocContent(locale, slug)
 }
 
 export function getSessionIds(): string[] {
