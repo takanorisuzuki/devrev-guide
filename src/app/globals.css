@@ -74,6 +74,16 @@ body {
   font-family: var(--font-noto-sans-jp), system-ui, -apple-system, sans-serif;
 }
 
+/* ホバー時に枠線色・影が変わるカード。色は各コンポーネントが CSS 変数で注入する */
+.hover-card {
+  border: 1px solid var(--card-border);
+}
+
+.hover-card:hover {
+  border-color: var(--card-hover-border);
+  box-shadow: var(--card-hover-shadow, none);
+}
+
 @media (max-width: 640px) {
   pre, code {
     font-size: 11px;

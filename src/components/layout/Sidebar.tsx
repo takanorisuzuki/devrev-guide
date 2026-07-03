@@ -2,29 +2,13 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { getLayers, getSessionMeta, SessionId } from '@/data/sessions'
+import { getLayers, getSessionMeta, SessionId, LAYER_COLOR, LAYER_BG } from '@/data/sessions'
 import { PERSONA_ORDER, getPersonaMeta } from '@/data/personas'
 import { REFERENCES } from '@/data/references'
+import LevelBadge from '@/components/shared/LevelBadge'
 
 interface SidebarProps {
   locale: string
-}
-
-const LAYER_COLOR: Record<string, string> = {
-  foundations: '#0070C0',
-  platform: '#0891B2',
-  developer: '#7C3AED',
-}
-
-const LAYER_BG: Record<string, string> = {
-  foundations: 'rgba(0,112,192,0.08)',
-  platform: 'rgba(8,145,178,0.08)',
-  developer: 'rgba(124,58,237,0.08)',
-}
-
-const LEVEL_LABEL: Record<string, Record<string, string>> = {
-  en: { beginner: 'Beginner', intermediate: 'Intermediate', advanced: 'Advanced' },
-  ja: { beginner: '初級', intermediate: '中級', advanced: '上級' },
 }
 
 export default function Sidebar({ locale }: SidebarProps) {
@@ -34,7 +18,6 @@ export default function Sidebar({ locale }: SidebarProps) {
   const layers = getLayers(locale)
   const sessionMeta = getSessionMeta(locale)
   const personaMeta = getPersonaMeta(locale)
-  const levelLabel = LEVEL_LABEL[locale] ?? LEVEL_LABEL.en
 
   return (
     <aside
@@ -125,17 +108,8 @@ export default function Sidebar({ locale }: SidebarProps) {
                         {/* タイトルと難易度を縦に分離（長い日本語タイトルでバッジと横方向に重ならない） */}
                         <div className="min-w-0 flex-1 flex flex-col gap-1">
                           <span className="leading-snug break-words">{session.title}</span>
-                          <span
-                            className="self-end shrink-0 text-xs px-1.5 py-0.5 rounded-full"
-                            style={
-                              session.level === 'beginner'
-                                ? { backgroundColor: 'var(--color-level-beginner-bg)', color: 'var(--color-level-beginner)' }
-                                : session.level === 'advanced'
-                                ? { backgroundColor: 'var(--color-level-advanced-bg)', color: 'var(--color-level-advanced)' }
-                                : { backgroundColor: 'var(--color-level-intermediate-bg)', color: 'var(--color-level-intermediate)' }
-                            }
-                          >
-                            {levelLabel[session.level]}
+                          <span className="self-end">
+                            <LevelBadge level={session.level} locale={locale} />
                           </span>
                         </div>
                       </Link>

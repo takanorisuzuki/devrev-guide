@@ -1,49 +1,18 @@
 import { Suspense } from 'react'
 import { notFound } from 'next/navigation'
-import { getSessionContent, getSessionIds } from '@/lib/content'
-import { toOgLocale } from '@/lib/locale'
-import { getSessionMeta, SessionId } from '@/data/sessions'
+import { getDocContent, getSessionIds } from '@/lib/content'
+import { toOgLocale, LOCALES } from '@/lib/locale'
+import { getSessionMeta, getLayers, SessionId, LAYER_COLOR } from '@/data/sessions'
 import SessionContent from '@/components/session/SessionContent'
 import PrevNextNav from '@/components/session/PrevNextNav'
 import PersonaPathNav from '@/components/session/PersonaPathNav'
 import PersonaPathBottom from '@/components/session/PersonaPathBottom'
 import SessionCompleteTracker from '@/components/session/SessionCompleteTracker'
+import LevelBadge from '@/components/shared/LevelBadge'
 
 interface SessionPageProps {
   params: Promise<{ locale: string; session: string }>
   searchParams: Promise<{ path?: string }>
-}
-
-const LEVEL_LABEL: Record<string, Record<string, string>> = {
-  ja: {
-    beginner: '初級',
-    intermediate: '中級',
-    advanced: '上級',
-  },
-  en: {
-    beginner: 'Beginner',
-    intermediate: 'Intermediate',
-    advanced: 'Advanced',
-  },
-}
-
-const LAYER_LABEL: Record<string, Record<string, string>> = {
-  ja: {
-    foundations: 'DevRev基礎',
-    platform: 'プラットフォーム活用',
-    developer: '開発者・拡張',
-  },
-  en: {
-    foundations: 'DevRev Foundations',
-    platform: 'Platform in Action',
-    developer: 'Extend & Automate',
-  },
-}
-
-const LAYER_COLOR: Record<string, string> = {
-  foundations: '#0070C0',
-  platform: '#0891B2',
-  developer: '#7C3AED',
 }
 
 export async function generateMetadata({ params }: SessionPageProps) {
@@ -67,8 +36,7 @@ export async function generateMetadata({ params }: SessionPageProps) {
 
 export async function generateStaticParams() {
   const sessionIds = getSessionIds()
-  const locales = ['ja', 'en']
-  return locales.flatMap((locale) =>
+  return LOCALES.flatMap((locale) =>
     sessionIds.map((id) => ({
       locale,
       session: id,
@@ -87,9 +55,10 @@ export default async function SessionPage({ params, searchParams }: SessionPageP
 
   const sessionMeta = getSessionMeta(locale)
   const meta = sessionMeta[session as SessionId]
-  const { content } = await getSessionContent(locale, session)
+  const { content } = await getDocContent(locale, session)
   const layerColor = LAYER_COLOR[meta.layer]
-  const lang = locale === 'en' ? 'en' : 'ja'
+  const layerLabel = getLayers(locale).find((l) => l.id === meta.layer)?.label
+  const isJa = locale === 'ja'
 
   return (
     <article className="w-full max-w-4xl">
@@ -108,22 +77,11 @@ export default async function SessionPage({ params, searchParams }: SessionPageP
             className="text-xs px-2 py-0.5 rounded-full"
             style={{ backgroundColor: 'var(--color-bg-secondary)', color: 'var(--color-text-secondary)', border: '1px solid var(--color-border)' }}
           >
-            {LAYER_LABEL[lang][meta.layer]}
+            {layerLabel}
           </span>
-          <span
-            className="text-xs px-2 py-0.5 rounded-full"
-            style={
-              meta.level === 'beginner'
-                ? { backgroundColor: 'var(--color-level-beginner-bg)', color: 'var(--color-level-beginner)' }
-                : meta.level === 'advanced'
-                ? { backgroundColor: 'var(--color-level-advanced-bg)', color: 'var(--color-level-advanced)' }
-                : { backgroundColor: 'var(--color-level-intermediate-bg)', color: 'var(--color-level-intermediate)' }
-            }
-          >
-            {LEVEL_LABEL[lang][meta.level]}
-          </span>
+          <LevelBadge level={meta.level} locale={locale} />
           <span className="text-xs" style={{ color: 'var(--color-text-secondary)' }}>
-            {meta.duration}{lang === 'en' ? ' min' : '分'}
+            {meta.duration}{isJa ? '分' : ' min'}
           </span>
         </div>
 
@@ -140,7 +98,7 @@ export default async function SessionPage({ params, searchParams }: SessionPageP
           />
           <div className="pl-3">
             <p className="text-xs font-semibold uppercase tracking-wider mb-1" style={{ color: layerColor }}>
-              {lang === 'ja' ? 'このセッションで実現できること' : 'What you will be able to do'}
+              {isJa ? 'このセッションで実現できること' : 'What you will be able to do'}
             </p>
             <p className="whitespace-pre-line text-sm leading-relaxed" style={{ color: 'var(--color-text)' }}>
               {meta.keyInsight}

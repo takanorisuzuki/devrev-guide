@@ -27,6 +27,8 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
+        // /reference/ 配下へ移動する前の旧URLで公開済みだった5ページのみ。
+        // 新規リファレンスは最初から /reference/ 配下なので追加不要
         source: '/:locale(ja|en)/:slug(architecture|perspectives|memory-vs-fetch-ai-accuracy-and-cost|article-access-control|adaas-reference)',
         destination: '/:locale/reference/:slug',
         permanent: true,

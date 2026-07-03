@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import { LOCALES } from '@/lib/locale'
 
 interface PrivacyPageProps {
   params: Promise<{ locale: string }>
@@ -17,7 +18,7 @@ export async function generateMetadata({ params }: PrivacyPageProps): Promise<Me
 }
 
 export function generateStaticParams() {
-  return [{ locale: 'en' }, { locale: 'ja' }]
+  return LOCALES.map((locale) => ({ locale }))
 }
 
 const X_HANDLE = 'takanorisuzuki'

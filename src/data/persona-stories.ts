@@ -225,7 +225,3 @@ export function getPersonaStory(locale: string, personaId: PersonaId): PersonaSt
   const stories = locale === 'ja' ? STORIES_JA : STORIES_EN;
   return stories[personaId];
 }
-
-export function getAllPersonaStories(locale: string): Record<PersonaId, PersonaStory> {
-  return locale === 'ja' ? STORIES_JA : STORIES_EN;
-}

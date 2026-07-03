@@ -3,10 +3,15 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { trackLanguageSwitch } from '@/lib/analytics'
+import { switchLocalePath } from '@/lib/locale'
+import { REFERENCES } from '@/data/references'
 
 interface HeaderProps {
   locale: string
 }
+
+// モバイルのヘッダーに出す主要リファレンス数（サイドバー非表示時の代替導線）
+const MOBILE_REFERENCE_COUNT = 3
 
 export default function Header({ locale }: HeaderProps) {
   const pathname = usePathname()
@@ -14,7 +19,7 @@ export default function Header({ locale }: HeaderProps) {
   // /en/... -> /ja/... or /ja/... -> /en/...
   const toggleLocale = locale === 'en' ? 'ja' : 'en'
   const safePathname = typeof pathname === 'string' && pathname.length > 0 ? pathname : `/${locale}`
-  const togglePath = safePathname.replace(/^\/(en|ja)/, `/${toggleLocale}`)
+  const togglePath = switchLocalePath(safePathname, toggleLocale)
 
   return (
     <header
@@ -63,27 +68,16 @@ export default function Header({ locale }: HeaderProps) {
             >
               {locale === 'ja' ? 'セッション一覧' : 'All sessions'}
             </Link>
-            <Link
-              href={`/${locale}/architecture`}
-              className="text-xs px-2 py-1 rounded-md transition-colors"
-              style={{ color: 'var(--color-text-secondary)', border: '1px solid var(--color-border)' }}
-            >
-              {locale === 'ja' ? 'オブジェクト構造' : 'Object model'}
-            </Link>
-            <Link
-              href={`/${locale}/perspectives`}
-              className="text-xs px-2 py-1 rounded-md transition-colors"
-              style={{ color: 'var(--color-text-secondary)', border: '1px solid var(--color-border)' }}
-            >
-              {locale === 'ja' ? '視点' : 'Perspectives'}
-            </Link>
-            <Link
-              href={`/${locale}/memory-vs-fetch-ai-accuracy-and-cost`}
-              className="text-xs px-2 py-1 rounded-md transition-colors"
-              style={{ color: 'var(--color-text-secondary)', border: '1px solid var(--color-border)' }}
-            >
-              {locale === 'ja' ? 'Memoryとコスト' : 'Memory & cost'}
-            </Link>
+            {REFERENCES.slice(0, MOBILE_REFERENCE_COUNT).map((ref) => (
+              <Link
+                key={ref.slug}
+                href={`/${locale}/reference/${ref.slug}`}
+                className="text-xs px-2 py-1 rounded-md transition-colors"
+                style={{ color: 'var(--color-text-secondary)', border: '1px solid var(--color-border)' }}
+              >
+                {locale === 'ja' ? ref.label.ja : ref.label.en}
+              </Link>
+            ))}
           </div>
 
           {/* Language switcher */}

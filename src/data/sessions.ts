@@ -5,14 +5,20 @@ export const SESSION_ORDER = [
 
 export type SessionId = typeof SESSION_ORDER[number];
 
+const LAYER_ORDER = ["foundations", "platform", "developer"] as const;
+
+export type LayerId = typeof LAYER_ORDER[number];
+
+export type SessionLevel = "beginner" | "intermediate" | "advanced";
+
 type SessionBase = {
   id: SessionId;
-  level: "beginner" | "intermediate" | "advanced";
-  layer: "foundations" | "platform" | "developer";
+  level: SessionLevel;
+  layer: LayerId;
   duration: number;
 };
 
-type SessionLocalized = SessionBase & {
+export type SessionLocalized = SessionBase & {
   title: string;
   subtitle: string;
   keyInsight: string;
@@ -193,17 +199,38 @@ const SESSION_TEXT_EN: Record<SessionId, { title: string; subtitle: string; keyI
   },
 };
 
-const LAYERS_JA = [
-  { id: "foundations" as const, label: "DevRev基礎", sessions: ["s01", "s02", "s03"] as SessionId[] },
-  { id: "platform" as const, label: "プラットフォーム活用", sessions: ["s04", "s05", "s06", "s07", "s08", "s09"] as SessionId[] },
-  { id: "developer" as const, label: "開発者・拡張", sessions: ["s10", "s11", "s12", "s13", "s14", "s15"] as SessionId[] },
-] as const;
+const LAYER_TEXT: Record<"ja" | "en", Record<LayerId, string>> = {
+  ja: {
+    foundations: "DevRev基礎",
+    platform: "プラットフォーム活用",
+    developer: "開発者・拡張",
+  },
+  en: {
+    foundations: "DevRev Foundations",
+    platform: "Platform in Action",
+    developer: "Extend & Automate",
+  },
+};
 
-const LAYERS_EN = [
-  { id: "foundations" as const, label: "DevRev Foundations", sessions: ["s01", "s02", "s03"] as SessionId[] },
-  { id: "platform" as const, label: "Platform in Action", sessions: ["s04", "s05", "s06", "s07", "s08", "s09"] as SessionId[] },
-  { id: "developer" as const, label: "Extend & Automate", sessions: ["s10", "s11", "s12", "s13", "s14", "s15"] as SessionId[] },
-] as const;
+// 各レイヤーの所属セッションは SESSION_BASE から導出（二重管理しない）
+const LAYER_SESSIONS: Record<LayerId, SessionId[]> = Object.fromEntries(
+  LAYER_ORDER.map((layerId) => [
+    layerId,
+    SESSION_ORDER.filter((id) => SESSION_BASE[id].layer === layerId),
+  ])
+) as Record<LayerId, SessionId[]>;
+
+export const LAYER_COLOR: Record<LayerId, string> = {
+  foundations: '#0070C0',
+  platform: '#0891B2',
+  developer: '#7C3AED',
+};
+
+export const LAYER_BG: Record<LayerId, string> = {
+  foundations: 'rgba(0,112,192,0.08)',
+  platform: 'rgba(8,145,178,0.08)',
+  developer: 'rgba(124,58,237,0.08)',
+};
 
 function buildSessionMeta(text: Record<SessionId, { title: string; subtitle: string; keyInsight: string }>): Record<SessionId, SessionLocalized> {
   return Object.fromEntries(
@@ -217,17 +244,16 @@ const SESSION_METAS = {
 } as const;
 
 export function getSessionMeta(locale: string): Record<SessionId, SessionLocalized> {
-  // Dev: keep edits reflected without relying on module cache.
-  if (process.env.NODE_ENV !== "production") {
-    const text = locale === "ja" ? SESSION_TEXT_JA : SESSION_TEXT_EN;
-    return buildSessionMeta(text);
-  }
-
   return (SESSION_METAS as Record<string, Record<SessionId, SessionLocalized>>)[locale] ?? SESSION_METAS.en;
 }
 
 export function getLayers(locale: string) {
-  return locale === "ja" ? LAYERS_JA : LAYERS_EN;
+  const labels = locale === "ja" ? LAYER_TEXT.ja : LAYER_TEXT.en;
+  return LAYER_ORDER.map((id) => ({
+    id,
+    label: labels[id],
+    sessions: LAYER_SESSIONS[id],
+  }));
 }
 
 // Shared constants
@@ -235,4 +261,3 @@ export const LEVEL_LABEL: Record<string, Record<string, string>> = {
   en: { beginner: 'Beginner', intermediate: 'Intermediate', advanced: 'Advanced' },
   ja: { beginner: '初級', intermediate: '中級', advanced: '上級' },
 };
-

@@ -1,15 +1,9 @@
-'use client'
-
 import Link from 'next/link'
-import { getLayers, getSessionMeta, SessionId } from '@/data/sessions'
+import { getLayers, getSessionMeta, LAYER_COLOR } from '@/data/sessions'
+import LevelBadge from '@/components/shared/LevelBadge'
 
 interface SessionGridProps {
   locale: string
-}
-
-const LEVEL_LABEL: Record<string, Record<string, string>> = {
-  en: { beginner: 'Beginner', intermediate: 'Intermediate', advanced: 'Advanced' },
-  ja: { beginner: '初級', intermediate: '中級', advanced: '上級' },
 }
 
 const SESSIONS_SUFFIX: Record<string, string> = {
@@ -22,44 +16,22 @@ const MIN_SUFFIX: Record<string, string> = {
   ja: '分',
 }
 
-const LAYER_CONFIG: Record<string, { color: string; bg: string; border: string; hoverBorder: string }> = {
-  foundations: {
-    color: '#0070C0',
-    bg: 'var(--color-bg-secondary)',
-    border: 'rgba(0,112,192,0.30)',
-    hoverBorder: 'rgba(0,112,192,0.65)',
-  },
-  platform: {
-    color: '#0891B2',
-    bg: 'var(--color-bg-secondary)',
-    border: 'rgba(8,145,178,0.30)',
-    hoverBorder: 'rgba(8,145,178,0.65)',
-  },
-  developer: {
-    color: '#7C3AED',
-    bg: 'var(--color-bg-secondary)',
-    border: 'rgba(124,58,237,0.30)',
-    hoverBorder: 'rgba(124,58,237,0.65)',
-  },
-}
-
 export default function SessionGrid({ locale }: SessionGridProps) {
   const layers = getLayers(locale)
   const sessionMeta = getSessionMeta(locale)
-  const levelLabel = LEVEL_LABEL[locale] ?? LEVEL_LABEL.en
   const sessionsSuffix = SESSIONS_SUFFIX[locale] ?? SESSIONS_SUFFIX.en
   const minSuffix = MIN_SUFFIX[locale] ?? MIN_SUFFIX.en
 
   return (
     <div className="space-y-10">
       {layers.map((layer) => {
-        const config = LAYER_CONFIG[layer.id]
+        const color = LAYER_COLOR[layer.id]
         return (
           <section key={layer.id}>
             <div className="flex items-center gap-2 mb-4 pb-3" style={{ borderBottom: `1px solid var(--color-border)` }}>
               <span
                 className="w-3 h-3 rounded-full shrink-0"
-                style={{ backgroundColor: config.color }}
+                style={{ backgroundColor: color }}
               />
               <h2
                 className="text-lg font-bold"
@@ -69,7 +41,7 @@ export default function SessionGrid({ locale }: SessionGridProps) {
               </h2>
               <span
                 className="text-xs px-2 py-0.5 rounded-full"
-                style={{ backgroundColor: `${config.color}18`, color: config.color }}
+                style={{ backgroundColor: `${color}18`, color: color }}
               >
                 {layer.sessions.length}{sessionsSuffix}
               </span>
@@ -77,45 +49,28 @@ export default function SessionGrid({ locale }: SessionGridProps) {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {layer.sessions.map((sessionId) => {
-                const session = sessionMeta[sessionId as SessionId]
+                const session = sessionMeta[sessionId]
                 return (
                   <Link
                     key={sessionId}
                     href={`/${locale}/${sessionId}`}
-                    className="group block p-4 rounded-xl transition-all duration-200"
+                    className="hover-card group block p-4 rounded-xl transition-all duration-200"
                     style={{
-                      backgroundColor: config.bg,
-                      border: `1px solid ${config.border}`,
-                    }}
-                    onMouseEnter={(e) => {
-                      (e.currentTarget as HTMLElement).style.borderColor = config.hoverBorder
-                      ;(e.currentTarget as HTMLElement).style.boxShadow = `0 4px 16px ${config.color}18`
-                    }}
-                    onMouseLeave={(e) => {
-                      (e.currentTarget as HTMLElement).style.borderColor = config.border
-                      ;(e.currentTarget as HTMLElement).style.boxShadow = 'none'
-                    }}
+                      backgroundColor: 'var(--color-bg-secondary)',
+                      '--card-border': `${color}4d`,
+                      '--card-hover-border': `${color}a6`,
+                      '--card-hover-shadow': `0 4px 16px ${color}18`,
+                    } as React.CSSProperties}
                   >
                     <div className="flex items-center justify-between mb-2.5">
                       <span
                         className="font-mono text-xs font-semibold px-2 py-0.5 rounded"
-                        style={{ backgroundColor: `${config.color}18`, color: config.color }}
+                        style={{ backgroundColor: `${color}18`, color: color }}
                       >
                         {sessionId}
                       </span>
                       <div className="flex items-center gap-1.5">
-                        <span
-                          className="text-xs px-1.5 py-0.5 rounded-full"
-                          style={
-                            session.level === 'beginner'
-                              ? { backgroundColor: 'var(--color-level-beginner-bg)', color: 'var(--color-level-beginner)' }
-                              : session.level === 'advanced'
-                              ? { backgroundColor: 'var(--color-level-advanced-bg)', color: 'var(--color-level-advanced)' }
-                              : { backgroundColor: 'var(--color-level-intermediate-bg)', color: 'var(--color-level-intermediate)' }
-                          }
-                        >
-                          {levelLabel[session.level]}
-                        </span>
+                        <LevelBadge level={session.level} locale={locale} />
                         <span className="text-xs" style={{ color: 'var(--color-text-secondary)' }}>
                           {session.duration}{minSuffix}
                         </span>
@@ -144,7 +99,7 @@ export default function SessionGrid({ locale }: SessionGridProps) {
                         height="12"
                         viewBox="0 0 24 24"
                         fill="none"
-                        stroke={config.color}
+                        stroke={color}
                         strokeWidth="2.5"
                         strokeLinecap="round"
                         strokeLinejoin="round"

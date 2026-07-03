@@ -1,22 +1,21 @@
 import { notFound } from 'next/navigation'
 import SessionContent from '@/components/session/SessionContent'
-import { getReferenceContent } from '@/lib/content'
+import { getDocContent } from '@/lib/content'
 import { REFERENCE_SLUGS } from '@/data/references'
-import { toOgLocale } from '@/lib/locale'
+import { toOgLocale, LOCALES } from '@/lib/locale'
 
 interface ReferencePageProps {
   params: Promise<{ locale: string; slug: string }>
 }
 
 export async function generateStaticParams() {
-  const locales = ['ja', 'en']
-  return locales.flatMap((locale) => REFERENCE_SLUGS.map((slug) => ({ locale, slug })))
+  return LOCALES.flatMap((locale) => REFERENCE_SLUGS.map((slug) => ({ locale, slug })))
 }
 
 export async function generateMetadata({ params }: ReferencePageProps) {
   const { locale, slug } = await params
   if (!REFERENCE_SLUGS.includes(slug)) return {}
-  const { frontmatter } = await getReferenceContent(locale, slug)
+  const { frontmatter } = await getDocContent(locale, slug)
   const title = typeof frontmatter.title === 'string' ? frontmatter.title : slug
   const description = typeof frontmatter.description === 'string' ? frontmatter.description : undefined
   const siteName = 'DevRev Guide'
@@ -30,7 +29,7 @@ export async function generateMetadata({ params }: ReferencePageProps) {
 export default async function ReferencePage({ params }: ReferencePageProps) {
   const { locale, slug } = await params
   if (!REFERENCE_SLUGS.includes(slug)) notFound()
-  const { content } = await getReferenceContent(locale, slug)
+  const { content } = await getDocContent(locale, slug)
   return (
     <article className="w-full max-w-full">
       <SessionContent content={content} />

@@ -2,7 +2,8 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { PERSONA_ORDER, getPersonaMeta, PersonaId } from '@/data/personas'
 import { getPersonaStory } from '@/data/persona-stories'
-import { getSessionMeta, SESSION_BASE, SessionId } from '@/data/sessions'
+import { getSessionMeta } from '@/data/sessions'
+import { LOCALES } from '@/lib/locale'
 import PersonaStorySection from '@/components/persona/PersonaStorySection'
 import PersonaSessionList from '@/components/persona/PersonaSessionList'
 
@@ -11,8 +12,7 @@ interface PersonaPageProps {
 }
 
 export async function generateStaticParams() {
-  const locales = ['ja', 'en']
-  return locales.flatMap((locale) =>
+  return LOCALES.flatMap((locale) =>
     PERSONA_ORDER.map((persona) => ({ locale, persona }))
   )
 }
@@ -44,8 +44,6 @@ export default async function PersonaPage({ params }: PersonaPageProps) {
   const story = getPersonaStory(locale, personaId)
   const sessionMeta = getSessionMeta(locale)
   const isJa = locale === 'ja'
-
-  const coreHours = Math.round(p.totalCoreMinutes / 60 * 2) / 2
 
   return (
     <div className="max-w-3xl">
@@ -89,7 +87,7 @@ export default async function PersonaPage({ params }: PersonaPageProps) {
             style={{ backgroundColor: 'var(--color-bg-secondary)', border: '1px solid var(--color-border)' }}
           >
             <span className="font-semibold" style={{ color: 'var(--color-text)' }}>
-              {isJa ? `約${coreHours}h` : `~${coreHours}h`}
+              {isJa ? `約${p.coreHours}h` : `~${p.coreHours}h`}
             </span>
             <span style={{ color: 'var(--color-text-secondary)' }}>
               {isJa ? '学習時間' : 'learning time'}
