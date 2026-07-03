@@ -11,6 +11,11 @@ export const REFERENCES: ReferenceEntry[] = [
     label: { ja: 'オブジェクト構造', en: 'Object model' },
   },
   {
+    slug: 'ontology-design',
+    icon: 'ref',
+    label: { ja: 'オントロジー設計ガイド', en: 'Ontology design guide' },
+  },
+  {
     slug: 'perspectives',
     icon: 'book',
     label: { ja: '視点（Perspectives）', en: 'Perspectives' },

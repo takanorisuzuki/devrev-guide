@@ -1,17 +1,11 @@
 import type { MetadataRoute } from 'next'
 import { SESSION_ORDER } from '@/data/sessions'
+import { REFERENCE_SLUGS } from '@/data/references'
 
 const BASE_URL = 'https://devrev-guide.vercel.app'
 const LOCALES = ['en', 'ja']
 const SESSION_IDS = [...SESSION_ORDER]
-const REFERENCE_PAGES = [
-  'architecture',
-  'perspectives',
-  'memory-vs-fetch-ai-accuracy-and-cost',
-  'compare',
-  'timeline',
-  'article-access-control',
-]
+const STANDALONE_PAGES = ['compare', 'timeline']
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date().toISOString()
@@ -40,7 +34,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }))
 
   const referencePages = LOCALES.flatMap((locale) =>
-    REFERENCE_PAGES.map((slug) => ({
+    REFERENCE_SLUGS.map((slug) => ({
+      url: `${BASE_URL}/${locale}/reference/${slug}`,
+      lastModified: now,
+      changeFrequency: 'monthly' as const,
+      priority: 0.4,
+    }))
+  )
+
+  const standalonePages = LOCALES.flatMap((locale) =>
+    STANDALONE_PAGES.map((slug) => ({
       url: `${BASE_URL}/${locale}/${slug}`,
       lastModified: now,
       changeFrequency: 'monthly' as const,
@@ -48,5 +51,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }))
   )
 
-  return [...homePages, ...sessionPages, ...referencePages, ...privacyPages]
+  return [...homePages, ...sessionPages, ...referencePages, ...standalonePages, ...privacyPages]
 }

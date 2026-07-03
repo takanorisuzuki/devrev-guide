@@ -136,7 +136,7 @@ You can also define **custom link types** for your organization.
 
 ## Extensibility (custom fields, subtypes, custom objects)
 
-Come back to this section when standard objects are not enough for your process or integration. You do not need to configure everything up front.
+Come back to this section when standard objects are not enough for your process or integration. You do not need to configure everything up front. For guidance on deciding whether to create a custom object at all, see the [Ontology design guide](/en/reference/ontology-design).
 
 When standard objects cannot express a requirement, DevRev offers three extension paths.
 
