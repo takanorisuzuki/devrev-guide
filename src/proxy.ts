@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { LOCALES } from '@/lib/locale'
 
-const VALID_LOCALES = new Set(['en', 'ja'])
+const VALID_LOCALES = new Set<string>(LOCALES)
 
 export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl

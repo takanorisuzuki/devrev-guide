@@ -1,39 +1,20 @@
 'use client'
 
 import Link from 'next/link'
-import { useSearchParams } from 'next/navigation'
-import { SessionId, getSessionMeta } from '@/data/sessions'
-import { PersonaId, getPersonaMeta, PERSONA_ORDER } from '@/data/personas'
+import { usePersonaPath } from './usePersonaPath'
 
 interface PersonaPathBottomProps {
   locale: string
   currentSession: string
 }
 
-function getPersonaSessionOrder(personaId: PersonaId): SessionId[] {
-  const meta = getPersonaMeta('en')
-  const p = meta[personaId]
-  return [...p.coreSessions, ...p.recommendedSessions]
-}
-
 export default function PersonaPathBottom({ locale, currentSession }: PersonaPathBottomProps) {
-  const searchParams = useSearchParams()
-  const pathParam = searchParams.get('path') as PersonaId | null
-
-  if (!pathParam || !PERSONA_ORDER.includes(pathParam)) return null
-
-  const personaId = pathParam
-  const personaMeta = getPersonaMeta(locale)
-  const p = personaMeta[personaId]
-  const sessionMeta = getSessionMeta(locale)
-  const personaSessions = getPersonaSessionOrder(personaId)
-  const currentIndex = personaSessions.indexOf(currentSession as SessionId)
+  const path = usePersonaPath(locale, currentSession)
   const isJa = locale === 'ja'
 
-  if (currentIndex === -1) return null
+  if (!path) return null
 
-  const prevId = currentIndex > 0 ? personaSessions[currentIndex - 1] : null
-  const nextId = currentIndex < personaSessions.length - 1 ? personaSessions[currentIndex + 1] : null
+  const { personaId, persona: p, sessionMeta, prevId, nextId } = path
 
   return (
     <div

@@ -25,14 +25,6 @@ export const getDocContent = cache(async (locale: string, slug: string) => {
   return processMarkdownFile(filePath)
 })
 
-export async function getSessionContent(locale: string, sessionId: string) {
-  return getDocContent(locale, sessionId)
-}
-
-export async function getReferenceContent(locale: string, slug: string) {
-  return getDocContent(locale, slug)
-}
-
 export function getSessionIds(): string[] {
   return [...SESSION_ORDER]
 }

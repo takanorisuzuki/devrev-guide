@@ -1,5 +1,3 @@
-'use client'
-
 import Link from 'next/link'
 import { PERSONA_ORDER, getPersonaMeta, PersonaId } from '@/data/personas'
 
@@ -49,23 +47,17 @@ export default function PersonaPicker({ locale }: PersonaPickerProps) {
         {PERSONA_ORDER.map((personaId) => {
           const p = personaMeta[personaId]
           const colors = PERSONA_COLORS[personaId]
-          const coreHours = Math.round(p.totalCoreMinutes / 60 * 2) / 2
 
           return (
             <Link
               key={personaId}
               href={`/${locale}/path/${personaId}`}
-              className="group block p-4 rounded-xl transition-all duration-200"
+              className="hover-card group block p-4 rounded-xl transition-all duration-200"
               style={{
                 backgroundColor: colors.bg,
-                border: `1px solid ${colors.border}`,
-              }}
-              onMouseEnter={(e) => {
-                (e.currentTarget as HTMLElement).style.borderColor = colors.hoverBorder
-              }}
-              onMouseLeave={(e) => {
-                (e.currentTarget as HTMLElement).style.borderColor = colors.border
-              }}
+                '--card-border': colors.border,
+                '--card-hover-border': colors.hoverBorder,
+              } as React.CSSProperties}
             >
               <div className="flex items-center gap-2 mb-2">
                 <span className="text-xl">{p.icon}</span>
@@ -79,7 +71,7 @@ export default function PersonaPicker({ locale }: PersonaPickerProps) {
               <div className="flex items-center gap-2 text-xs" style={{ color: 'var(--color-text-secondary)' }}>
                 <span>{p.coreSessions.length}{isJa ? 'セッション' : ' sessions'}</span>
                 <span>·</span>
-                <span>{isJa ? `約${coreHours}h` : `~${coreHours}h`}</span>
+                <span>{isJa ? `約${p.coreHours}h` : `~${p.coreHours}h`}</span>
               </div>
             </Link>
           )

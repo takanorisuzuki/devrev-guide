@@ -4,7 +4,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "DevRev Guide — Learn DevRev from Official Sources",
   description:
-    "A practical learning site based on official DevRev sources. Fourteen sessions from foundations to developer extensions.",
+    "A practical learning site based on official DevRev sources. Fifteen sessions from foundations to developer extensions.",
   icons: { icon: "/favicon.svg" },
 };
 

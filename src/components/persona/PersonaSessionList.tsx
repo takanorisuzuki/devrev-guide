@@ -1,16 +1,6 @@
 import Link from 'next/link'
-import { SessionId, LEVEL_LABEL } from '@/data/sessions'
-
-
-interface SessionLocalized {
-  id: SessionId
-  title: string
-  subtitle: string
-  keyInsight: string
-  level: string
-  layer: string
-  duration: number
-}
+import { SessionId, SessionLocalized } from '@/data/sessions'
+import LevelBadge from '@/components/shared/LevelBadge'
 
 interface PersonaSessionListProps {
   locale: string
@@ -28,7 +18,6 @@ export default function PersonaSessionList({
   sessionMeta,
 }: PersonaSessionListProps) {
   const isJa = locale === 'ja'
-  const levelLabel = LEVEL_LABEL[locale] ?? LEVEL_LABEL.en
 
   return (
     <div className="space-y-8">
@@ -69,18 +58,7 @@ export default function PersonaSessionList({
                     <span className="font-mono text-xs" style={{ color: 'var(--color-text-secondary)' }}>
                       {sessionId}
                     </span>
-                    <span
-                      className="text-xs px-1.5 py-0.5 rounded-full"
-                      style={
-                        session.level === 'beginner'
-                          ? { backgroundColor: 'var(--color-level-beginner-bg)', color: 'var(--color-level-beginner)' }
-                          : session.level === 'advanced'
-                          ? { backgroundColor: 'var(--color-level-advanced-bg)', color: 'var(--color-level-advanced)' }
-                          : { backgroundColor: 'var(--color-level-intermediate-bg)', color: 'var(--color-level-intermediate)' }
-                      }
-                    >
-                      {levelLabel[session.level]}
-                    </span>
+                    <LevelBadge level={session.level} locale={locale} />
                     <span className="text-xs" style={{ color: 'var(--color-text-secondary)' }}>
                       {session.duration}{isJa ? '分' : 'min'}
                     </span>

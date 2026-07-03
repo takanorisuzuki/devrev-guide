@@ -94,7 +94,7 @@ export default function HeroSection({ locale }: { locale: string }) {
             </svg>
           </Link>
           <Link
-            href={`/${locale}/memory-vs-fetch-ai-accuracy-and-cost`}
+            href={`/${locale}/reference/memory-vs-fetch-ai-accuracy-and-cost`}
             className="text-sm font-medium underline underline-offset-4 transition-opacity hover:opacity-90"
             style={{ color: '#E0F2FE' }}
           >

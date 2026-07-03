@@ -1,14 +1,6 @@
-import { SessionId } from './sessions';
+import { SessionId, SESSION_BASE } from './sessions';
 
 export type PersonaId = 'support' | 'sales' | 'developer' | 'executive';
-
-export type PersonaImportance = 'core' | 'recommended' | 'optional';
-
-export type PersonaRelevance = {
-  persona: PersonaId;
-  importance: PersonaImportance;
-  order: number;
-};
 
 export type PersonaMeta = {
   id: PersonaId;
@@ -24,75 +16,6 @@ export type PersonaLocalized = PersonaMeta & {
   shortLabel: string;
   description: string;
 };
-
-// --- Session relevance mapping ---
-
-export const SESSION_PERSONAS: Record<SessionId, PersonaRelevance[]> = {
-  s01: [
-    { persona: 'support', importance: 'core', order: 1 },
-    { persona: 'sales', importance: 'core', order: 1 },
-    { persona: 'developer', importance: 'core', order: 1 },
-    { persona: 'executive', importance: 'core', order: 1 },
-  ],
-  s02: [
-    { persona: 'support', importance: 'core', order: 2 },
-    { persona: 'sales', importance: 'core', order: 2 },
-    { persona: 'developer', importance: 'core', order: 2 },
-    { persona: 'executive', importance: 'core', order: 2 },
-  ],
-  s03: [
-    { persona: 'sales', importance: 'core', order: 3 },
-    { persona: 'developer', importance: 'core', order: 3 },
-    { persona: 'executive', importance: 'core', order: 3 },
-  ],
-  s04: [
-    { persona: 'support', importance: 'core', order: 3 },
-    { persona: 'sales', importance: 'recommended', order: 6 },
-    { persona: 'executive', importance: 'recommended', order: 6 },
-  ],
-  s05: [
-    { persona: 'support', importance: 'core', order: 4 },
-  ],
-  s06: [
-    { persona: 'support', importance: 'recommended', order: 6 },
-  ],
-  s07: [
-    { persona: 'sales', importance: 'core', order: 4 },
-    { persona: 'developer', importance: 'core', order: 4 },
-    { persona: 'executive', importance: 'recommended', order: 7 },
-  ],
-  s08: [
-    { persona: 'executive', importance: 'core', order: 4 },
-    { persona: 'sales', importance: 'recommended', order: 7 },
-  ],
-  s09: [
-    { persona: 'sales', importance: 'core', order: 5 },
-    { persona: 'executive', importance: 'core', order: 5 },
-  ],
-  s10: [
-    { persona: 'support', importance: 'core', order: 5 },
-    { persona: 'developer', importance: 'recommended', order: 7 },
-    { persona: 'executive', importance: 'recommended', order: 8 },
-  ],
-  s11: [
-    { persona: 'developer', importance: 'core', order: 5 },
-  ],
-  s12: [
-    { persona: 'developer', importance: 'core', order: 6 },
-  ],
-  s13: [
-    { persona: 'developer', importance: 'recommended', order: 8 },
-  ],
-  s14: [
-    { persona: 'support', importance: 'recommended', order: 7 },
-    { persona: 'developer', importance: 'recommended', order: 9 },
-  ],
-  s15: [
-    { persona: 'developer', importance: 'recommended', order: 10 },
-  ],
-};
-
-// --- Persona metadata ---
 
 const PERSONA_BASE: Record<PersonaId, Omit<PersonaMeta, 'totalCoreMinutes' | 'coreHours'>> = {
   support: {
@@ -167,8 +90,6 @@ const PERSONA_TEXT_EN: Record<PersonaId, { label: string; shortLabel: string; de
   },
 };
 
-import { SESSION_BASE } from './sessions';
-
 function buildPersonaMeta(base: typeof PERSONA_BASE): Record<PersonaId, PersonaMeta> {
   const result = {} as Record<PersonaId, PersonaMeta>;
   for (const [id, meta] of Object.entries(base) as [PersonaId, Omit<PersonaMeta, 'totalCoreMinutes' | 'coreHours'>][]) {
@@ -195,6 +116,8 @@ export function getPersonaMeta(locale: string): Record<PersonaId, PersonaLocaliz
   return result;
 }
 
-export function getPersonaForSession(sessionId: SessionId): PersonaRelevance[] {
-  return SESSION_PERSONAS[sessionId] ?? [];
+// ペルソナパスの学習順（必修 → 発展）。ロケール非依存
+export function getPersonaSessionOrder(personaId: PersonaId): SessionId[] {
+  const p = PERSONA_BASE[personaId];
+  return [...p.coreSessions, ...p.recommendedSessions];
 }
