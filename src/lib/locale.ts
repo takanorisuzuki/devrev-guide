@@ -2,7 +2,8 @@ export const LOCALES = ['en', 'ja'] as const
 
 export type Locale = (typeof LOCALES)[number]
 
-const LOCALE_PREFIX_RE = new RegExp(`^/(${LOCALES.join('|')})`)
+// (?=/|$) がないと /enterprise のような前方一致パスまで誤置換される
+const LOCALE_PREFIX_RE = new RegExp(`^/(${LOCALES.join('|')})(?=/|$)`)
 
 export function switchLocalePath(pathname: string, toLocale: Locale): string {
   return pathname.replace(LOCALE_PREFIX_RE, `/${toLocale}`)
