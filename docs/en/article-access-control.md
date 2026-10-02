@@ -207,7 +207,7 @@ Some Computer AirSync Extractors support **Permission Aware** sync, which preser
 - `access_level` and `shared_with` cannot be sent together; the system keeps them consistent when one is set
 - For Internal articles, callers do not set `access_level`; the system sets private
 - private defaults to the **owner**; do not equate creator with owner
-- Internal shares accept DevUser-type groups only; RevUser-type groups are rejected
+- Internal shares accept DevUser individuals or DevUser-type groups. RevUser individuals and RevUser-type groups cannot be specified
 - Changing scope to External clears shares; re-add recipients afterward
 - API scope updates and AirSync re-sync scope behavior are different
 - Anonymous Support Portal display requires Public Portal to be enabled
