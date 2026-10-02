@@ -207,7 +207,7 @@ Internal のまま RevUser グループには共有できません。顧客向�
 - `access_level` と `shared_with` は同時に送れません。片方を指定すると、もう片方はシステム側で合わせられます
 - Internal 記事の `access_level` は利用者が指定するものではありません。システムが private にします
 - private のデフォルトは**所有者**。作成者と所有者を同一視しない
-- Internal の共有先は DevUser 型グループのみです。RevUser 型グループは使えません
+- Internal の共有先は DevUser 個人、または DevUser 型グループです。RevUser 個人・RevUser 型グループは指定できません
 - scope を External に変えると共有は消えます。必要な相手へ付け直してください
 - API での scope 変更と AirSync 再同期での scope 更新は別物です
 - Support Portal の匿名表示には Public Portal の有効化が必要です
