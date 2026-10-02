@@ -5,6 +5,8 @@ description: "KB Article permission model — how scope, access_level, and share
 
 # Article Access Control Reference
 
+Last updated: October 3, 2026
+
 Knowledge Base (KB) Articles support fine-grained access control to determine who can see what. [s05](/en/s05) covers the basics of Collection publishing; this page is a comprehensive reference for the **full permission model**.
 
 ## Three Control Parameters
@@ -13,11 +15,11 @@ Article access is governed by three parameters working together.
 
 | Parameter | Role | How it's set |
 |-----------|------|-------------|
-| **scope** | High-level classification (internal vs customer-facing) | Automatically determined by creation path (manual=external, Computer AirSync import=internal) |
-| **access_level** | Visibility level (private / public, etc.) | Set via API. Not directly editable in the GUI |
+| **scope** | High-level classification (internal vs customer-facing) | Set at create time or by creation path. Can also be changed on update (see below) |
+| **access_level** | Visibility level (private / public, etc.) | Set via API. Not allowed on Internal articles (the system sets private). Not directly editable in the GUI |
 | **shared_with** | Explicit list of users/groups who can view | GUI "Visible to" field, or API |
 
-These three are not independent — they are **internally synchronized**. API requests can send either `access_level` or `shared_with`, but not both simultaneously.
+`access_level` and `shared_with` **cannot be set in the same request**. Specifying one causes the system to keep the other consistent (for example, setting `access_level=public` on an External article can populate default share targets).
 
 ---
 
@@ -25,13 +27,21 @@ These three are not independent — they are **internally synchronized**. API re
 
 | Aspect | **Internal** | **External** |
 |--------|------------|------------|
-| Meaning | Internal documents (similar to Google Docs/Notion sharing model) | Help center articles (customer-facing) |
-| Default access_level | **private** (creator only) | public or external (all Platform Users have default access) |
-| shared_with targets | DevUsers only | Both DevUsers and RevUsers |
-| Primary creation path | **Computer AirSync** imports (Confluence, Notion, OneDrive, etc.) | Manual creation via GUI, or URL crawling |
+| Meaning | Internal documents (similar to Google Docs/Notion sharing) | Help center articles (customer-facing) |
+| access_level | System sets **private** (not a caller-supplied field) | public / external, etc. May remain unset if not provided |
+| shared_with targets | **DevUser-type** users/groups only | Both DevUsers and RevUsers |
+| Primary creation path | Computer AirSync imports (Confluence, Notion, OneDrive, etc.), or API with Internal scope | Manual GUI creation (default), or URL crawling |
 | Computer for Your Customers exposure | Not exposed by default (prevents accidental publication) | Exposed based on settings |
 
-**Why Computer AirSync imports default to Internal**: Documents synced from external tools often contain internal-only information. To prevent accidental exposure through Computer for Your Customers or the Support Portal, Internal scope (=private) is applied by default.
+**Why Computer AirSync imports default to Internal**: Documents synced from external tools often contain internal-only information. To prevent accidental exposure through Computer for Your Customers or the Support Portal, Internal (=private) is applied by default.
+
+### Updating scope (since July 2026)
+
+Since July 2026, `articles.update` can change scope. Earlier versions did not allow changing scope after creation.
+
+- Internal → External is supported
+- Changing to External **clears** existing `shared_with`. Re-add shares as needed
+- Do not flip Internal → External merely to bypass share restrictions; you must reconfigure sharing afterward
 
 ---
 
@@ -39,7 +49,7 @@ These three are not independent — they are **internally synchronized**. API re
 
 | Value | Meaning | Primary use |
 |---|---|---|
-| **private** | Default seeded roles do NOT apply. Only users explicitly listed in `shared_with` can access | Default for Internal scope. Internal-only documents |
+| **private** | Default seeded roles do NOT apply. Only users explicitly listed in `shared_with` can access | Value the system sets for Internal articles. Internal-only documents |
 | **public** | If status=published, accessible without authentication | SEO-enabled help center articles |
 | external | External scope article without SEO (authentication required, but RevUsers can access) | Restricted customer-facing articles |
 | restricted | Exists in design but limited current significance | — |
@@ -49,15 +59,17 @@ These three are not independent — they are **internally synchronized**. API re
 
 ### How private works
 
-- Default system roles (seeded roles) are **entirely bypassed**
+- Default system roles (seeded roles) are **bypassed**
 - Only users/groups explicitly added to `shared_with` can access the article
-- All Internal scope articles default to `access_level=private`
+- For Internal articles, create sets `access_level=private` automatically
+- Specifying `access_level` on Internal create/update is rejected ("access_level must not be set for internal articles")
 
 ### How public works
 
 - If status=published AND access_level=public, the article is accessible **without an authentication token**
 - Becomes searchable in the Support Portal and Computer for Your Customers
 - Eligible for SEO indexing
+- On External articles, setting `access_level=public` may cause the system to attach default share targets (for example All Users / Customers)
 
 ---
 
@@ -70,18 +82,20 @@ The `shared_with` field explicitly defines which users or groups can view an Art
 | Target | scope=internal | scope=external |
 |--------|:---:|:---:|
 | DevUser (individual) | ○ | ○ |
-| DevUser group | ○ | ○ |
+| DevUser-type group | ○ | ○ |
 | RevUser (individual) | × | ○ |
-| RevUser group | × | ○ |
+| RevUser-type group | × | ○ |
+
+For Internal articles, the group itself must be **DevUser-type**. Specifying a RevUser-type group is rejected ("group must be of member type DevUser for internal articles").
 
 ### GUI operation
 
 In the GUI, use the **"Visible to"** field on the Article detail screen to configure `shared_with`.
 
 - Specifying a group grants access to all members of that group
-- Leaving "Visible to" empty on an Internal scope article means only the creator can access it
+- Leaving "Visible to" empty on an Internal article means only the creator can access it
 
-### Example: Group-based access control
+### Example: Group-based access control (External)
 
 By adding RevUser-type groups (e.g., "All Customers", "Partner Group") to `shared_with`, you can control Article visibility by customer segment.
 
@@ -100,11 +114,16 @@ In this case, only RevUsers who belong to Enterprise Partners or Beta Program Me
 
 ## Access Decision Flow
 
-When an access request is made for an Article, the system evaluates in this order:
+Preconditions differ by use case.
+
+- **Customer-facing surfaces** (Support Portal / Computer for Your Customers): status=published is required
+- **Internal viewing, editing, and draft review**: articles can be saved and updated without being Published
+
+Customer-facing evaluation sketch:
 
 ```
 1. Is status = published?
-   └─ No → Not visible to RevUsers (DevUser-only draft)
+   └─ No → Not visible to RevUsers (DevUser-only draft, etc.)
 
 2. Is access_level = private?
    └─ Yes → Default roles disabled. Only shared_with members
@@ -126,16 +145,18 @@ When an access request is made for an Article, the system evaluates in this orde
 | Aspect | Computer AirSync import | Manual creation (GUI) |
 |--------|--------------|---------------------|
 | Default scope | **internal** | **external** |
-| Default access_level | **private** (creator only) | **public** (everyone can access) |
-| Computer for Your Customers/Portal exposure | **Not exposed** by default | Exposed when Published |
-| How to change | Add `shared_with` via API/GUI | Add restrictions via "Visible to" |
+| access_level | System sets **private** | Depends on publish settings (e.g. public) |
+| Computer for Your Customers/Portal exposure | **Not exposed** by default | Exposed when Published with public visibility settings |
+| Widening internal access | Add DevUser-type groups to `shared_with` | Adjust "Visible to" |
 
-### Making Computer AirSync-imported articles customer-visible
+### Making imported articles customer-visible
 
-To publish an article imported as Internal scope to customers:
+You cannot share an Internal article with a RevUser group. To make it customer-facing:
 
-1. Add the target RevUser group to the Article's `shared_with`
-2. Or recreate the Article manually so it gets External scope
+1. Update scope to External (existing shares are cleared; re-add as needed), or
+2. Recreate the article as External
+
+Do not change Internal → External only to bypass share restrictions.
 
 ---
 
@@ -161,19 +182,21 @@ Some Computer AirSync Extractors support **Permission Aware** sync, which preser
 
 | Parameter | GUI | API | Notes |
 |-----------|:---:|:---:|-------|
-| **shared_with** | ○ ("Visible to") | ○ (articles.create / articles.update) | Mutually exclusive with access_level (cannot send both) |
-| **access_level** | × | ○ (articles.create / articles.update) | Mutually exclusive with shared_with. Plug backend manages sync |
-| **scope** | × | × (not in public API schema) | Automatically determined by creation path |
-| **status** | ○ (Publish/Draft/Archive) | ○ (articles.update) | Must be Published for RevUser visibility |
+| **shared_with** | ○ ("Visible to") | ○ (articles.create / articles.update) | Cannot set together with access_level |
+| **access_level** | × | ○ (not allowed on Internal) | Cannot set together with shared_with. On External, public may populate default shares |
+| **scope** | × | ○ (create / update; Internal=1 / External=2) | Updatable since July 2026. Changing to External clears shares |
+| **status** | ○ (Publish/Draft/Archive) | ○ (articles.update) | Published required for customer-facing visibility; Draft save is allowed |
 
 ---
 
 ## Design Considerations
 
-- Since `shared_with` and `access_level` are internally synchronized, **changing one via API affects the other**
-- `scope` cannot be changed after creation (converting Internal→External requires recreating the article)
-- There is no GUI interface to directly view or modify the `access_level` value (use the API to inspect)
-- Computer AirSync-imported articles are designed to not appear in Computer for Your Customers/Portal by default — you must explicitly configure `shared_with` to make them visible
+- `access_level` and `shared_with` cannot be sent together; the system keeps them consistent when one is set
+- For Internal articles, callers do not set `access_level`; the system sets private
+- Internal shares accept DevUser-type groups only; RevUser-type groups are rejected
+- Changing scope to External clears shares; re-add recipients afterward
+- There is no GUI to directly view or edit `access_level` (inspect via API)
+- Computer AirSync-imported articles do not appear in Computer for Your Customers/Portal by default
 
 ---
 
